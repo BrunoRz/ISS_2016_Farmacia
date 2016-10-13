@@ -5,33 +5,27 @@
  */
 package DAO;
 
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.FindIterable;
+
 /**
  *
- * @author guest-dDDa0r
+ * @author guilherme
+ * @param <T>
+ * @param <PK>
  */
-class GenericDAO<T, I> implements AbstractDAO<T, I> {
+public class GenericDAO<T, PK> {
+    
+    private final MongoCollection<T> collection;
 
-
-
-	/**
-	* Default empty GenericDAO constructor
-	*/
-
-    public T busca(I i) {
-        T result = null;
-
+    public GenericDAO(String nome,MongoDatabase db, Class classe) {
+        this.collection =  db.getCollection(nome, classe);
+    }
+    
+    public FindIterable<T> buscarID(PK pk) {
+        FindIterable<T> result;
+        result = this.collection.find();
         return result;
-    }
-
-    public void excluir(T object) {
-
-    }
-
-    public void salvar(T object) {
-
-    }
-
-    public void atualizar(T object) {
-
     }
 }
