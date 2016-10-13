@@ -9,16 +9,15 @@ package DAO;
  *
  * @author guest-dDDa0r
  */
-class GenericDAO<T> implements AbstractDAO<T> {
+class GenericDAO<T, I> implements AbstractDAO<T, I> {
+
+
 
 	/**
 	* Default empty GenericDAO constructor
 	*/
-	public GenericDAO() {
-		super();
-	}
 
-    public T busca(String id) {
+    public T busca(I i) {
         T result = null;
 
         return result;
