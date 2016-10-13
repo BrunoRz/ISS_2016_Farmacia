@@ -9,6 +9,12 @@ package DAO;
  *
  * @author guest-dDDa0r
  */
-interface AbstractDAO {
-    
+interface  AbstractDAO<T> {
+
+    T busca(String id);
+
+    void salvar(T object);
+    void excluir(T object);
+    void atualizar(T object);
+
 }
