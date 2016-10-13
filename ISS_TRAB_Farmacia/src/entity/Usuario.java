@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.Random;
+import org.bson.BasicBSONObject;
 
 /**
  *
@@ -24,6 +25,12 @@ public class Usuario {
         this.CP = CP;
         this.user = user;
         this.password = new Random().ints(6).toString();
+    }
+    
+    public Usuario(BasicBSONObject doc) {
+        this.nome = doc.get("nome").toString();
+        this.endereco = doc.get("endereco").toString();
+        this.CP = CP;
     }
 
     public String getNome() {
@@ -65,4 +72,4 @@ public class Usuario {
     public boolean validaSenha(String password) {
         return (this.getPassword().equals(password));
     }
-}
+}   

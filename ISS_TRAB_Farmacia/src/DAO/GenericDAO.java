@@ -7,25 +7,25 @@ package DAO;
 
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.FindIterable;
+import org.bson.BasicBSONObject;
 
 /**
  *
  * @author guilherme
- * @param <T>
  * @param <PK>
  */
-public class GenericDAO<T, PK> {
+public class GenericDAO<PK> {
     
-    private final MongoCollection<T> collection;
+    private final MongoCollection collection;
 
-    public GenericDAO(String nome,MongoDatabase db, Class classe) {
-        this.collection =  db.getCollection(nome, classe);
-    }
-    
-    public FindIterable<T> buscarID(PK pk) {
-        FindIterable<T> result;
-        result = this.collection.find();
-        return result;
+    public GenericDAO(String nome,MongoDatabase db, BasicBSONObject schema) {
+        try {
+            db.getCollection(nome, BasicBSONObject.class);
+        }
+        catch(Exception e) {
+            db.createCollection(nome, new BasicBSONObject().append("validator", schema));
+        }
+        
+        this.collection = db.getCollection(nome, BasicBSONObject.class);
     }
 }
