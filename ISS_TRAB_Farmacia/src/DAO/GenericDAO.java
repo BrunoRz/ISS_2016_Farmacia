@@ -5,27 +5,32 @@
  */
 package DAO;
 
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoCollection;
-import org.bson.BasicBSONObject;
+import java.util.List;
 
 /**
  *
  * @author guilherme
- * @param <PK>
+ * @param <T>
+ * @param <I>
  */
-public class GenericDAO<PK> {
-    
-    private final MongoCollection collection;
+public abstract class GenericDAO<T, I> implements DAO<T, I> {
 
-    public GenericDAO(String nome,MongoDatabase db, BasicBSONObject schema) {
-        try {
-            db.getCollection(nome, BasicBSONObject.class);
-        }
-        catch(Exception e) {
-            db.createCollection(nome, new BasicBSONObject().append("validator", schema));
-        }
-        
-        this.collection = db.getCollection(nome, BasicBSONObject.class);
+    public GenericDAO() {
     }
+
+    @Override
+    public void excluir(T t){
+        
+    }
+
+    @Override
+    public List<T> buscarI(I i){
+        return null;
+    }
+
+    @Override
+    public void salvar(T t){}
+    
+    
+    
 }

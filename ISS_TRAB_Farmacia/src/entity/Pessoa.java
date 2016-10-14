@@ -6,34 +6,49 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author guilherme
  */
 @Entity
-public class Cliente extends Pessoa implements Serializable {
+public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private final int CPF;
-    
-    public Cliente(int CPF) {
-        this.CPF = CPF;
+    private String nome;
+    private String endereco;
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+ 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -47,10 +62,10 @@ public class Cliente extends Pessoa implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof Pessoa)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        Pessoa other = (Pessoa) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -59,7 +74,7 @@ public class Cliente extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Cliente[ id=" + id + " ]";
+        return "entity.NewEntity[ id=" + id + " ]";
     }
     
 }

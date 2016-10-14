@@ -16,19 +16,15 @@ import javax.persistence.Id;
  * @author guilherme
  */
 @Entity
-public class Cliente extends Pessoa implements Serializable {
+public class Fornecedor extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private final int CPF;
-    
-    public Cliente(int CPF) {
-        this.CPF = CPF;
-    }
-    
+    private int CNPJ;
+
     public Long getId() {
         return id;
     }
@@ -47,10 +43,10 @@ public class Cliente extends Pessoa implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof Fornecedor)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        Fornecedor other = (Fornecedor) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -59,7 +55,7 @@ public class Cliente extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Cliente[ id=" + id + " ]";
+        return "entity.Fornecedor[ id=" + id + " ]";
     }
     
 }
