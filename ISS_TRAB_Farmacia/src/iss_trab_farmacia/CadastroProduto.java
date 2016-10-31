@@ -30,17 +30,17 @@ public class CadastroProduto extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lbNome = new javax.swing.JLabel();
-        lbCPF = new javax.swing.JLabel();
-        lbRG = new javax.swing.JLabel();
-        lbEnd = new javax.swing.JLabel();
+        lbValorCompra = new javax.swing.JLabel();
+        lbCodBarras = new javax.swing.JLabel();
+        lbValorVenda = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        txtRG = new javax.swing.JTextField();
-        txtCPF = new javax.swing.JTextField();
+        txtCodBarras = new javax.swing.JTextField();
+        txtValorCompra = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        txtEnd = new javax.swing.JTextField();
-        lbEmail = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtValorVenda = new javax.swing.JTextField();
+        lbDescricao = new javax.swing.JLabel();
+        txtDescricao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,14 +50,14 @@ public class CadastroProduto extends javax.swing.JFrame {
         lbNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbNome.setText("Nome: ");
 
-        lbCPF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbCPF.setText("Valor de Compra:");
+        lbValorCompra.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbValorCompra.setText("Valor de Compra:");
 
-        lbRG.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbRG.setText("Codigo de Barras:");
+        lbCodBarras.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbCodBarras.setText("Codigo de Barras:");
 
-        lbEnd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbEnd.setText("Valor de Venda:");
+        lbValorVenda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbValorVenda.setText("Valor de Venda:");
 
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         btCancelar.setText("Cancelar");
 
-        lbEmail.setText("Descrição:");
+        lbDescricao.setText("Descrição:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,19 +87,19 @@ public class CadastroProduto extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(lbNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lbCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lbEnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                                            .addComponent(lbEmail))
+                                                .addComponent(lbValorCompra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lbValorVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                                            .addComponent(lbDescricao))
                                         .addGap(5, 5, 5))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lbRG)
+                                        .addComponent(lbCodBarras)
                                         .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNome)
-                                    .addComponent(txtRG)
-                                    .addComponent(txtCPF)
-                                    .addComponent(txtEnd)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                                    .addComponent(txtCodBarras)
+                                    .addComponent(txtValorCompra)
+                                    .addComponent(txtValorVenda)
+                                    .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -123,20 +123,20 @@ public class CadastroProduto extends javax.swing.JFrame {
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbRG)
-                            .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbCodBarras)
+                            .addComponent(txtCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCPF)
-                            .addComponent(lbCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtValorCompra)
+                            .addComponent(lbValorCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEmail)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbDescricao)
+                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(175, 175, 175))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,16 +194,16 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbCPF;
-    private javax.swing.JLabel lbEmail;
-    private javax.swing.JLabel lbEnd;
+    private javax.swing.JLabel lbCodBarras;
+    private javax.swing.JLabel lbDescricao;
     private javax.swing.JLabel lbNome;
-    private javax.swing.JLabel lbRG;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEnd;
+    private javax.swing.JLabel lbValorCompra;
+    private javax.swing.JLabel lbValorVenda;
+    private javax.swing.JTextField txtCodBarras;
+    private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtRG;
+    private javax.swing.JTextField txtValorCompra;
+    private javax.swing.JTextField txtValorVenda;
     // End of variables declaration//GEN-END:variables
 }
