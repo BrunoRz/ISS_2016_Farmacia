@@ -34,7 +34,6 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="lbNum" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbNome" alignment="0" max="32767" attributes="0"/>
                                       <Component id="lbRG" alignment="0" max="32767" attributes="0"/>
                                       <Component id="lbCPF" alignment="0" max="32767" attributes="0"/>
                                       <Component id="lbEnd" alignment="0" max="32767" attributes="0"/>
@@ -44,7 +43,6 @@
                               </Group>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNome" max="32767" attributes="0"/>
                                   <Component id="txtRG" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtCPF" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEnd" alignment="0" max="32767" attributes="0"/>
@@ -55,7 +53,8 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lbNome" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btSalvar" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -71,17 +70,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="lbTitulo" max="32767" attributes="0"/>
+              <Component id="lbTitulo" pref="28" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="6" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbRG" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtRG" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -111,9 +105,11 @@
                           <Component id="lbEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace pref="101" max="32767" attributes="0"/>
+                      <Component id="lbNome" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -129,7 +125,7 @@
     <Component class="javax.swing.JLabel" name="lbTitulo">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Cadastro de Usu&#xe1;rio"/>
+        <Property name="text" type="java.lang.String" value="Venda"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -137,7 +133,7 @@
     <Component class="javax.swing.JLabel" name="lbNome">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Nome : "/>
+        <Property name="text" type="java.lang.String" value="Atendente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCPF">
@@ -186,8 +182,6 @@
     <Component class="javax.swing.JTextField" name="txtRG">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCPF">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtNome">
     </Component>
     <Component class="javax.swing.JTextField" name="txtEnd">
     </Component>
