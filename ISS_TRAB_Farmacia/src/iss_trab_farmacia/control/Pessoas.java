@@ -5,7 +5,7 @@
  */
 package iss_trab_farmacia.control;
 
-import iss_trab_farmacia.entity.Cliente;
+import iss_trab_farmacia.entity.Pessoa;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -16,10 +16,10 @@ import org.mongodb.morphia.query.Query;
  *
  * @author guilherme
  */
-public class Clientes extends BasicDAO<Cliente, ObjectId> {
+public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
     
-    public Clientes(Datastore ds) {
-        super(Cliente.class, ds);
+    public Pessoas(Datastore ds) {
+        super(Pessoa.class, ds);
     }
     
     /**
@@ -29,7 +29,7 @@ public class Clientes extends BasicDAO<Cliente, ObjectId> {
      */
     public List buscarNome(String nome) {
         
-        Query<Cliente> query = this.getDs().createQuery(Cliente.class);
+        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
  
         return query.field("nome").equal(nome).asList();
         

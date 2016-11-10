@@ -16,17 +16,17 @@ import org.mongodb.morphia.annotations.Id;
  * @author guilherme
  */
 @Entity("clientes")
-public class Cliente {
+public class Pessoa {
     
     @Id
-    private ObjectId cpf;
+    private ObjectId id;
     
     private String nome;
     
     @Embedded
     private Endereco endereco;
 
-    public Cliente(String nome) {
+    public Pessoa(String nome) {
         this.nome = nome;
     }
 

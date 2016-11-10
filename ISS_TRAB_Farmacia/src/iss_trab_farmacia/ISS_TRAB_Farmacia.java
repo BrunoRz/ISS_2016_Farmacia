@@ -6,8 +6,8 @@
 package iss_trab_farmacia;
 
 import com.mongodb.MongoClient;
-import iss_trab_farmacia.control.Clientes;
-import iss_trab_farmacia.entity.Cliente;
+import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.Endereco;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -30,11 +30,13 @@ public class ISS_TRAB_Farmacia {
         final Datastore datastore;
         datastore = morphia.createDatastore(new MongoClient(),"farmacia");
         
+        CadastroUsuario.main(datastore);
+        
         datastore.ensureIndexes();
         
-        Clientes clientes = new Clientes(datastore);
+        Pessoas clientes = new Pessoas(datastore);
         
-        Cliente cliente = new Cliente("Guilherme");
+        Pessoa cliente = new Pessoa("Guilherme");
         
         cliente.setEndereco(new Endereco(87200260));
         

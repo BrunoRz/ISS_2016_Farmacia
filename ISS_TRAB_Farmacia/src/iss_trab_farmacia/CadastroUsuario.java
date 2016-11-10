@@ -5,19 +5,25 @@
  */
 package iss_trab_farmacia;
 
+import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.PessoaFisica;
+import org.mongodb.morphia.Datastore;
+
 /**
  *
  * @author guest-1HRmBh
  */
 public class CadastroUsuario extends javax.swing.JFrame {
 
-    private final Pessoas pessoas = new Pessoas();
+    private final Pessoas pessoas;
     
     /**
      * Creates new form FarmaciaInterface
+     * @param ds
      */
-    public CadastroUsuario() {
+    public CadastroUsuario(Datastore ds) {
         initComponents();
+        this.pessoas = new Pessoas(ds);
     }
 
     /**
@@ -98,6 +104,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         lbEmail.setText("Email:");
 
+        txtDataNasc.setToolTipText("");
         txtDataNasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataNascActionPerformed(evt);
@@ -205,16 +212,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                                  
         PessoaFisica pessoa;
         pessoa = new PessoaFisica(
-                txtCPF.getText(),
                 txtNome.getText(),
-                txtDataNasc.getText(),
-                txtEmail.getText(),
-                txtEnd.getText(),
-                txtNum.getText(),
-                txtComp.getText(),
-                txtRG.getText(),
-                txtTelefone.getText()
+                new Integer(txtCPF.getText())
         );
+        
+        pessoa.setEmail(this.txtEmail.getText());
         
         this.pessoas.save(pessoa);
             
@@ -229,9 +231,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDataNascActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param ds
      */
-    public static void main(String args[]) {
+    public static void main(Datastore ds) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -259,10 +261,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroUsuario().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new CadastroUsuario(ds).setVisible(true);
         });
     }
 
