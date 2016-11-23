@@ -74,13 +74,13 @@ public class Venda {
         return null;
     }
     
-    public float getTotal() {
-        float total = 0;
-        for (ItemVenda item : this.getListaProdutos()) {
-            total += item.subTotal();
-        }
-        
-        return total;
-    }
+    //public float getTotal() {
+    //    float total = 0;
+    //    for (ItemVenda item : this.getListaProdutos()) {
+    //        total += item.subTotal();
+    //    }
+    //    
+    //    return total;
+    //}
     
 }

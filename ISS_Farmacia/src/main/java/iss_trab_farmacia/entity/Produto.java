@@ -5,7 +5,7 @@
  */
 package iss_trab_farmacia.entity;
 
-import com.sun.corba.se.spi.ior.ObjectId;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 

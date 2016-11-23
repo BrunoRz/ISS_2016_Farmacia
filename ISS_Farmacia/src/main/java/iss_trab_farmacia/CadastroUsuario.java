@@ -7,10 +7,6 @@ package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.PessoaFisica;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.MaskFormatter;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -266,7 +262,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         PessoaFisica pessoa;
         pessoa = new PessoaFisica(
                 txtNome.getText(),
-                new Integer(txtCPF.getText())
+                new Integer(jFormattedTextField3.getText())
         );
         
         pessoa.setEmail(this.txtEmail.getText());
