@@ -6,6 +6,7 @@
 package iss_trab_farmacia;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.Endereco;
@@ -28,7 +29,7 @@ public class ISS_TRAB_Farmacia {
         morphia.mapPackage("iss_trab_farmacia.util");
         
         final Datastore datastore;
-        datastore = morphia.createDatastore(new MongoClient(),"farmacia");
+        datastore = morphia.createDatastore(new MongoClient(new MongoClientURI("mongodb://teste:123456@ds159737.mlab.com:59737/farmacia")),"farmacia");
         
         CadastroUsuario.main(datastore);
         
