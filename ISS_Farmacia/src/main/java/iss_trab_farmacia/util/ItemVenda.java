@@ -18,8 +18,8 @@ public class ItemVenda {
     
     private int qnt;
     
-    //private final float valorVenda;
-    //private final float valorCusto;
+    private float valorVenda;
+    private final float valorCusto;
     
     @Reference
     private final Produto produto;
@@ -34,10 +34,10 @@ public class ItemVenda {
         return produto;
     }
 
-    public ItemVenda(int qnt, Produto produto) {
+    public ItemVenda(int qnt, float valorVenda, float valorCusto, Produto produto) {
         this.qnt = qnt;
-        //this.valorVenda = valorVenda;
-        //this.valorCusto = produto.custo();
+        this.valorVenda = valorVenda;
+        this.valorCusto = valorCusto;
         this.produto = produto;
     }
 
@@ -49,8 +49,20 @@ public class ItemVenda {
         this.setQnt(this.getQnt() + qnt);
         return this.getQnt();
     }
+
+    public float getValorCusto() {
+        return valorCusto;
+    }
+
+    public float getValorVenda() {
+        return valorVenda;
+    }
+
+    public void setValorVenda(float valorVenda) {
+        this.valorVenda = valorVenda;
+    }
     
-    //public float subTotal() {
-    //    return this.getQnt() * this.getValorVenda();
-    //}
+    public float subTotal() {
+        return this.getQnt() * this.getValorVenda();
+    }
 }

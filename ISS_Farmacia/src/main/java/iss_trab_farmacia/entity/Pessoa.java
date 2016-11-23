@@ -15,7 +15,7 @@ import org.mongodb.morphia.annotations.Id;
  *
  * @author guilherme
  */
-@Entity("clientes")
+@Entity("pessoas")
 public class Pessoa {
     
     @Id

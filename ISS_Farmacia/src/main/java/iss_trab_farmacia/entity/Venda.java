@@ -54,15 +54,8 @@ public class Venda {
         return listaProdutos;
     }
     
-    public void addProduto(Produto produto, int qnt, float valor) {
-        ItemVenda item =  this.inVenda(produto);
-        if (item != null) {
-            item.addQnt(qnt);
-        }
-        else {
-            item = new ItemVenda(qnt, produto);
-            this.listaProdutos.add(item);
-        }
+    public void addItemVenda(ItemVenda item) {
+        this.getListaProdutos().add(item);
     }
     
     public ItemVenda inVenda(Produto produto) {
@@ -74,13 +67,13 @@ public class Venda {
         return null;
     }
     
-    //public float getTotal() {
-    //    float total = 0;
-    //    for (ItemVenda item : this.getListaProdutos()) {
-    //        total += item.subTotal();
-    //    }
-    //    
-    //    return total;
-    //}
+    public float getTotal() {
+        float total = 0;
+        for (ItemVenda item : this.getListaProdutos()) {
+            total += item.subTotal();
+        }
+        
+        return total;
+    }
     
 }
