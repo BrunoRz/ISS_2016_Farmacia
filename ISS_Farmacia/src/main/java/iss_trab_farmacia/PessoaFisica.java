@@ -52,6 +52,9 @@ public class PessoaFisica extends javax.swing.JPanel {
         txtTelefone = new javax.swing.JFormattedTextField();
         lbRG = new javax.swing.JLabel();
         txtEnd = new javax.swing.JTextField();
+        btSalvar = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(595, 325));
 
@@ -143,6 +146,17 @@ public class PessoaFisica extends javax.swing.JPanel {
             }
         });
 
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
+
+        btCancelar.setText("Cancelar");
+
+        btLimpar.setText("Limpar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,7 +189,7 @@ public class PessoaFisica extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbNum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))))
+                                .addComponent(txtNum, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbNome)
@@ -184,7 +198,13 @@ public class PessoaFisica extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,7 +244,12 @@ public class PessoaFisica extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbComp)
                     .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCancelar)
+                    .addComponent(btLimpar)
+                    .addComponent(btSalvar))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,8 +269,15 @@ public class PessoaFisica extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEndActionPerformed
 
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JLabel lbCPF;
     private javax.swing.JLabel lbComp;
     private javax.swing.JLabel lbDataNasc;

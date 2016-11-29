@@ -31,7 +31,7 @@ public class ISS_TRAB_Farmacia {
         final Datastore datastore;
         datastore = morphia.createDatastore(new MongoClient(new MongoClientURI("mongodb://teste:123456@ds159737.mlab.com:59737/farmacia")),"farmacia");
         
-        CadastroUsuario.main(datastore);
+        CadastroPessoa.main(datastore);
         
         datastore.ensureIndexes();
         
