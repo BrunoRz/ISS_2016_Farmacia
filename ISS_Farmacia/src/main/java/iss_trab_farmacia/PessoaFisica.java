@@ -5,6 +5,8 @@
  */
 package iss_trab_farmacia;
 
+import iss_trab_farmacia.control.Pessoas;
+import javax.swing.JFrame;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -13,7 +15,7 @@ import org.mongodb.morphia.Datastore;
  */
 public class PessoaFisica extends javax.swing.JPanel {
 
-    //private final Pessoa pessoa;
+    private final Pessoas pessoas;
     
     /**
      * Creates new form FarmaciaInterface
@@ -22,7 +24,7 @@ public class PessoaFisica extends javax.swing.JPanel {
     public PessoaFisica(Datastore ds) {
         initComponents();
         
-//      this.pessoa = new Pessoa(ds);
+        this.pessoas = new Pessoas(ds);
     }
 
     /**
@@ -154,8 +156,18 @@ public class PessoaFisica extends javax.swing.JPanel {
         });
 
         btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -271,7 +283,34 @@ public class PessoaFisica extends javax.swing.JPanel {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
+        
+            txtNome.getText();
+            txtDataNasc.getText();
+            txtRG.getText();
+            txtCPF.getText();
+            txtTelefone.getText();
+            txtEmail.getText();
+            txtEnd.getText();
+            txtNum.getText();
+            txtComp.getText();
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        // TODO add your handling code here:
+            txtNome.setText("");
+            txtDataNasc.setText("");
+            txtRG.setText("");
+            txtCPF.setText("");
+            txtTelefone.setText("");
+            txtEmail.setText("");
+            txtEnd.setText("");
+            txtNum.setText("");
+            txtComp.setText("");
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

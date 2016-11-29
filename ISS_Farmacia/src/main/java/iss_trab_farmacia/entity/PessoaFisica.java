@@ -11,40 +11,18 @@ import java.util.Date;
  *
  * @author guilherme
  */
-public class PessoaFisica  extends Pessoa{
+public class PessoaFisica extends Pessoa {
     
-    private final int cpf;
-    private String rg;
-    
+    private Date dataNasc;    
+    private String rg;    
+    private final int cpf;    
     private String email;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
     
-    private Date dataNasc;
-
     public PessoaFisica(String nome, int cpf) {
         super(nome);
         this.cpf = cpf;
     }
-
-    public int getCpf() {
-        return cpf;
-    }
-
+    
     public Date getDataNasc() {
         return dataNasc;
     }
@@ -53,5 +31,24 @@ public class PessoaFisica  extends Pessoa{
         this.dataNasc = dataNasc;
     }
     
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
     
+    public int getCpf() {
+        return cpf;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

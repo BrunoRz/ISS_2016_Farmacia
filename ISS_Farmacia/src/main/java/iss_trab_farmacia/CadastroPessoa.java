@@ -14,7 +14,7 @@ import org.mongodb.morphia.Datastore;
  */
 public class CadastroPessoa extends javax.swing.JFrame {
 
-    private final Pessoas pessoas;
+    //private final Pessoas pessoas;
     
     PessoaFisica   pessoaFisica;
     PessoaJuridica pessoaJuridica;
@@ -39,7 +39,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
         pessoaJuridica.setVisible(false);
         pessoaJuridica.setSize(painel.getSize());
         
-        this.pessoas = new Pessoas(ds);
+        //this.pessoas = new Pessoas(ds);
     }
 
     /**
@@ -109,11 +109,11 @@ public class CadastroPessoa extends javax.swing.JFrame {
                             .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbTitulo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(btPessoaFisica)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btPessoaJuridica)
-                                .addGap(0, 299, Short.MAX_VALUE)))
+                                .addGap(0, 293, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -136,14 +136,12 @@ public class CadastroPessoa extends javax.swing.JFrame {
 
     private void btPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPessoaFisicaActionPerformed
         // TODO add your handling code here:
-        System.out.println("Fisica:" + pessoaFisica.getSize());
         pessoaFisica.setVisible(true);
         pessoaJuridica.setVisible(false);
     }//GEN-LAST:event_btPessoaFisicaActionPerformed
 
     private void btPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPessoaJuridicaActionPerformed
         // TODO add your handling code here:
-        System.out.println("Juridica:" + pessoaJuridica.getSize());
         pessoaFisica.setVisible(false);
         pessoaJuridica.setVisible(true);
     }//GEN-LAST:event_btPessoaJuridicaActionPerformed
