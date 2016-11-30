@@ -21,6 +21,21 @@ public class Produto {
     
     private String descricao;
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Produto(String descricao, String marca) {
+        this.descricao = descricao;
+        this.marca = marca;
+    }
+    
+    private String marca;
+
     public ObjectId getId() {
         return id;
     }
