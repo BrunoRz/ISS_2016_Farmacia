@@ -6,6 +6,7 @@
 package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Pessoa;
+import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -27,11 +28,11 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
      * @param nome Nome do cliente a ser buscado
      * @return
      */
-    public List<Pessoa> buscarNome(String nome) {
+    public PessoasTableModel buscarNome(String nome) {
         
         Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
  
-        return query.field("nome").equal(nome).asList();
+        return new PessoasTableModel(query.field("nome").equal(nome).asList());
         
     }
 }

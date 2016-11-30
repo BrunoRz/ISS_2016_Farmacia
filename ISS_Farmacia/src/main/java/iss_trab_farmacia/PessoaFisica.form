@@ -53,7 +53,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbNum" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNum" pref="62" max="32767" attributes="0"/>
+                              <Component id="txtNum" pref="57" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -64,8 +64,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="txtDataNasc" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="txtDataNasc" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="txtNome" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -89,44 +89,44 @@
                   <Component id="lbNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbDataNasc" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDataNasc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbRG" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtRG" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbCPF" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbEnd" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="txtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbNum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbComp" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtComp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -183,7 +183,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ALINE MARIA"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>

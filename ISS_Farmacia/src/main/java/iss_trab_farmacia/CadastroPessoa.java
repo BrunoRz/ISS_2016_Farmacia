@@ -5,7 +5,6 @@
  */
 package iss_trab_farmacia;
 
-import iss_trab_farmacia.control.Pessoas;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -29,7 +28,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
         btGrupoTipoPessoa.add(btPessoaJuridica);
         
         pessoaFisica   = new PessoaFisica(ds);
-        pessoaJuridica = new PessoaJuridica();
+        pessoaJuridica = new PessoaJuridica(ds);
         
         painel.add(pessoaFisica);
         pessoaFisica.setVisible(false);

@@ -48,5 +48,8 @@ public class Produto {
         this.descricao = descricao;
     }
     
-    
+    public Object[] toVetor() {
+        Object[] ret= {this.descricao, this.id, this.marca};
+        return ret;
+    }
 }
