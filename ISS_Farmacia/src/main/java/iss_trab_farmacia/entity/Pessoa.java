@@ -46,4 +46,9 @@ public class Pessoa {
         this.endereco = endereco;
     }
     
+    public Object[] toVetor() {
+        Object[] ret = {this.nome, this.endereco.getCidade()};
+        return ret;
+    }
+    
 }
