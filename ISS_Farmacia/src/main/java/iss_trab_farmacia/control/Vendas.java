@@ -24,7 +24,7 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
     
     public Vendas(Datastore ds) {
         super(Venda.class, ds);
-        this.produtos = new Produtos(ds);
+        this.produtos = new Produtos(this.getDs());
     }
 
     private Produtos getProdutos() {

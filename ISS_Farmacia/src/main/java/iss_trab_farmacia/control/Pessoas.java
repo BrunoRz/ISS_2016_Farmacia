@@ -32,7 +32,11 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
         
         Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
  
-        return new PessoasTableModel(query.field("nome").equal(nome).asList());
+        return new PessoasTableModel(query.field("nome").containsIgnoreCase(nome).asList());
         
+    }
+
+    public List<Pessoa> buscarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

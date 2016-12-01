@@ -6,20 +6,44 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Produtos;
+import iss_trab_farmacia.entity.Produto;
+import iss_trab_farmacia.util.table_models.PessoasTableModel;
+import iss_trab_farmacia.util.table_models.ProdutosTableModel;
+import java.util.ArrayList;
+import java.util.List;
+import org.mongodb.morphia.Datastore;
 
 /**
  *
  * @author guest-1HRmBh
  */
 public class FarmaciaInterface extends javax.swing.JFrame {
-
+    
     Produtos produtos;
+    ProdutosTableModel eo;
     
     /**
      * Creates new form FarmaciaInterface
      */
-    public FarmaciaInterface() {
+    public FarmaciaInterface(Datastore ds) {
+        this.produtos = new Produtos(ds);
         initComponents();
+        
+        List<Produto> lp = new ArrayList();
+        Produto produto;
+        produto = new Produto("remedio1", "marca1");
+        lp.add(produto);
+        produto = new Produto("remedio2", "marca2");
+        lp.add(produto);
+        produto = new Produto("remedio3", "marca3");
+        lp.add(produto);
+        produto = new Produto("remedio4", "marca4");
+        lp.add(produto);
+        produto = new Produto("remedio5", "marca5");
+        lp.add(produto);
+        
+        eo = new ProdutosTableModel(lp);        
+        tabela.setModel(eo);
     }
 
     /**
@@ -33,20 +57,20 @@ public class FarmaciaInterface extends javax.swing.JFrame {
 
         lbTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        tabela = new javax.swing.JTable();
+        separador = new javax.swing.JSeparator();
+        lbData = new javax.swing.JLabel();
+        txtData = new javax.swing.JFormattedTextField();
+        lbAtendente = new javax.swing.JLabel();
+        lbNomeAtendente = new javax.swing.JLabel();
+        btAddProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Venda");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -69,21 +93,21 @@ public class FarmaciaInterface extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
-        jLabel1.setText("Data");
+        lbData.setText("Data");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
 
-        jLabel2.setText("Atendente:");
+        lbAtendente.setText("Atendente:");
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jLabel3.setText("<nome>");
+        lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        lbNomeAtendente.setText("<nome>");
 
-        jButton1.setText("AddProduto");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAddProduto.setText("AddProduto");
+        btAddProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAddProdutoActionPerformed(evt);
             }
         });
 
@@ -96,18 +120,18 @@ public class FarmaciaInterface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2)
+                    .addComponent(separador)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lbAtendente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(lbNomeAtendente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(lbData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 472, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btAddProduto)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,14 +141,14 @@ public class FarmaciaInterface extends javax.swing.JFrame {
                 .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbData)
+                    .addComponent(lbAtendente)
+                    .addComponent(lbNomeAtendente))
                 .addGap(68, 68, 68)
-                .addComponent(jButton1)
+                .addComponent(btAddProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(322, 322, 322))
@@ -133,55 +157,22 @@ public class FarmaciaInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_btAddProdutoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FarmaciaInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FarmaciaInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FarmaciaInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FarmaciaInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FarmaciaInterface().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btAddProduto;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbAtendente;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbNomeAtendente;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JTable tabela;
+    private javax.swing.JFormattedTextField txtData;
     // End of variables declaration//GEN-END:variables
 }

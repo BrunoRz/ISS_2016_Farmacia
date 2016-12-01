@@ -19,11 +19,13 @@ import org.mongodb.morphia.query.Query;
  */
 public class Produtos extends BasicDAO<Produto, ObjectId>{
     
-    private final Compras compras = new Compras(this.getDs());
-    private final Vendas vendas = new Vendas(this.getDs());
+    private final Compras compras;
+    private Vendas vendas;
     
     public Produtos(Datastore ds) {
         super(Produto.class, ds);
+        compras = new Compras(this.getDs());
+        //vendas = new Vendas(this.getDs());
     }
 
     private Compras getCompras() {
@@ -44,9 +46,14 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
         return (float) (this.custo(produto) * 1.5);
     }
     
+    public List<Produto> buscarTodos() {
+        Query<Produto> q = this.getDs().createQuery(Produto.class);
+        System.out.println(q.asList().size());
+        return q.asList();
+    }
+    
     public List<Produto> buscarMarca(String marca) {
         Query<Produto> q = this.getDs().createQuery(Produto.class).field("marca").containsIgnoreCase(marca);
-        
         return q.asList();
     }
     
