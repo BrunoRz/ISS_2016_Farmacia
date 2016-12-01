@@ -17,9 +17,13 @@ import javax.swing.table.DefaultTableModel;
 public class ProdutosTableModel extends DefaultTableModel{
     private final List<Produto> listProdutos;
     
-    public ProdutosTableModel(List<Produto> produtos) {
-        this.listProdutos = produtos;
-        Iterator<Produto> iterProdutos = produtos.iterator();
+    public ProdutosTableModel(List<Produto> listProdutos) {
+        this.listProdutos = listProdutos;
+        this.addColumn("Descrição");
+        this.addColumn("Valor Unit");
+        this.addColumn("Qtd.");
+        this.addColumn("Valor Total");
+        Iterator<Produto> iterProdutos = listProdutos.iterator();
         while(iterProdutos.hasNext())insertProduto(iterProdutos.next());
     }
     

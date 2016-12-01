@@ -6,11 +6,7 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Produtos;
-import iss_trab_farmacia.entity.Produto;
-import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
-import java.util.ArrayList;
-import java.util.List;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -28,22 +24,6 @@ public class FarmaciaInterface extends javax.swing.JFrame {
     public FarmaciaInterface(Datastore ds) {
         this.produtos = new Produtos(ds);
         initComponents();
-        
-        List<Produto> lp = new ArrayList();
-        Produto produto;
-        produto = new Produto("remedio1", "marca1");
-        lp.add(produto);
-        produto = new Produto("remedio2", "marca2");
-        lp.add(produto);
-        produto = new Produto("remedio3", "marca3");
-        lp.add(produto);
-        produto = new Produto("remedio4", "marca4");
-        lp.add(produto);
-        produto = new Produto("remedio5", "marca5");
-        lp.add(produto);
-        
-        eo = new ProdutosTableModel(lp);        
-        tabela.setModel(eo);
     }
 
     /**

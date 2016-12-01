@@ -30,8 +30,8 @@ public class ISS_TRAB_Farmacia {
         
         datastore.ensureIndexes();
         
-        FarmaciaInterface farmaciaInterface = new FarmaciaInterface(datastore);
-        farmaciaInterface.setVisible(true);
+        BuscarCliente bc = new BuscarCliente(datastore);
+        bc.setVisible(true);
     }
     
 }

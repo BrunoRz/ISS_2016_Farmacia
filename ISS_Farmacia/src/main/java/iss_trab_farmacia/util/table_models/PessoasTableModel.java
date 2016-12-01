@@ -20,6 +20,10 @@ public class PessoasTableModel extends DefaultTableModel {
 
     public PessoasTableModel(List<Pessoa> listPessoas) {
         this.listPessoas = listPessoas;
+        this.addColumn("Nome");
+        this.addColumn("RG");
+        this.addColumn("CPF");
+        this.addColumn("Data Nasc");
         Iterator<Pessoa> iterPessoas = this.listPessoas.iterator();
         while (iterPessoas.hasNext()) insertPessoa(iterPessoas.next());
     }
