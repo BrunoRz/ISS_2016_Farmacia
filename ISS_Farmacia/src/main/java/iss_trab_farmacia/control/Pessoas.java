@@ -28,15 +28,17 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
      * @param nome Nome do cliente a ser buscado
      * @return
      */
-    public PessoasTableModel buscarNome(String nome) {
+    public List<Pessoa> buscarNome(String nome) {
         
-        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
+        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class).field("nome").containsIgnoreCase(nome);
  
-        return new PessoasTableModel(query.field("nome").containsIgnoreCase(nome).asList());
+        return query.asList();
         
     }
 
     public List<Pessoa> buscarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
+ 
+        return query.asList();
     }
 }
