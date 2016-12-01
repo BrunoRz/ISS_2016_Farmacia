@@ -26,9 +26,9 @@ public class Venda {
     private ObjectId id;
     
     @Reference
-    private final Pessoa cliente;
+    private Pessoa cliente;
     
-    private final Date dataVenda;
+    private Date dataVenda;
     
     @Embedded
     private final List<ItemVenda> listaProdutos = new ArrayList<>();
@@ -36,6 +36,9 @@ public class Venda {
     public Venda(Pessoa cliente) {
         this.cliente = cliente;
         this.dataVenda = new Date();
+    }
+
+    public Venda() {
     }
 
     public Pessoa getCliente() {

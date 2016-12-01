@@ -26,7 +26,7 @@ public class Compra {
     private ObjectId id;
     
     @Reference
-    private final PessoaJuridica fornecedor;
+    private PessoaJuridica fornecedor;
     
     private Date dataCompra;
     
@@ -35,6 +35,9 @@ public class Compra {
 
     public Compra(PessoaJuridica Fornecedor) {
         this.fornecedor = Fornecedor;
+    }
+
+    public Compra() {
     }
     
     public ItemCompra inCompra(Produto produto){

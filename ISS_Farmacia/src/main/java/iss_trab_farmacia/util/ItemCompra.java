@@ -19,7 +19,7 @@ public class ItemCompra {
     private float preco = 0;
     
     @Reference
-    private final Produto produto;
+    private Produto produto;
     
     private int qnt = 0;
 
@@ -27,6 +27,9 @@ public class ItemCompra {
         this.preco = preco;
         this.produto = produto;
         this.qnt = qnt;
+    }
+
+    public ItemCompra() {
     }
 
     public float getPreco() {

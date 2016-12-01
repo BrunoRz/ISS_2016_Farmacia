@@ -19,6 +19,9 @@ public class Endereco {
     
     private String cidade;
 
+    public Endereco() {
+    }
+
     public Endereco(String rua, String numero, int CEP, String cidade) {
         this.rua = rua;
         this.numero = numero;

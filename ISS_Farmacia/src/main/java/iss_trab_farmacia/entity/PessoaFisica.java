@@ -15,12 +15,15 @@ public class PessoaFisica extends Pessoa {
     
     private Date dataNasc;    
     private String rg;    
-    private final int cpf;    
+    private int cpf;    
     private String email;
     
     public PessoaFisica(String nome, int cpf) {
         super(nome);
         this.cpf = cpf;
+    }
+
+    public PessoaFisica() {
     }
     
     public Date getDataNasc() {

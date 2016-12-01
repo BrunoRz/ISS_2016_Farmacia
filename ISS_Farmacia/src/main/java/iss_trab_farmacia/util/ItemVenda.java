@@ -19,10 +19,10 @@ public class ItemVenda {
     private int qnt;
     
     private float valorVenda;
-    private final float valorCusto;
+    private float valorCusto;
     
     @Reference
-    private final Produto produto;
+    private Produto produto;
 
 
     public int getQnt() {
@@ -39,6 +39,9 @@ public class ItemVenda {
         this.valorVenda = valorVenda;
         this.valorCusto = valorCusto;
         this.produto = produto;
+    }
+
+    public ItemVenda() {
     }
 
     public void setQnt(int qnt) {

@@ -33,6 +33,9 @@ public class Produto {
         this.descricao = descricao;
         this.marca = marca;
     }
+
+    public Produto() {
+    }
     
     private String marca;
 

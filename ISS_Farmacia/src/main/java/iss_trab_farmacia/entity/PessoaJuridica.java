@@ -20,6 +20,9 @@ public class PessoaJuridica extends Pessoa{
         this.cnpj = cnpj;
     }
 
+    public PessoaJuridica() {
+    }
+
     public int getCnpj() {
         return cnpj;
     }
