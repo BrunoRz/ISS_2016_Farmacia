@@ -11,19 +11,30 @@ import org.mongodb.morphia.Datastore;
 
 /**
  *
- * @author guest-1HRmBh
+ * @author guest-bKdJPh
  */
-public class FarmaciaInterface extends javax.swing.JFrame {
-    
+public class FarmaciaInterface extends javax.swing.JPanel {
+    //Compras compras;
     Produtos produtos;
-    ProdutosTableModel eo;
-    
+    ProdutosTableModel tableModel;
+    BuscarCliente buscarCliente;
+    //BuscarCliente buscarProduto;
+
+
     /**
-     * Creates new form FarmaciaInterface
+     * Creates new form PainelCadastroPessoa
      */
     public FarmaciaInterface(Datastore ds) {
-        this.produtos = new Produtos(ds);
         initComponents();
+        
+        buscarCliente = new BuscarCliente(ds);
+        //buscarProduto = new BuscarCliente(ds);
+        this.produtos = new Produtos(ds);
+                
+        //compras = new Compras(ds);
+        //tableModel = new PessoasTableModel(pessoas.buscarTodos());
+        //System.out.println(tableModel.getRowCount());
+        //tabela.setModel(tableModel);
     }
 
     /**
@@ -35,6 +46,8 @@ public class FarmaciaInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbNomeAtendente = new javax.swing.JLabel();
+        btAddProduto = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -42,10 +55,16 @@ public class FarmaciaInterface extends javax.swing.JFrame {
         lbData = new javax.swing.JLabel();
         txtData = new javax.swing.JFormattedTextField();
         lbAtendente = new javax.swing.JLabel();
-        lbNomeAtendente = new javax.swing.JLabel();
-        btAddProduto = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        lbNomeAtendente.setText("<nome>");
+
+        btAddProduto.setText("AddProduto");
+        btAddProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddProdutoActionPerformed(evt);
+            }
+        });
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Venda");
@@ -81,24 +100,14 @@ public class FarmaciaInterface extends javax.swing.JFrame {
 
         lbAtendente.setText("Atendente:");
 
-        lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        lbNomeAtendente.setText("<nome>");
-
-        btAddProduto.setText("AddProduto");
-        btAddProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAddProdutoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(separador)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -110,7 +119,7 @@ public class FarmaciaInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 472, Short.MAX_VALUE)
+                        .addGap(128, 480, Short.MAX_VALUE)
                         .addComponent(btAddProduto)))
                 .addContainerGap())
         );
@@ -131,16 +140,12 @@ public class FarmaciaInterface extends javax.swing.JFrame {
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(322, 322, 322))
+                .addGap(201, 201, 201))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
         // TODO add your handling code here:
-        
-        
     }//GEN-LAST:event_btAddProdutoActionPerformed
 
 

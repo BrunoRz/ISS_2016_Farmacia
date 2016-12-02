@@ -11,23 +11,25 @@ import org.mongodb.morphia.Datastore;
 
 /**
  *
- * @author guest-1HRmBh
+ * @author guest-bKdJPh
  */
-public class BuscarCliente extends javax.swing.JFrame {
+public class BuscarCliente extends javax.swing.JPanel {
     
     Pessoas pessoas;
-    PessoasTableModel ptm;
+    PessoasTableModel tableModel;
     
     /**
-     * Creates new form FarmaciaInterface
+     * Creates new form SeiLa
+     * @param ds
      */
     public BuscarCliente(Datastore ds) {
         initComponents();
         
         pessoas = new Pessoas(ds);
-        ptm = new PessoasTableModel(pessoas.buscarTodos());
-        System.out.println(ptm.getRowCount());
-        tabela.setModel(ptm);
+        tableModel = new PessoasTableModel(pessoas.buscarTodos());
+        System.out.println(tableModel.getRowCount());
+        tabela.setModel(tableModel);
+                
     }
 
     /**
@@ -39,9 +41,12 @@ public class BuscarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtRG = new javax.swing.JFormattedTextField();
         lbTitulo = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        txtDataNasc = new javax.swing.JFormattedTextField();
         separador = new javax.swing.JSeparator();
         lbData = new javax.swing.JLabel();
         lbAtendente = new javax.swing.JLabel();
@@ -49,14 +54,29 @@ public class BuscarCliente extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtRG = new javax.swing.JFormattedTextField();
-        txtCPF = new javax.swing.JFormattedTextField();
-        txtDataNasc = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        try {
+            txtRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtRG.setText("");
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Pessoa Física");
+
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCPF.setText("");
+        txtCPF.setToolTipText("");
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFActionPerformed(evt);
+            }
+        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,6 +106,13 @@ public class BuscarCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabela);
 
+        try {
+            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDataNasc.setText("");
+
         lbData.setText("DataNasc:");
 
         lbAtendente.setText("Nome:");
@@ -107,41 +134,14 @@ public class BuscarCliente extends javax.swing.JFrame {
 
         jLabel2.setText("CPF:");
 
-        try {
-            txtRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtRG.setText("");
-
-        try {
-            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtCPF.setText("");
-        txtCPF.setToolTipText("");
-        txtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCPFActionPerformed(evt);
-            }
-        });
-
-        try {
-            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDataNasc.setText("");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(separador)
                     .addGroup(layout.createSequentialGroup()
@@ -191,9 +191,11 @@ public class BuscarCliente extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
 
     private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
         // TODO add your handling code here:
@@ -202,10 +204,6 @@ public class BuscarCliente extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCPFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
