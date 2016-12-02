@@ -7,9 +7,9 @@ package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
+import iss_trab_farmacia.util.SingletonBd;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.query.Query;
 
@@ -22,10 +22,10 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
     private final Compras compras;
     private Vendas vendas;
     
-    public Produtos(Datastore ds) {
-        super(Produto.class, ds);
-        compras = new Compras(this.getDs());
-        //vendas = new Vendas(this.getDs());
+    public Produtos() {
+        super(Produto.class, SingletonBd.getInstance().getDs());
+        compras = new Compras();
+        vendas = new Vendas();
     }
 
     private Compras getCompras() {

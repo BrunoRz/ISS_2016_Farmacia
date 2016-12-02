@@ -9,9 +9,9 @@ import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.entity.Venda;
 import iss_trab_farmacia.util.ItemVenda;
+import iss_trab_farmacia.util.SingletonBd;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.dao.BasicDAO;
 
 /**
@@ -22,9 +22,9 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
     
     private final Produtos produtos;
     
-    public Vendas(Datastore ds) {
-        super(Venda.class, ds);
-        this.produtos = new Produtos(this.getDs());
+    public Vendas() {
+        super(Venda.class, SingletonBd.getInstance().getDs());
+        this.produtos = new Produtos();
     }
 
     private Produtos getProdutos() {

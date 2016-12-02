@@ -6,10 +6,9 @@
 package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Pessoa;
-import iss_trab_farmacia.util.table_models.PessoasTableModel;
+import iss_trab_farmacia.util.SingletonBd;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.query.Query;
 
@@ -19,8 +18,8 @@ import org.mongodb.morphia.query.Query;
  */
 public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
     
-    public Pessoas(Datastore ds) {
-        super(Pessoa.class, ds);
+    public Pessoas() {
+        super(Pessoa.class, SingletonBd.getInstance().getDs());
     }
     
     /**

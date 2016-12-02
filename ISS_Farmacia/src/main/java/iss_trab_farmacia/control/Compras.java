@@ -8,6 +8,7 @@ package iss_trab_farmacia.control;
 import iss_trab_farmacia.entity.Compra;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
+import iss_trab_farmacia.util.SingletonBd;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.dao.BasicDAO;
@@ -19,8 +20,8 @@ import org.mongodb.morphia.query.Query;
  */
 class Compras extends BasicDAO<Compra, ObjectId> {
     
-    public Compras(Datastore ds) {
-        super(Compra.class, ds);
+    public Compras() {
+        super(Compra.class, SingletonBd.getInstance().getDs());
     }
     
     public ItemCompra ultimaCompra(Produto produto) {
