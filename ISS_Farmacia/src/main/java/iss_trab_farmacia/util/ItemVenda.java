@@ -68,4 +68,9 @@ public class ItemVenda {
     public float subTotal() {
         return this.getQnt() * this.getValorVenda();
     }
+    
+    public Object[] toVector() {
+        Object[] var = {this.getProduto().getDescricao(), this.getQnt(), this.getValorVenda(), this.subTotal()};
+        return var;
+    }
 }
