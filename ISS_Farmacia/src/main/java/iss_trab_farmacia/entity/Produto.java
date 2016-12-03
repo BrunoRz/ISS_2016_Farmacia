@@ -21,6 +21,26 @@ public class Produto {
     
     private String descricao;
 
+    private String categoria;
+    
+    private float valorPadrao;
+
+    public float getValorPadrao() {
+        return valorPadrao;
+    }
+
+    public void setValorPadrao(float valorPadrao) {
+        this.valorPadrao = valorPadrao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
     public String getMarca() {
         return marca;
     }
