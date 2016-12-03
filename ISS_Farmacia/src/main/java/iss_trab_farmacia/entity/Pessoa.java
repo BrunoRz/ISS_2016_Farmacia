@@ -21,7 +21,6 @@ public class Pessoa {
     
     @Id
     private ObjectId id;
-    
     private String nome;
     
     @Embedded
@@ -30,19 +29,15 @@ public class Pessoa {
     @Embedded
     private Usuario usuario;
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Pessoa(String nome) {
-        this.nome = nome;
-    }
-
     public Pessoa() {
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -60,6 +55,16 @@ public class Pessoa {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     
     public Object[] toVetor() {
         Object[] ret = {this.nome, this.endereco.getCidade()};

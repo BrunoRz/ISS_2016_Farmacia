@@ -6,6 +6,7 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.PessoaFisica;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -13,17 +14,13 @@ import javax.swing.SwingUtilities;
  *
  * @author guest-Rp1thi
  */
-public class PessoaFisica extends javax.swing.JPanel {
+public class CadastroPessoaFisica extends javax.swing.JPanel {
 
-    private final Pessoas pessoas;
-    
     /**
      * Creates new form FarmaciaInterface
      */
-    public PessoaFisica() {
+    public CadastroPessoaFisica() {
         initComponents();
-        
-        this.pessoas = new Pessoas();
     }
 
     /**
@@ -206,15 +203,15 @@ public class PessoaFisica extends javax.swing.JPanel {
                             .addComponent(lbDataNasc))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -280,30 +277,28 @@ public class PessoaFisica extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:
-        
-            txtNome.getText();
-            txtDataNasc.getText();
-            txtRG.getText();
-            txtCPF.getText();
-            txtTelefone.getText();
-            txtEmail.getText();
-            txtEnd.getText();
-            txtNum.getText();
-            txtComp.getText();
+        PessoaFisica pessoaFisica = new PessoaFisica();
+            pessoaFisica.setNome(txtNome.getText());
+            //pessoaFisica.setDataNasc(Date.valueOf(txtDataNasc.getText()));
+            pessoaFisica.setRg(txtRG.getText());
+            pessoaFisica.setCpf(Integer.parseInt(txtCPF.getText()));
+            //pessoaFisica.setTel(txtTelefone.getText());
+            pessoaFisica.setEmail(txtEmail.getText());
+            //pessoaFisica.setEnd(txtEnd.getText());
+            //pessoaFisica.setNum(txtNum.getText());
+            //pessoaFisica.setComp(txtComp.getText());
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
-            txtNome.setText("");
-            txtDataNasc.setText("");
-            txtRG.setText("");
-            txtCPF.setText("");
-            txtTelefone.setText("");
-            txtEmail.setText("");
-            txtEnd.setText("");
-            txtNum.setText("");
-            txtComp.setText("");
+        txtNome.setText("");
+        txtDataNasc.setText("");
+        txtRG.setText("");
+        txtCPF.setText("");
+        txtTelefone.setText("");
+        txtEmail.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtComp.setText("");
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed

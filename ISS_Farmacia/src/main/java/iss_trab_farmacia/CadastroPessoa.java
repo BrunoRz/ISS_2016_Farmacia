@@ -15,7 +15,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
 
     //private final Pessoas pessoas;
     
-    PessoaFisica   pessoaFisica;
+    CadastroPessoaFisica   pessoaFisica;
     PessoaJuridica pessoaJuridica;
     
     /**
@@ -26,7 +26,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
         btGrupoTipoPessoa.add(btPessoaFisica);
         btGrupoTipoPessoa.add(btPessoaJuridica);
         
-        pessoaFisica   = new PessoaFisica();
+        pessoaFisica   = new CadastroPessoaFisica();
         pessoaJuridica = new PessoaJuridica();
         
         painel.add(pessoaFisica);

@@ -19,7 +19,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     DefaultListModel listaFornecedor;
     
     BuscarCliente     buscarCliente;
-    PessoaFisica      pessoaFisica;
+    CadastroPessoaFisica      pessoaFisica;
     PessoaJuridica    pessoaJuridica;
     CadastroProduto   cadastroProduto;
     FarmaciaInterface farmaciaInterface;
@@ -32,7 +32,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         buscarCliente     = new BuscarCliente();
-        pessoaFisica      = new PessoaFisica();
+        pessoaFisica      = new CadastroPessoaFisica();
         pessoaJuridica    = new PessoaJuridica();
         cadastroProduto   = new CadastroProduto();
         farmaciaInterface = new FarmaciaInterface();
@@ -82,7 +82,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         lista = new javax.swing.JList();
         painel = new javax.swing.JPanel();
         menu = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(195, 195, 195));
@@ -149,10 +149,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menu.setBackground(new java.awt.Color(205, 205, 205));
         menu.setForeground(new java.awt.Color(45, 45, 45));
 
-        jMenu2.setBackground(new java.awt.Color(160, 160, 160));
-        jMenu2.setForeground(new java.awt.Color(77, 77, 77));
-        jMenu2.setText("Sair");
-        menu.add(jMenu2);
+        sair.setBackground(new java.awt.Color(160, 160, 160));
+        sair.setForeground(new java.awt.Color(77, 77, 77));
+        sair.setText("Sair");
+        menu.add(sair);
 
         setJMenuBar(menu);
 
@@ -314,10 +314,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btFuncionario;
     private javax.swing.JButton btProduto;
     private javax.swing.JButton btVenda;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lista;
     private javax.swing.JMenuBar menu;
     private javax.swing.JPanel painel;
+    private javax.swing.JMenu sair;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,14 +11,8 @@ package iss_trab_farmacia.entity;
  */
 public class PessoaJuridica extends Pessoa{
     
-    private int cnpj;
-    
+    private int cnpj;    
     private String razao;
-    
-    public PessoaJuridica(String nome, int cnpj) {
-        super(nome);
-        this.cnpj = cnpj;
-    }
 
     public PessoaJuridica() {
     }
@@ -38,6 +32,5 @@ public class PessoaJuridica extends Pessoa{
     public void setRazao(String razao) {
         this.razao = razao;
     }
-    
     
 }

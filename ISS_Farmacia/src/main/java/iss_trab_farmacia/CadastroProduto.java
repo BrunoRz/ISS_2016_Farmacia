@@ -189,8 +189,6 @@ public class CadastroProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDescricaoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:
-        
         Produto produto = new Produto(); 
         produto.setDescricao(txtDescricao.getText());
         produto.setCategoria(txtCategoria.getText());
@@ -201,13 +199,11 @@ public class CadastroProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         frame.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
         txtDescricao.setText("");
         txtCategoria.setText("");
         txtMarca.setText("");

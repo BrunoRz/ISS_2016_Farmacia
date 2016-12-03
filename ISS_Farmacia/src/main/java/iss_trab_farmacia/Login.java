@@ -46,8 +46,18 @@ public class Login extends javax.swing.JFrame {
         lbSenha.setText(": senhA");
 
         txtSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
 
         txtLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginActionPerformed(evt);
+            }
+        });
 
         btEntrar.setText("Entrar");
         btEntrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -114,7 +124,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        // TODO add your handling code here:
         autenticar.setForeground(java.awt.Color.red);
         if ("gerente".equals(txtLogin.getText())){
             autenticar.setText("Ainda n tem tela de gerente (faz aí chero ou vinicius)");
@@ -132,9 +141,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btEntrarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
+        txtSenha.requestFocus();
+    }//GEN-LAST:event_txtLoginActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        btEntrarActionPerformed(evt);
+        JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+        janelaPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autenticar;
