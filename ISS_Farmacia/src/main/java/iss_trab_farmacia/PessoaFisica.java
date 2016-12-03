@@ -8,7 +8,6 @@ package iss_trab_farmacia;
 import iss_trab_farmacia.control.Pessoas;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import org.mongodb.morphia.Datastore;
 
 /**
  *
@@ -20,12 +19,11 @@ public class PessoaFisica extends javax.swing.JPanel {
     
     /**
      * Creates new form FarmaciaInterface
-     * @param ds
      */
-    public PessoaFisica(Datastore ds) {
+    public PessoaFisica() {
         initComponents();
         
-        this.pessoas = new Pessoas(ds);
+        this.pessoas = new Pessoas();
     }
 
     /**

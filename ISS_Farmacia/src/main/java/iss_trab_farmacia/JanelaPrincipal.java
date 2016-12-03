@@ -12,23 +12,31 @@ import org.mongodb.morphia.Datastore;
  *
  * @author guest-bKdJPh
  */
-public class telaInicial extends javax.swing.JFrame {
+public class JanelaPrincipal extends javax.swing.JFrame {
 
     DefaultListModel listaCliente;
     DefaultListModel listaProduto;
     DefaultListModel listaFuncionario;
     DefaultListModel listaFornecedor;
     
+    BuscarCliente     buscarCliente     = new BuscarCliente();
+    PessoaFisica      pessoaFisica      = new PessoaFisica();
+    PessoaJuridica    pessoaJuridica    = new PessoaJuridica();
+    FarmaciaInterface farmaciaInterface = new FarmaciaInterface();
+
+    
     /**
      * Creates new form telaInicial
-     * @param ds
      */
-    public telaInicial(Datastore ds) {
+    public JanelaPrincipal() {
         initComponents();
         
-        FarmaciaInterface farmaciaInterface = new FarmaciaInterface(ds);
+        buscarCliente     = new BuscarCliente();
+        pessoaFisica      = new PessoaFisica();
+        pessoaJuridica    = new PessoaJuridica();
+        farmaciaInterface = new FarmaciaInterface();
+                        
         painel.add(farmaciaInterface);
-        
         farmaciaInterface.setSize(painel.getSize());
         farmaciaInterface.setVisible(true);
         
@@ -39,18 +47,20 @@ public class telaInicial extends javax.swing.JFrame {
         
         listaProduto = new DefaultListModel();
         listaProduto.add(0, "Cadastrar Produto");
-        listaProduto.add(1, "Buscar Produto");
-        listaProduto.add(2, "Alterar Produto");
+        listaProduto.add(1, "Alterar Produto");
+        listaProduto.add(2, "Buscar Produto");
         
         listaFuncionario = new DefaultListModel();
         listaFuncionario.add(0, "Cadastrar Funcionário");
         listaFuncionario.add(1, "Alterar Funcionário");
-        listaFuncionario.add(2, "Excluir Funcionário");
+        listaFuncionario.add(2, "Buscar Produto");
+        listaFuncionario.add(3, "Excluir Funcionário");
         
         listaFornecedor = new DefaultListModel();
         listaFornecedor.add(0, "Cadastrar Fornecedor");
         listaFornecedor.add(1, "Alterar Fornecedor");
-        listaFornecedor.add(2, "Excluir Fornecedor");
+        listaFornecedor.add(2, "Buscar Fornecedor");
+        listaFornecedor.add(3, "Excluir Fornecedor");
     }
 
     /**
@@ -213,8 +223,33 @@ public class telaInicial extends javax.swing.JFrame {
 
     private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaValueChanged
         // TODO add your handling code here:
-        //System.out.println(lista.getSelectedIndex());
-        
+        /*if (lista.getModel().equals(listaCliente)){
+            if (lista.getSelectedIndex() == 1)      //Cadastrar Cliente
+                painel.add(PessoaFisica);
+                pessoaFisica
+            if (lista.getSelectedIndex() == 2)      //Alterar Cliente
+                painel.add();
+            if (lista.getSelectedIndex() == 3)      //Buscar Cliente
+                painel.add();
+        }
+            
+        if (lista.getModel().equals(listaProduto))
+            if (lista.getSelectedIndex() == 1)      //Cadastrar Poduto
+                lista.add();
+            if (lista.getSelectedIndex() == 2)      //Alterar Produto
+                lista.add();
+            if (lista.getSelectedIndex() == 3)      //Buscar Produto
+                lista.add();
+        if (lista.getModel().equals(listaFuncionario))
+            if (lista.getSelectedIndex() == 1)      //Cadastrar Funcionário
+            if (lista.getSelectedIndex() == 2)      //Alterar Funcionário
+            if (lista.getSelectedIndex() == 3)      //Buscar Funcionário
+        if (lista.getModel().equals(listaFornecedor))
+            if (lista.getSelectedIndex() == 1)      //Cadastrar Fornecedor
+            if (lista.getSelectedIndex() == 2)      //Alterar Fornecedor
+            if (lista.getSelectedIndex() == 3)      //Buscar Fornecedor
+            if (lista.getSelectedIndex() == 4)      //Excluir Fornecedor
+        */
     }//GEN-LAST:event_listaValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

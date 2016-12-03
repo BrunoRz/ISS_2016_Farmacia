@@ -30,7 +30,7 @@ public class ISS_TRAB_Farmacia {
         
         datastore.ensureIndexes();
         
-        Login login = new Login(datastore);
+        Login login = new Login();
         login.setVisible(true);
     }
     

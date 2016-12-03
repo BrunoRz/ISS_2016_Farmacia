@@ -24,12 +24,12 @@ public class FarmaciaInterface extends javax.swing.JPanel {
     /**
      * Creates new form PainelCadastroPessoa
      */
-    public FarmaciaInterface(Datastore ds) {
+    public FarmaciaInterface() {
         initComponents();
         
-        buscarCliente = new BuscarCliente(ds);
-        //buscarProduto = new BuscarCliente(ds);
-        this.produtos = new Produtos(ds);
+        buscarCliente = new BuscarCliente();
+        //buscarProduto = new BuscarCliente();
+        this.produtos = new Produtos();
                 
         //compras = new Compras(ds);
         //tableModel = new PessoasTableModel(pessoas.buscarTodos());

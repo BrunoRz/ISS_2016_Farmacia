@@ -7,9 +7,8 @@ package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
-import org.mongodb.morphia.Datastore;
 
-/**
+/*
  *
  * @author guest-bKdJPh
  */
@@ -18,14 +17,13 @@ public class BuscarCliente extends javax.swing.JPanel {
     Pessoas pessoas;
     PessoasTableModel tableModel;
     
-    /**
+    /*
      * Creates new form SeiLa
-     * @param ds
      */
-    public BuscarCliente(Datastore ds) {
+    public BuscarCliente() {
         initComponents();
         
-        pessoas = new Pessoas(ds);
+        pessoas = new Pessoas();
         tableModel = new PessoasTableModel(pessoas.buscarTodos());
         System.out.println(tableModel.getRowCount());
         tabela.setModel(tableModel);

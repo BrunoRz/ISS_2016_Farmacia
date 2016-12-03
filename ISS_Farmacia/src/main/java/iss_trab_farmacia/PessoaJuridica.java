@@ -6,9 +6,6 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import org.mongodb.morphia.Datastore;
 
 /**
  *
@@ -20,12 +17,11 @@ public class PessoaJuridica extends javax.swing.JPanel {
     
     /**
      * Creates new form FarmaciaInterface
-     * @param ds
      */
-    public PessoaJuridica(Datastore ds) {
+    public PessoaJuridica() {
         initComponents();
         
-        this.pessoas = new Pessoas(ds);
+        this.pessoas = new Pessoas();
     }
 
     /**
@@ -281,8 +277,6 @@ public class PessoaJuridica extends javax.swing.JPanel {
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        frame.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void txtNomeFantasiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFantasiaActionPerformed

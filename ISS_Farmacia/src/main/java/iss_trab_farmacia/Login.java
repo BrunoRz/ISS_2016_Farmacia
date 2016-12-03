@@ -5,22 +5,16 @@
  */
 package iss_trab_farmacia;
 
-import org.mongodb.morphia.Datastore;
-
 /**
  *
  * @author guest-93D0Df
  */
 public class Login extends javax.swing.JFrame {
-
-    Datastore ds;
-        
     /**
      * Creates new form Principal
      */
-    public Login(Datastore ds) {
+    public Login() {
         initComponents();
-        this.ds = ds;
     }
 
     /**
@@ -49,7 +43,7 @@ public class Login extends javax.swing.JFrame {
         lbLogin.setText("Login:");
 
         lbSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbSenha.setText("Senha:");
+        lbSenha.setText(": senhA");
 
         txtSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -71,6 +65,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         autenticar.setFont(new java.awt.Font("URW Gothic L", 1, 18)); // NOI18N
+        autenticar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         autenticar.setText("Insira seu login e senha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,19 +79,16 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(lbLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
                         .addComponent(btCancelar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btEntrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbSenha)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbSenha)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(autenticar)
-                .addContainerGap(248, Short.MAX_VALUE))
+            .addComponent(autenticar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,8 +123,8 @@ public class Login extends javax.swing.JFrame {
             //this.dispose();
         }
         else if ("funcionario".equals(txtLogin.getText())){
-            telaInicial t = new telaInicial(ds);
-            t.setVisible(true);
+            JanelaPrincipal janelaPrincipal = new JanelaPrincipal();
+            janelaPrincipal.setVisible(true);
             this.dispose();
         }
         else
