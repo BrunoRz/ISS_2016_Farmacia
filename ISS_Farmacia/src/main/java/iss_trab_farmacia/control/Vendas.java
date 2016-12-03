@@ -19,16 +19,9 @@ import org.mongodb.morphia.dao.BasicDAO;
  * @author guilherme
  */
 public class Vendas extends BasicDAO<Venda, ObjectId> {
-    
-    private final Produtos produtos;
-    
+   
     public Vendas() {
         super(Venda.class, SingletonBd.getInstance().getDs());
-        this.produtos = new Produtos();
-    }
-
-    private Produtos getProdutos() {
-        return produtos;
     }
     
     public List<Venda> buscarCliente(Pessoa cliente) {
@@ -36,10 +29,12 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
     }
     
     public void addProdutoVenda(Venda venda, Produto produto, int qnt){
+        Produtos produtos = new Produtos();
+        
         ItemVenda item = venda.inVenda(produto);
         if (venda.inVenda(produto) == null) {
-            float valorVenda = this.getProdutos().sugestaoValor(produto);
-            float custo = this.getProdutos().custo(produto);
+            float valorVenda = produtos.sugestaoValor(produto);
+            float custo = produtos.custo(produto);
             item = new ItemVenda(qnt, valorVenda, custo, produto);
         }
         else {

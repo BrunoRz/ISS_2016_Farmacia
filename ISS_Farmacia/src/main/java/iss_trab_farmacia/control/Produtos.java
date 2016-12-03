@@ -19,25 +19,14 @@ import org.mongodb.morphia.query.Query;
  */
 public class Produtos extends BasicDAO<Produto, ObjectId>{
     
-    private final Compras compras;
-    private Vendas vendas;
-    
     public Produtos() {
         super(Produto.class, SingletonBd.getInstance().getDs());
-        compras = new Compras();
-        vendas = new Vendas();
     }
 
-    private Compras getCompras() {
-        return compras;
-    }
 
-    private Vendas getVendas() {
-        return vendas;
-    }
-    
-    public float custo(Produto produto) {        
-        ItemCompra item = this.getCompras().ultimaCompra(produto);
+    public float custo(Produto produto) {
+        Compras compras = new Compras();
+        ItemCompra item = compras.ultimaCompra(produto);
         
         return item.getPreco();
     }

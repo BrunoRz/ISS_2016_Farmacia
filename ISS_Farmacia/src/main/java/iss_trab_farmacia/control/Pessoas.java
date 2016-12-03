@@ -40,4 +40,11 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
  
         return query.asList();
     }
+    
+    public boolean login(String user, String password) {
+        Query<Pessoa> query = this.createQuery().field("funcionario.login").equalIgnoreCase(user);
+        Pessoa p = query.get();
+        
+        return p.getFuncionario().getPassword().equals(password);
+    }
 }
