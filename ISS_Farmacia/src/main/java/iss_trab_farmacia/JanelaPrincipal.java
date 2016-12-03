@@ -6,7 +6,6 @@
 package iss_trab_farmacia;
 
 import javax.swing.DefaultListModel;
-import org.mongodb.morphia.Datastore;
 
 /**
  *
@@ -19,10 +18,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     DefaultListModel listaFuncionario;
     DefaultListModel listaFornecedor;
     
-    BuscarCliente     buscarCliente     = new BuscarCliente();
-    PessoaFisica      pessoaFisica      = new PessoaFisica();
-    PessoaJuridica    pessoaJuridica    = new PessoaJuridica();
-    FarmaciaInterface farmaciaInterface = new FarmaciaInterface();
+    BuscarCliente     buscarCliente;
+    PessoaFisica      pessoaFisica;
+    PessoaJuridica    pessoaJuridica;
+    CadastroProduto   cadastroProduto;
+    FarmaciaInterface farmaciaInterface;
 
     
     /**
@@ -34,6 +34,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         buscarCliente     = new BuscarCliente();
         pessoaFisica      = new PessoaFisica();
         pessoaJuridica    = new PessoaJuridica();
+        cadastroProduto   = new CadastroProduto();
         farmaciaInterface = new FarmaciaInterface();
                         
         painel.add(farmaciaInterface);
@@ -80,7 +81,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lista = new javax.swing.JList();
         painel = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menu = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,15 +146,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(205, 205, 205));
-        jMenuBar1.setForeground(new java.awt.Color(45, 45, 45));
+        menu.setBackground(new java.awt.Color(205, 205, 205));
+        menu.setForeground(new java.awt.Color(45, 45, 45));
 
         jMenu2.setBackground(new java.awt.Color(160, 160, 160));
         jMenu2.setForeground(new java.awt.Color(77, 77, 77));
         jMenu2.setText("Sair");
-        jMenuBar1.add(jMenu2);
+        menu.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,52 +205,107 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
         // TODO add your handling code here:
         lista.setModel(listaCliente);
+        lista.setName("cliente");
     }//GEN-LAST:event_btClienteActionPerformed
 
     private void btFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFornecedorActionPerformed
         // TODO add your handling code here:
         lista.setModel(listaFornecedor);
+        lista.setName("fornecedor");
     }//GEN-LAST:event_btFornecedorActionPerformed
 
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
         // TODO add your handling code here:
         lista.setModel(listaProduto);
+        lista.setName("produto");
     }//GEN-LAST:event_btProdutoActionPerformed
 
     private void btFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionarioActionPerformed
         // TODO add your handling code here:
         lista.setModel(listaFuncionario);
+        lista.setName("funcionario");
     }//GEN-LAST:event_btFuncionarioActionPerformed
 
     private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaValueChanged
         // TODO add your handling code here:
-        /*if (lista.getModel().equals(listaCliente)){
-            if (lista.getSelectedIndex() == 1)      //Cadastrar Cliente
-                painel.add(PessoaFisica);
-                pessoaFisica
-            if (lista.getSelectedIndex() == 2)      //Alterar Cliente
-                painel.add();
-            if (lista.getSelectedIndex() == 3)      //Buscar Cliente
-                painel.add();
+        System.out.println(lista.getName() + "[" + lista.getSelectedIndex() + "]");
+        painel.removeAll();
+        
+        if (lista.getName().equals("cliente")){
+            if (lista.getSelectedIndex() == 0){     //Cadastrar Cliente
+                painel.add(pessoaFisica);
+                pessoaFisica.setSize(painel.getSize());
+                pessoaFisica.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 1){     //Alterar Cliente
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }    
+            if (lista.getSelectedIndex() == 2){     //Buscar Cliente
+                painel.add(buscarCliente);
+                buscarCliente.setSize(painel.getSize());
+                buscarCliente.setVisible(true);
+            }
         }
-            
-        if (lista.getModel().equals(listaProduto))
-            if (lista.getSelectedIndex() == 1)      //Cadastrar Poduto
-                lista.add();
-            if (lista.getSelectedIndex() == 2)      //Alterar Produto
-                lista.add();
-            if (lista.getSelectedIndex() == 3)      //Buscar Produto
-                lista.add();
-        if (lista.getModel().equals(listaFuncionario))
-            if (lista.getSelectedIndex() == 1)      //Cadastrar Funcionário
-            if (lista.getSelectedIndex() == 2)      //Alterar Funcionário
-            if (lista.getSelectedIndex() == 3)      //Buscar Funcionário
-        if (lista.getModel().equals(listaFornecedor))
-            if (lista.getSelectedIndex() == 1)      //Cadastrar Fornecedor
-            if (lista.getSelectedIndex() == 2)      //Alterar Fornecedor
-            if (lista.getSelectedIndex() == 3)      //Buscar Fornecedor
-            if (lista.getSelectedIndex() == 4)      //Excluir Fornecedor
-        */
+        else if (lista.getName().equals("produto")){
+            if (lista.getSelectedIndex() == 0){     //Cadastrar Poduto
+                painel.add(cadastroProduto);
+                cadastroProduto.setSize(painel.getSize());
+                cadastroProduto.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 1){     //Alterar Produto
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 2){     //Buscar Produto
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+        }
+        else if (lista.getName().equals("funcionario")){
+            if (lista.getSelectedIndex() == 0){     //Cadastrar Funcionário
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 1){     //Alterar Funcionário
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 2){     //Buscar Funcionário
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+        }
+        else if (lista.getName().equals("fornecedor")){
+            if (lista.getSelectedIndex() == 0){      //Cadastrar Fornecedor
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 1){      //Alterar Fornecedor
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 2){      //Buscar Fornecedor
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 3){      //Excluir Fornecedor
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
+            }
+        }
+        painel.revalidate();
+        painel.repaint();
     }//GEN-LAST:event_listaValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -259,9 +315,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btProduto;
     private javax.swing.JButton btVenda;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lista;
+    private javax.swing.JMenuBar menu;
     private javax.swing.JPanel painel;
     // End of variables declaration//GEN-END:variables
 }
