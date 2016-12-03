@@ -6,6 +6,7 @@
 package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
+import iss_trab_farmacia.util.Funcionario;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
@@ -25,6 +26,13 @@ public class Pessoa {
     
     @Embedded
     private Endereco endereco;
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    
+    @Embedded
+    private Funcionario funcionario;
 
     public Pessoa(String nome) {
         this.nome = nome;
