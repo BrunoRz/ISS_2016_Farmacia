@@ -40,7 +40,6 @@ public class BuscarCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         txtRG = new javax.swing.JFormattedTextField();
-        lbTitulo = new javax.swing.JLabel();
         txtCPF = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -59,9 +58,6 @@ public class BuscarCliente extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         txtRG.setText("");
-
-        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Pessoa Física");
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -140,7 +136,6 @@ public class BuscarCliente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(separador)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,9 +161,7 @@ public class BuscarCliente extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAtendente)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +204,6 @@ public class BuscarCliente extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAtendente;
     private javax.swing.JLabel lbData;
-    private javax.swing.JLabel lbTitulo;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tabela;
     private javax.swing.JFormattedTextField txtCPF;
