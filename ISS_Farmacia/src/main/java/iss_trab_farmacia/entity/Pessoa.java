@@ -22,6 +22,7 @@ public class Pessoa {
     @Id
     private ObjectId id;
     private String nome;
+    private int telefone;
     
     @Embedded
     private Endereco endereco;
@@ -62,6 +63,14 @@ public class Pessoa {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
     }
 
     
