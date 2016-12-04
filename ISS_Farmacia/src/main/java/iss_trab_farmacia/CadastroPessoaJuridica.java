@@ -6,8 +6,6 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
-import iss_trab_farmacia.entity.PessoaJuridica;
-import iss_trab_farmacia.util.Endereco;
 
 /**
  *
@@ -54,6 +52,8 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
         btLimpar = new javax.swing.JButton();
         lbNomeFantasia = new javax.swing.JLabel();
         txtNomeFantasia = new javax.swing.JTextField();
+        lbCadastroPessoaJuridica = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(595, 325));
 
@@ -87,7 +87,6 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
         lbRazaoSocial.setText("Razão Social:");
 
         txtRazaoSocial.setToolTipText("");
-        txtRazaoSocial.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtRazaoSocial.setName(""); // NOI18N
         txtRazaoSocial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,19 +153,22 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
             }
         });
 
+        lbCadastroPessoaJuridica.setText("Cadastro de Pessoa Jurídica");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -193,13 +195,21 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbCadastroPessoaJuridica)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
+                .addComponent(lbCadastroPessoaJuridica)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbRazaoSocial))
@@ -229,7 +239,7 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbComp)
                     .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar)
                     .addComponent(btLimpar)
@@ -255,18 +265,15 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        PessoaJuridica pessoaJuridica = new PessoaJuridica();
-        Endereco endereco = new Endereco();
-        pessoaJuridica.setRazao(txtRazaoSocial.getText());
-        pessoaJuridica.setNome(txtNomeFantasia.getText());
-        pessoaJuridica.setCnpj(Integer.parseInt(txtCNPJ.getText()));
-        //pessoaJuridica.setTel(txtTelefone.getText());
-        //pessoaJuridica.setEmail(txtEmail.getText());
-        pessoaJuridica.setEndereco(endereco);
-        endereco.setRua(txtEnd.getText());
-        endereco.setNumero(txtNum.getText());
-        //endereco.setComp(txtComp.getText());
-        pessoas.save(pessoaJuridica);
+        // TODO add your handling code here:        
+            txtRazaoSocial.getText();
+            txtNomeFantasia.getText();
+            txtCNPJ.getText();
+            txtTelefone.getText();
+            txtEmail.getText();
+            txtEnd.getText();
+            txtNum.getText();
+            txtComp.getText();
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -294,7 +301,9 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCNPJ;
+    private javax.swing.JLabel lbCadastroPessoaJuridica;
     private javax.swing.JLabel lbComp;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbEnd;

@@ -21,7 +21,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     BuscarCliente     buscarCliente;
     CadastroPessoaFisica      pessoaFisica;
     CadastroPessoaJuridica    pessoaJuridica;
-    CadastroProduto   cadastroProduto;
+    CadastroProduto   produto;
+    CadastroUsuario   usuario;
     FarmaciaInterface farmaciaInterface;
 
     
@@ -34,7 +35,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         buscarCliente     = new BuscarCliente();
         pessoaFisica      = new CadastroPessoaFisica();
         pessoaJuridica    = new CadastroPessoaJuridica();
-        cadastroProduto   = new CadastroProduto();
+        produto           = new CadastroProduto();
         farmaciaInterface = new FarmaciaInterface();
                         
         painel.add(farmaciaInterface);
@@ -54,7 +55,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         listaFuncionario = new DefaultListModel();
         listaFuncionario.add(0, "Cadastrar Funcionário");
         listaFuncionario.add(1, "Alterar Funcionário");
-        listaFuncionario.add(2, "Buscar Produto");
+        listaFuncionario.add(2, "Cadastrar Usuário");
         listaFuncionario.add(3, "Excluir Funcionário");
         
         listaFornecedor = new DefaultListModel();
@@ -234,11 +235,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         if (lista.getName().equals("cliente")){
             if (lista.getSelectedIndex() == 0){     //Cadastrar Cliente
                 painel.add(pessoaFisica);
+                pessoaFisica.alterarTitulo("Cadastrar Pessoa Física");
                 pessoaFisica.setSize(painel.getSize());
                 pessoaFisica.setVisible(true);
             }
             if (lista.getSelectedIndex() == 1){     //Alterar Cliente
                 //painel.add();
+                //pessoaFisica.alterarTitulo("Alterar Cadastro de Pessoa Física");
                 //.setSize(painel.getSize());
                 //.setVisible(true);
             }    
@@ -250,9 +253,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         }
         else if (lista.getName().equals("produto")){
             if (lista.getSelectedIndex() == 0){     //Cadastrar Poduto
-                painel.add(cadastroProduto);
-                cadastroProduto.setSize(painel.getSize());
-                cadastroProduto.setVisible(true);
+                painel.add(produto);
+                produto.setSize(painel.getSize());
+                produto.setVisible(true);
             }
             if (lista.getSelectedIndex() == 1){     //Alterar Produto
                 //painel.add();
@@ -276,17 +279,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 //.setSize(painel.getSize());
                 //.setVisible(true);
             }
-            if (lista.getSelectedIndex() == 2){     //Buscar Funcionário
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
+            if (lista.getSelectedIndex() == 2){     //Cadastrar Usuário
+                painel.add(usuario);
+                usuario.setSize(painel.getSize());
+                usuario.setVisible(true);
             }
         }
         else if (lista.getName().equals("fornecedor")){
             if (lista.getSelectedIndex() == 0){      //Cadastrar Fornecedor
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
+                painel.add(pessoaJuridica);
+                pessoaJuridica.setSize(painel.getSize());
+                pessoaJuridica.setVisible(true);
             }
             if (lista.getSelectedIndex() == 1){      //Alterar Fornecedor
                 //painel.add();

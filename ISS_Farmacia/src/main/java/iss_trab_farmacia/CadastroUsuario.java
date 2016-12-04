@@ -20,8 +20,8 @@ public class CadastroUsuario extends javax.swing.JPanel {
      * Creates new form CadastroUsuario
      */
     public CadastroUsuario(Pessoa pessoa) {
-        this.pessoa = pessoa;
         initComponents();
+        this.lbErro.setVisible(false);
     }
 
     /**
@@ -73,7 +73,9 @@ public class CadastroUsuario extends javax.swing.JPanel {
             }
         });
 
-        lbErro.setText("jLabel1");
+        lbErro.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        lbErro.setForeground(new java.awt.Color(255, 0, 0));
+        lbErro.setText("Usuário Incorreto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,13 +99,15 @@ public class CadastroUsuario extends javax.swing.JPanel {
                             .addComponent(lbConfirmarSenha)
                             .addComponent(lbUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbErro)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(txtSenha)
-                                .addComponent(txtConfirmarSenha)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(txtSenha)
+                            .addComponent(txtConfirmarSenha))))
                 .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbErro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,17 +129,18 @@ public class CadastroUsuario extends javax.swing.JPanel {
                     .addComponent(lbConfirmarSenha)
                     .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbErro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(lbErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar)
                     .addComponent(btCancelar))
-                .addGap(49, 49, 49))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Usuario usuario = new Usuario();
+        
         
         usuario.setUser(txtUsuario.getText());
         if (txtSenha.getPassword().equals(txtConfirmarSenha.getPassword())) {
@@ -143,6 +148,8 @@ public class CadastroUsuario extends javax.swing.JPanel {
             new Pessoas().criarUsuario(usuario, pessoa);
         }
         else this.lbErro.setVisible(true);
+        
+        
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
