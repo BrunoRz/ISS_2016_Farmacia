@@ -5,8 +5,8 @@
  */
 package iss_trab_farmacia;
 
-import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.util.Endereco;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -277,16 +277,19 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        PessoaFisica pessoaFisica = new PessoaFisica();
+            PessoaFisica pessoaFisica = new PessoaFisica();
+            Endereco endereco = new Endereco();
             pessoaFisica.setNome(txtNome.getText());
             //pessoaFisica.setDataNasc(Date.valueOf(txtDataNasc.getText()));
             pessoaFisica.setRg(txtRG.getText());
-            pessoaFisica.setCpf(Integer.parseInt(txtCPF.getText()));
+            pessoaFisica.setCpf((int) Long.parseLong((txtCPF.getText().replaceAll("[.-]", ""))));
             //pessoaFisica.setTel(txtTelefone.getText());
             pessoaFisica.setEmail(txtEmail.getText());
-            //pessoaFisica.setEnd(txtEnd.getText());
-            //pessoaFisica.setNum(txtNum.getText());
-            //pessoaFisica.setComp(txtComp.getText());
+            endereco.setRua(txtEnd.getText());
+            endereco.setNumero(txtNum.getText());
+            //endereco.setCEP();
+            //endereco.set(txtComp.getText());
+            pessoaFisica.setEndereco(endereco);            
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

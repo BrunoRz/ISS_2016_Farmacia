@@ -16,7 +16,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
     //private final Pessoas pessoas;
     
     CadastroPessoaFisica   pessoaFisica;
-    PessoaJuridica pessoaJuridica;
+    CadastroPessoaJuridica pessoaJuridica;
     
     /**
      * Creates new form FarmaciaInterface
@@ -27,7 +27,7 @@ public class CadastroPessoa extends javax.swing.JFrame {
         btGrupoTipoPessoa.add(btPessoaJuridica);
         
         pessoaFisica   = new CadastroPessoaFisica();
-        pessoaJuridica = new PessoaJuridica();
+        pessoaJuridica = new CadastroPessoaJuridica();
         
         painel.add(pessoaFisica);
         pessoaFisica.setVisible(false);

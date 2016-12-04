@@ -6,19 +6,21 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.PessoaJuridica;
+import iss_trab_farmacia.util.Endereco;
 
 /**
  *
  * @author guest-Rp1thi
  */
-public class PessoaJuridica extends javax.swing.JPanel {
+public class CadastroPessoaJuridica extends javax.swing.JPanel {
 
     private final Pessoas pessoas;
     
     /**
      * Creates new form FarmaciaInterface
      */
-    public PessoaJuridica() {
+    public CadastroPessoaJuridica() {
         initComponents();
         
         this.pessoas = new Pessoas();
@@ -85,6 +87,7 @@ public class PessoaJuridica extends javax.swing.JPanel {
         lbRazaoSocial.setText("Razão Social:");
 
         txtRazaoSocial.setToolTipText("");
+        txtRazaoSocial.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtRazaoSocial.setName(""); // NOI18N
         txtRazaoSocial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,15 +255,18 @@ public class PessoaJuridica extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:        
-            txtRazaoSocial.getText();
-            txtNomeFantasia.getText();
-            txtCNPJ.getText();
-            txtTelefone.getText();
-            txtEmail.getText();
-            txtEnd.getText();
-            txtNum.getText();
-            txtComp.getText();
+        PessoaJuridica pessoaJuridica = new PessoaJuridica();
+        Endereco endereco = new Endereco();
+        pessoaJuridica.setRazao(txtRazaoSocial.getText());
+        pessoaJuridica.setNome(txtNomeFantasia.getText());
+        pessoaJuridica.setCnpj(Integer.parseInt(txtCNPJ.getText()));
+        //pessoaJuridica.setTel(txtTelefone.getText());
+        //pessoaJuridica.setEmail(txtEmail.getText());
+        pessoaJuridica.setEndereco(endereco);
+        endereco.setRua(txtEnd.getText());
+        endereco.setNumero(txtNum.getText());
+        //endereco.setComp(txtComp.getText());
+        pessoas.save(pessoaJuridica);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

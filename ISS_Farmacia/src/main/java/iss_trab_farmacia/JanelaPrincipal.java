@@ -20,7 +20,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     
     BuscarCliente     buscarCliente;
     CadastroPessoaFisica      pessoaFisica;
-    PessoaJuridica    pessoaJuridica;
+    CadastroPessoaJuridica    pessoaJuridica;
     CadastroProduto   cadastroProduto;
     FarmaciaInterface farmaciaInterface;
 
@@ -33,7 +33,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         
         buscarCliente     = new BuscarCliente();
         pessoaFisica      = new CadastroPessoaFisica();
-        pessoaJuridica    = new PessoaJuridica();
+        pessoaJuridica    = new CadastroPessoaJuridica();
         cadastroProduto   = new CadastroProduto();
         farmaciaInterface = new FarmaciaInterface();
                         

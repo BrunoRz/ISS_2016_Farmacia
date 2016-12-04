@@ -43,7 +43,7 @@ public class CadastroUsuario extends javax.swing.JPanel {
         txtConfirmarSenha = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         btCancelar = new javax.swing.JButton();
-        txtErro = new javax.swing.JLabel();
+        lbErro = new javax.swing.JLabel();
 
         lbCadastrarUsuário.setText("Cadastrar Usuário");
 
@@ -73,7 +73,7 @@ public class CadastroUsuario extends javax.swing.JPanel {
             }
         });
 
-        txtErro.setText("jLabel1");
+        lbErro.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,7 +98,7 @@ public class CadastroUsuario extends javax.swing.JPanel {
                             .addComponent(lbUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtErro)
+                            .addComponent(lbErro)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                                 .addComponent(txtSenha)
@@ -125,7 +125,7 @@ public class CadastroUsuario extends javax.swing.JPanel {
                     .addComponent(lbConfirmarSenha)
                     .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtErro)
+                .addComponent(lbErro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar)
@@ -137,15 +137,12 @@ public class CadastroUsuario extends javax.swing.JPanel {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Usuario usuario = new Usuario();
         
-        
         usuario.setUser(txtUsuario.getText());
         if (txtSenha.getPassword().equals(txtConfirmarSenha.getPassword())) {
             usuario.setPassword(txtConfirmarSenha.getPassword().toString());
             new Pessoas().criarUsuario(usuario, pessoa);
         }
-        else this.txtErro.setVisible(true);
-        
-        
+        else this.lbErro.setVisible(true);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -163,10 +160,10 @@ public class CadastroUsuario extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCadastrarUsuário;
     private javax.swing.JLabel lbConfirmarSenha;
+    private javax.swing.JLabel lbErro;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPasswordField txtConfirmarSenha;
-    private javax.swing.JLabel txtErro;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

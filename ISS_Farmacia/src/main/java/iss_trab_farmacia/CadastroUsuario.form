@@ -38,7 +38,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtErro" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbErro" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtUsuario" pref="144" max="32767" attributes="0"/>
                               <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Component id="txtConfirmarSenha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="txtErro" min="-2" max="-2" attributes="0"/>
+              <Component id="lbErro" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtErro">
+    <Component class="javax.swing.JLabel" name="lbErro">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>

@@ -52,32 +52,32 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lbMarca" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbCategoria" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lbCrustoPadrao" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lbCustoPadrao" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lbMarca" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbCategoria" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lbCrustoPadrao" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="lbCustoPadrao" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbCodigoDeBarras" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbDescricao" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lbCodigoDeBarras" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtDescricao" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCategoria" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMarca" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCodigoDeBarras" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCustoPadrao" alignment="0" pref="244" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="lbDescricao" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtDescricao" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCategoria" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtMarca" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCodigoDeBarras" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCustoPadrao" alignment="0" pref="244" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="lbTitulo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
