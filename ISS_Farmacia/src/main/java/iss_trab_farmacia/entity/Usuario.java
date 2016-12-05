@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iss_trab_farmacia.util;
+package iss_trab_farmacia.entity;
 
-import java.util.Date;
-import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
 /**
  *
  * @author guilherme
  */
-@Embedded
+@Entity("usuarios")
 public class Usuario {
     
     private String user;
     private String password;
+    @Reference
+    private Pessoa pessoa;
     
     public Usuario() {
     }
@@ -35,6 +37,14 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
     
 }

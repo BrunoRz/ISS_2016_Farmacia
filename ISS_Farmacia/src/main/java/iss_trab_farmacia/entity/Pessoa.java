@@ -6,7 +6,6 @@
 package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
-import iss_trab_farmacia.util.Usuario;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
@@ -26,9 +25,6 @@ public class Pessoa {
     
     @Embedded
     private Endereco endereco;
-    
-    @Embedded
-    private Usuario usuario;
 
     public Pessoa() {
     }
@@ -55,14 +51,6 @@ public class Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public int getTelefone() {
