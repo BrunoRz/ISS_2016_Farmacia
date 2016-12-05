@@ -26,7 +26,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     BuscarProduto   buscarProduto;
     CadastroUsuario   usuario;
     AbrirCaixa caixa;
-    FarmaciaInterface farmaciaInterface;
+    Venda farmaciaInterface;
 
     
     /**
@@ -41,7 +41,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         produto           = new CadastroProduto();
         buscarProduto     = new BuscarProduto();
         caixa             = new AbrirCaixa();
-        farmaciaInterface = new FarmaciaInterface();
+        farmaciaInterface = new Venda();
                         
         painel.add(farmaciaInterface);
         farmaciaInterface.setSize(painel.getSize());
@@ -226,42 +226,39 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVendaActionPerformed
-        // TODO add your handling code here:
-        lista.setVisible(false);
+        painel.removeAll();
+        painel.add(farmaciaInterface);
+        farmaciaInterface.setVisible(true);
+        painel.revalidate();
+        painel.repaint();
     }//GEN-LAST:event_btVendaActionPerformed
 
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
-        // TODO add your handling code here:
         lista.setModel(listaCliente);
         lista.setName("cliente");
     }//GEN-LAST:event_btClienteActionPerformed
 
     private void btFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFornecedorActionPerformed
-        // TODO add your handling code here:
         lista.setModel(listaFornecedor);
         lista.setName("fornecedor");
     }//GEN-LAST:event_btFornecedorActionPerformed
 
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
-        // TODO add your handling code here:
         lista.setModel(listaProduto);
         lista.setName("produto");
     }//GEN-LAST:event_btProdutoActionPerformed
 
     private void btFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionarioActionPerformed
-        // TODO add your handling code here:
         lista.setModel(listaFuncionario);
         lista.setName("funcionario");
     }//GEN-LAST:event_btFuncionarioActionPerformed
 
     private void btCaixaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         lista.setModel(listaCaixa);
         lista.setName("caixa");
     }
     
     private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaValueChanged
-        // TODO add your handling code here:
         System.out.println(lista.getName() + "[" + lista.getSelectedIndex() + "]");
         painel.removeAll();
         

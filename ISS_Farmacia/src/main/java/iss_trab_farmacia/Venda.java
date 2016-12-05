@@ -7,24 +7,24 @@ package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
-import org.mongodb.morphia.Datastore;
+import javax.swing.JFrame;
 
 /**
  *
  * @author guest-bKdJPh
  */
-public class FarmaciaInterface extends javax.swing.JPanel {
+public class Venda extends javax.swing.JPanel {
     //Compras compras;
     Produtos produtos;
     ProdutosTableModel tableModel;
     BuscarCliente buscarCliente;
-    //BuscarCliente buscarProduto;
+    BuscarProduto buscarProduto;
 
 
     /**
      * Creates new form PainelCadastroPessoa
      */
-    public FarmaciaInterface() {
+    public Venda() {
         initComponents();
         
         buscarCliente = new BuscarCliente();
@@ -56,6 +56,8 @@ public class FarmaciaInterface extends javax.swing.JPanel {
         txtData = new javax.swing.JFormattedTextField();
         lbAtendente = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btFinalizarVenda = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
 
         lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lbNomeAtendente.setText("<nome>");
@@ -101,10 +103,20 @@ public class FarmaciaInterface extends javax.swing.JPanel {
 
         lbAtendente.setText("Atendente:");
 
+        btFinalizarVenda.setText("Finalizar Venda");
+
+        btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +136,16 @@ public class FarmaciaInterface extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(14, 14, 14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbTitulo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btFinalizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(lbTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,17 +166,38 @@ public class FarmaciaInterface extends javax.swing.JPanel {
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201))
+                .addGap(160, 160, 160)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btFinalizarVenda)
+                    .addComponent(btCancelar))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
-        // TODO add your handling code here:
+        JFrame busca = new JFrame();
+        busca.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        busca.setSize(600, 400);
+        busca.setVisible(true);
+        
+        buscarProduto = new BuscarProduto();
+        buscarProduto.setSize(busca.getSize());
+        buscarProduto.alterarTitulo("Adicionar Produto");
+        buscarProduto.setVisible(true);
+        
+        busca.add(buscarProduto);
+        
     }//GEN-LAST:event_btAddProdutoActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+
+    }//GEN-LAST:event_btCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddProduto;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btFinalizarVenda;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbAtendente;
