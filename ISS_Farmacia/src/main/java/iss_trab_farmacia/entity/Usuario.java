@@ -5,7 +5,9 @@
  */
 package iss_trab_farmacia.entity;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
 /**
@@ -14,7 +16,8 @@ import org.mongodb.morphia.annotations.Reference;
  */
 @Entity("usuarios")
 public class Usuario {
-    
+    @Id
+    private ObjectId id;
     private String user;
     private String password;
     @Reference
