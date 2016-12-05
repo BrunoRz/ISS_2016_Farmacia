@@ -7,7 +7,6 @@ package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.SingletonBd;
-import iss_trab_farmacia.util.Usuario;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
@@ -40,16 +39,5 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
         Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
  
         return query.asList();
-    }
-    
-    public boolean login(String user, String password) {
-        Query<Pessoa> query = this.createQuery().field("funcionario.login").equalIgnoreCase(user);
-        Pessoa p = query.get();
-        
-        return p.getUsuario().getPassword().equals(password);
-    }
-    
-    public void criarUsuario(Usuario usuario, Pessoa pessoa) {
-        pessoa.setUsuario(usuario);
     }
 }
