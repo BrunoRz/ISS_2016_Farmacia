@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         autenticar.setForeground(java.awt.Color.red);
         if ("gerente".equals(txtLogin.getText())){
-            autenticar.setText("Ainda n tem tela de gerente (faz aí chero ou vinicius)");
+            autenticar.setText("interface gerente para a segunda sprint");
             // = new ();
             // .setVisible(true);
             //this.dispose();

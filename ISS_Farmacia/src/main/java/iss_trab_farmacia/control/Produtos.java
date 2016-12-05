@@ -35,6 +35,10 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
         return (float) (this.custo(produto) * 1.5);
     }
     
+    public void buscaProduto(int coid){
+        
+    }
+    
     public List<Produto> buscarTodos() {
         Query<Produto> q = this.getDs().createQuery(Produto.class);
         System.out.println(q.asList().size());
