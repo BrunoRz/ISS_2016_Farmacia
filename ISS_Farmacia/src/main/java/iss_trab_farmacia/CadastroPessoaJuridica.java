@@ -6,6 +6,8 @@
 package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.PessoaJuridica;
+import iss_trab_farmacia.util.Endereco;
 
 /**
  *
@@ -254,7 +256,7 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                     .addComponent(btCancelar)
                     .addComponent(btLimpar)
                     .addComponent(btSalvar))
-                .addGap(28, 28, 28))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,29 +277,31 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:        
-            txtRazaoSocial.getText();
-            txtNomeFantasia.getText();
-            txtCNPJ.getText();
-            txtTelefone.getText();
-            txtEmail.getText();
-            txtCep.getText();
-            txtEnd.getText();
-            txtNum.getText();
-            txtComp.getText();
+        PessoaJuridica pessoaJuridica = new PessoaJuridica();
+        Endereco endereco = new Endereco();
+        pessoaJuridica.setRazao(txtRazaoSocial.getText());
+        pessoaJuridica.setNome(txtNomeFantasia.getText());
+        pessoaJuridica.setCnpj(Integer.parseInt(txtCNPJ.getText()));
+        pessoaJuridica.setTelefone(Integer.parseInt(txtTelefone.getText()));
+        //txtEmail.getText();
+        endereco.setCEP(Integer.parseInt(txtCep.getText()));
+        endereco.setRua(txtEnd.getText());
+        endereco.setNumero(txtNum.getText());
+        endereco.setComplemento(txtComp.getText());
+        pessoaJuridica.setEndereco(endereco);
+        pessoas.save(pessoaJuridica);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
-            txtRazaoSocial.setText("");
-            txtNomeFantasia.setText("");
-            txtCNPJ.setText("");
-            txtTelefone.setText("");
-            txtEmail.setText("");
-            txtCep.setText("");
-            txtEnd.setText("");
-            txtNum.setText("");
-            txtComp.setText("");
+        txtRazaoSocial.setText("");
+        txtNomeFantasia.setText("");
+        txtCNPJ.setText("");
+        txtTelefone.setText("");
+        txtEmail.setText("");
+        txtCep.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtComp.setText("");
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed

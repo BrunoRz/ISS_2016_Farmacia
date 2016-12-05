@@ -7,6 +7,12 @@ package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.util.Endereco;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -16,6 +22,8 @@ import javax.swing.SwingUtilities;
  */
 public class CadastroPessoaFisica extends javax.swing.JPanel {
 
+    Pessoas pessoa;
+    
     /**
      * Creates new form FarmaciaInterface
      */
@@ -286,15 +294,15 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
                     .addComponent(lbNum)
                     .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbComp)
-                    .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbComp))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btLimpar)
                     .addComponent(btCancelar)
                     .addComponent(btSalvar))
-                .addGap(20, 20, 20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,15 +324,23 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         PessoaFisica pessoaFisica = new PessoaFisica();
-            pessoaFisica.setNome(txtNome.getText());
-            //pessoaFisica.setDataNasc(Date.valueOf(txtDataNasc.getText()));
-            pessoaFisica.setRg(txtRG.getText());
-            pessoaFisica.setCpf(Integer.parseInt(txtCPF.getText()));
-            //pessoaFisica.setTel(txtTelefone.getText());
-            pessoaFisica.setEmail(txtEmail.getText());
-            //pessoaFisica.setEnd(txtEnd.getText());
-            //pessoaFisica.setNum(txtNum.getText());
-            //pessoaFisica.setComp(txtComp.getText());
+        Endereco endereco = new Endereco();
+        pessoaFisica.setNome(txtNome.getText());
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date date = format.parse(txtDataNasc.getText());
+        } catch (ParseException ex) {
+            System.out.println("vix a data n funcionou");
+        }
+        pessoaFisica.setRg(txtRG.getText());
+        pessoaFisica.setCpf((int) Long.parseLong(txtCPF.getText().replaceAll("[.-]", "")));
+        pessoaFisica.setTelefone(Integer.parseInt(txtTelefone.getText().replaceAll("[()-]", "")));
+        pessoaFisica.setEmail(txtEmail.getText());
+        endereco.setRua(txtEnd.getText());
+        endereco.setNumero(txtNum.getText());
+        endereco.setComplemento(txtComp.getText());
+        pessoaFisica.setEndereco(endereco);
+        //pessoa.save(pessoaFisica);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

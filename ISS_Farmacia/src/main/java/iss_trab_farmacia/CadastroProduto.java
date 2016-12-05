@@ -7,8 +7,6 @@ package iss_trab_farmacia;
 
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -185,7 +183,6 @@ public class CadastroProduto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtDescricaoActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -199,8 +196,8 @@ public class CadastroProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        frame.dispose();
+        //JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        //frame.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

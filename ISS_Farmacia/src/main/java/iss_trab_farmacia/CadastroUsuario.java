@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package iss_trab_farmacia;
-import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.control.Usuarios;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Usuario;
@@ -14,8 +13,6 @@ import iss_trab_farmacia.entity.Usuario;
  * @author guest-zmFw62
  */
 public class CadastroUsuario extends javax.swing.JPanel {
-
-    private Pessoa pessoa;
     
     /**
      * Creates new form CadastroUsuario
@@ -141,7 +138,6 @@ public class CadastroUsuario extends javax.swing.JPanel {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Usuario usuario = new Usuario();
-        
         usuario.setUser(txtUsuario.getText());
         if (txtSenha.getPassword().equals(txtConfirmarSenha.getPassword())) {
             usuario.setPassword(txtConfirmarSenha.getPassword().toString());
@@ -151,11 +147,11 @@ public class CadastroUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void txtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarSenhaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtConfirmarSenhaActionPerformed
 
 
