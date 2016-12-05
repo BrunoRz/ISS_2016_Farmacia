@@ -22,6 +22,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     CadastroPessoaFisica      pessoaFisica;
     CadastroPessoaJuridica    pessoaJuridica;
     CadastroProduto   produto;
+    BuscarProduto   buscarProduto;
     CadastroUsuario   usuario;
     FarmaciaInterface farmaciaInterface;
 
@@ -36,6 +37,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pessoaFisica      = new CadastroPessoaFisica();
         pessoaJuridica    = new CadastroPessoaJuridica();
         produto           = new CadastroProduto();
+        buscarProduto     = new BuscarProduto();
         farmaciaInterface = new FarmaciaInterface();
                         
         painel.add(farmaciaInterface);
@@ -269,9 +271,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 //.setVisible(true);
             }
             if (lista.getSelectedIndex() == 2){     //Buscar Produto
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
+                painel.add(buscarProduto);
+                buscarProduto.setSize(painel.getSize());
+                buscarProduto.setVisible(true);
             }
         }
         else if (lista.getName().equals("funcionario")){
@@ -289,6 +291,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 painel.add(usuario);
                 usuario.setSize(painel.getSize());
                 usuario.setVisible(true);
+            }
+            if (lista.getSelectedIndex() == 3){     //Excluir Funcionário
+                //painel.add();
+                //.setSize(painel.getSize());
+                //.setVisible(true);
             }
         }
         else if (lista.getName().equals("fornecedor")){
