@@ -26,6 +26,10 @@ public class BuscarProduto extends javax.swing.JPanel {
     public void alterarTitulo(String titulo) {
         this.lbTitulo.setText(titulo);        
     }
+    
+    public void habilitarAdicionarProduto(boolean b) {
+        this.btAdicionar.setEnabled(b);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +51,7 @@ public class BuscarProduto extends javax.swing.JPanel {
         btBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        btAdicionar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -84,6 +89,14 @@ public class BuscarProduto extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabela);
 
+        btAdicionar.setText("Adicionar ");
+        btAdicionar.setEnabled(false);
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,7 +115,9 @@ public class BuscarProduto extends javax.swing.JPanel {
                             .addComponent(txtDescricao)
                             .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btBuscar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
                     .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -120,16 +135,17 @@ public class BuscarProduto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDescricao)
-                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMarca)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btAdicionar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -145,8 +161,13 @@ public class BuscarProduto extends javax.swing.JPanel {
         this.tabela.setModel(new ProdutosTableModel(lProduto));
     }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAdicionarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -159,4 +180,5 @@ public class BuscarProduto extends javax.swing.JPanel {
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtMarca;
     // End of variables declaration//GEN-END:variables
+
 }

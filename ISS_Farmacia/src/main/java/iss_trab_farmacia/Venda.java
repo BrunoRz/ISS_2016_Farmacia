@@ -52,17 +52,20 @@ public class Venda extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
-        lbData = new javax.swing.JLabel();
         txtData = new javax.swing.JFormattedTextField();
         lbAtendente = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         btFinalizarVenda = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
+        lbCliente = new javax.swing.JLabel();
+        lbNomeCliente = new javax.swing.JLabel();
+        btAddCliente = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbData = new javax.swing.JLabel();
 
         lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lbNomeAtendente.setText("<nome>");
 
-        btAddProduto.setText("AddProduto");
+        btAddProduto.setText("Adicionar Produto");
         btAddProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddProdutoActionPerformed(evt);
@@ -97,8 +100,6 @@ public class Venda extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabela);
 
-        lbData.setText("Data");
-
         txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
 
         lbAtendente.setText("Atendente:");
@@ -112,64 +113,91 @@ public class Venda extends javax.swing.JPanel {
             }
         });
 
+        lbCliente.setText("Cliente:");
+
+        lbNomeCliente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        lbNomeCliente.setText("<nome>");
+
+        btAddCliente.setText("Adicionar Cliente");
+        btAddCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddClienteActionPerformed(evt);
+            }
+        });
+
+        lbData.setText("Data:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(separador)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btFinalizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btAddProduto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbAtendente)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbCliente)
+                                    .addComponent(lbAtendente))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbNomeAtendente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbNomeAtendente)
+                                    .addComponent(lbNomeCliente))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lbData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btAddProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btFinalizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbTitulo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addComponent(lbTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbData)
-                    .addComponent(lbAtendente)
-                    .addComponent(lbNomeAtendente))
-                .addGap(68, 68, 68)
-                .addComponent(btAddProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btFinalizarVenda)
-                    .addComponent(btCancelar))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbAtendente)
+                            .addComponent(lbNomeAtendente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCliente)
+                            .addComponent(lbNomeCliente))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAddProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btFinalizarVenda)
+                            .addComponent(btCancelar)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbData)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -183,6 +211,7 @@ public class Venda extends javax.swing.JPanel {
         buscarProduto = new BuscarProduto();
         buscarProduto.setSize(busca.getSize());
         buscarProduto.alterarTitulo("Adicionar Produto");
+        buscarProduto.habilitarAdicionarProduto(true);
         buscarProduto.setVisible(true);
         
         busca.add(buscarProduto);
@@ -193,16 +222,34 @@ public class Venda extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void btAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddClienteActionPerformed
+        JFrame busca = new JFrame();
+        busca.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        busca.setSize(600, 400);
+        busca.setVisible(true);
+        
+        buscarCliente = new BuscarCliente();
+        buscarCliente.setSize(busca.getSize());
+        buscarCliente.alterarTitulo("Adicionar Cliente");
+        buscarCliente.habilitarAdicionarCliente(true);
+        buscarCliente.setVisible(true);
+        
+        busca.add(buscarCliente);
+    }//GEN-LAST:event_btAddClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddCliente;
     private javax.swing.JButton btAddProduto;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btFinalizarVenda;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbAtendente;
+    private javax.swing.JLabel lbCliente;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbNomeAtendente;
+    private javax.swing.JLabel lbNomeCliente;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tabela;
