@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iss_trab_farmacia;
+package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
@@ -34,7 +34,7 @@ public class Venda extends javax.swing.JPanel {
         
         Calendar c = Calendar.getInstance();
 	String ano = String.valueOf(c.get(Calendar.YEAR));
-	String mes = String.valueOf(c.get(Calendar.MONTH));
+	String mes = String.valueOf(c.get(Calendar.MONTH)+1);
 	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
 
           

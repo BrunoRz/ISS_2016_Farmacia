@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iss_trab_farmacia;
+package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Usuarios;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Usuario;
