@@ -8,6 +8,7 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.PessoaJuridica;
 import iss_trab_farmacia.util.Endereco;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -40,9 +41,8 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
         lbEmail = new javax.swing.JLabel();
         txtComp = new javax.swing.JTextField();
         lbEnd = new javax.swing.JLabel();
-        txtNum = new javax.swing.JFormattedTextField();
         lbComp = new javax.swing.JLabel();
-        lbNum = new javax.swing.JLabel();
+        lbNumero = new javax.swing.JLabel();
         lbRazaoSocial = new javax.swing.JLabel();
         txtRazaoSocial = new javax.swing.JTextField();
         txtCNPJ = new javax.swing.JFormattedTextField();
@@ -56,47 +56,28 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
         txtNomeFantasia = new javax.swing.JTextField();
         lbCadastroPessoaJuridica = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        lbCep = new javax.swing.JLabel();
-        txtCep = new javax.swing.JFormattedTextField();
-
-        setPreferredSize(new java.awt.Dimension(595, 325));
+        lbCEP = new javax.swing.JLabel();
+        txtCEP = new javax.swing.JFormattedTextField();
+        txtNumero = new javax.swing.JTextField();
 
         lbTelefone.setText("Telefone:");
-
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
 
         lbEmail.setText("Email:");
 
         lbEnd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbEnd.setText("Endereço:");
 
-        try {
-            txtNum.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtNum.setText("");
-
         lbComp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbComp.setText("Complemento:");
 
-        lbNum.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbNum.setText("Número:");
+        lbNumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbNumero.setText("Número:");
 
         lbRazaoSocial.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbRazaoSocial.setText("Razão Social:");
 
         txtRazaoSocial.setToolTipText("");
         txtRazaoSocial.setName(""); // NOI18N
-        txtRazaoSocial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRazaoSocialActionPerformed(evt);
-            }
-        });
 
         try {
             txtCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
@@ -104,11 +85,6 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         txtCNPJ.setToolTipText("");
-        txtCNPJ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCNPJActionPerformed(evt);
-            }
-        });
 
         lbCNPJ.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbCNPJ.setText("CNPJ:");
@@ -119,12 +95,6 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         txtTelefone.setText("");
-
-        txtEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEndActionPerformed(evt);
-            }
-        });
 
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,18 +121,13 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
 
         txtNomeFantasia.setToolTipText("");
         txtNomeFantasia.setName(""); // NOI18N
-        txtNomeFantasia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeFantasiaActionPerformed(evt);
-            }
-        });
 
         lbCadastroPessoaJuridica.setText("Cadastro de Pessoa Jurídica");
 
-        lbCep.setText("Cep:");
+        lbCEP.setText("Cep:");
 
         try {
-            txtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            txtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -177,16 +142,17 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                 .addComponent(lbCadastroPessoaJuridica)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbRazaoSocial)
-                    .addComponent(lbTelefone)
-                    .addComponent(lbEmail)
-                    .addComponent(lbEnd)
-                    .addComponent(lbComp)
-                    .addComponent(lbNomeFantasia)
-                    .addComponent(lbCNPJ)
-                    .addComponent(lbCep)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lbRazaoSocial)
+                        .addComponent(lbTelefone)
+                        .addComponent(lbEmail)
+                        .addComponent(lbEnd)
+                        .addComponent(lbComp)
+                        .addComponent(lbNomeFantasia)
+                        .addComponent(lbCNPJ)
+                        .addComponent(lbCEP))
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,19 +162,19 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(lbNumero)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbNum)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtComp))
+                            .addComponent(txtNumero))
+                        .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,56 +205,42 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCep)
-                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbCEP)
+                    .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNum)
-                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbNumero)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbComp)
                     .addComponent(txtComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelar)
                     .addComponent(btLimpar)
                     .addComponent(btSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtRazaoSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazaoSocialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRazaoSocialActionPerformed
-
-    private void txtCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCNPJActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCNPJActionPerformed
-
-    private void txtEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEndActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEndActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         PessoaJuridica pessoaJuridica = new PessoaJuridica();
         Endereco endereco = new Endereco();
+        
         pessoaJuridica.setRazao(txtRazaoSocial.getText());
         pessoaJuridica.setNome(txtNomeFantasia.getText());
         pessoaJuridica.setCnpj(Integer.parseInt(txtCNPJ.getText()));
-        pessoaJuridica.setTelefone(Integer.parseInt(txtTelefone.getText()));
+        pessoaJuridica.setTelefone((int) Long.parseLong(txtTelefone.getText().replaceAll("[\\s()-]", "")));
         //txtEmail.getText();
-        endereco.setCEP(Integer.parseInt(txtCep.getText()));
+        endereco.setCEP(Integer.parseInt(txtCEP.getText().replaceAll("-", "")));
         endereco.setRua(txtEnd.getText());
-        endereco.setNumero(txtNum.getText());
+        endereco.setNumero(txtNumero.getText());
         endereco.setComplemento(txtComp.getText());
         pessoaJuridica.setEndereco(endereco);
+        
         pessoas.save(pessoaJuridica);
     }//GEN-LAST:event_btSalvarActionPerformed
 
@@ -298,19 +250,16 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
         txtCNPJ.setText("");
         txtTelefone.setText("");
         txtEmail.setText("");
-        txtCep.setText("");
+        txtCEP.setText("");
         txtEnd.setText("");
-        txtNum.setText("");
+        txtNumero.setText("");
         txtComp.setText("");
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
+        JanelaPrincipal janelaPrincipal = (JanelaPrincipal) SwingUtilities.getWindowAncestor(this);
+        janelaPrincipal.limparPainel();
     }//GEN-LAST:event_btCancelarActionPerformed
-
-    private void txtNomeFantasiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeFantasiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeFantasiaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -318,23 +267,23 @@ public class CadastroPessoaJuridica extends javax.swing.JPanel {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbCEP;
     private javax.swing.JLabel lbCNPJ;
     private javax.swing.JLabel lbCadastroPessoaJuridica;
-    private javax.swing.JLabel lbCep;
     private javax.swing.JLabel lbComp;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbEnd;
     private javax.swing.JLabel lbNomeFantasia;
-    private javax.swing.JLabel lbNum;
+    private javax.swing.JLabel lbNumero;
     private javax.swing.JLabel lbRazaoSocial;
     private javax.swing.JLabel lbTelefone;
+    private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JFormattedTextField txtCNPJ;
-    private javax.swing.JFormattedTextField txtCep;
     private javax.swing.JTextField txtComp;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEnd;
     private javax.swing.JTextField txtNomeFantasia;
-    private javax.swing.JFormattedTextField txtNum;
+    private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRazaoSocial;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables

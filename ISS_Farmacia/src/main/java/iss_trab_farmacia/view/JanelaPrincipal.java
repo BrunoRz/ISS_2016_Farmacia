@@ -13,20 +13,20 @@ import javax.swing.DefaultListModel;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
-    DefaultListModel listaCliente;
-    DefaultListModel listaProduto;
-    DefaultListModel listaFuncionario;
-    DefaultListModel listaFornecedor;
-    DefaultListModel listaCaixa;
+    DefaultListModel    listaCliente,
+                        listaProduto,
+                        listaFuncionario,
+                        listaFornecedor,
+                        listaCaixa;
     
-    BuscarCliente     buscarCliente;
-    CadastroPessoaFisica      pessoaFisica;
-    CadastroPessoaJuridica    pessoaJuridica;
-    CadastroProduto   produto;
-    BuscarProduto   buscarProduto;
-    CadastroUsuario   usuario;
-    AbrirCaixa caixa;
-    Venda farmaciaInterface;
+    BuscarCliente           buscarCliente;
+    CadastroPessoaFisica    pessoaFisica;
+    CadastroPessoaJuridica  pessoaJuridica;
+    CadastroProduto         produto;
+    BuscarProduto           buscarProduto;
+    CadastroUsuario         usuario;
+    AbrirCaixa              caixa;
+    Venda                   venda;
 
     
     /**
@@ -35,17 +35,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public JanelaPrincipal() {
         initComponents();
         
-        buscarCliente     = new BuscarCliente();
-        pessoaFisica      = new CadastroPessoaFisica();
-        pessoaJuridica    = new CadastroPessoaJuridica();
-        produto           = new CadastroProduto();
-        buscarProduto     = new BuscarProduto();
-        caixa             = new AbrirCaixa();
-        farmaciaInterface = new Venda();
+        buscarCliente   = new BuscarCliente();
+        pessoaFisica    = new CadastroPessoaFisica();
+        pessoaJuridica  = new CadastroPessoaJuridica();
+        produto         = new CadastroProduto();
+        buscarProduto   = new BuscarProduto();
+        caixa           = new AbrirCaixa();
+        venda           = new Venda();
                         
-        painel.add(farmaciaInterface);
-        farmaciaInterface.setSize(painel.getSize());
-        farmaciaInterface.setVisible(true);
+        painel.add(venda);
+        venda.setSize(painel.getSize());
+        venda.setVisible(true);
         
         listaCliente = new DefaultListModel();
         listaCliente.add(0, "Cadastrar Cliente");
@@ -224,147 +224,160 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVendaActionPerformed
+    public  void limparPainel(){
         painel.removeAll();
-        painel.add(farmaciaInterface);
-        farmaciaInterface.setVisible(true);
+        pintarPainel();
+    }
+    
+    private void pintarPainel(){
         painel.revalidate();
         painel.repaint();
+    }
+    
+    private void btVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVendaActionPerformed
+        limparPainel();        
+        painel.add(venda);
+        venda.setVisible(true);
+        
+        pintarPainel();
     }//GEN-LAST:event_btVendaActionPerformed
 
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
+        limparPainel();
         lista.setModel(listaCliente);
         lista.setName("cliente");
+                
+        painel.add(buscarCliente);
+        buscarCliente.setSize(painel.getSize());
+        buscarCliente.setVisible(true);
+        
+        pintarPainel();
     }//GEN-LAST:event_btClienteActionPerformed
 
     private void btFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFornecedorActionPerformed
+        limparPainel();
         lista.setModel(listaFornecedor);
         lista.setName("fornecedor");
+        
+        pintarPainel();
     }//GEN-LAST:event_btFornecedorActionPerformed
 
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
+        limparPainel();
         lista.setModel(listaProduto);
         lista.setName("produto");
+        
+        painel.add(buscarProduto);
+        buscarProduto.setSize(painel.getSize());
+        buscarProduto.setVisible(true);
+        
+        pintarPainel();
     }//GEN-LAST:event_btProdutoActionPerformed
 
     private void btFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFuncionarioActionPerformed
+        limparPainel();
         lista.setModel(listaFuncionario);
         lista.setName("funcionario");
+        
+        pintarPainel();
     }//GEN-LAST:event_btFuncionarioActionPerformed
 
-    private void btCaixaActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        lista.setModel(listaCaixa);
-        lista.setName("caixa");
-    }
-    
     private void listaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaValueChanged
-        System.out.println(lista.getName() + "[" + lista.getSelectedIndex() + "]");
-        painel.removeAll();
+        limparPainel();
         
-        if (lista.getName().equals("cliente")){
-            if (lista.getSelectedIndex() == 0){     //Cadastrar Cliente
-                painel.add(pessoaFisica);
-                pessoaFisica.alterarTitulo("Cadastrar Pessoa Física");
-                pessoaFisica.setSize(painel.getSize());
-                pessoaFisica.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 1){     //Alterar Cliente
-                //painel.add();
-                //pessoaFisica.alterarTitulo("Alterar Cadastro de Pessoa Física");
+        switch (lista.getName()) {
+            case "cliente":
+                if (lista.getSelectedIndex() == 0){     //Cadastrar Cliente
+                    painel.add(pessoaFisica);
+                    pessoaFisica.alterarTitulo("Cadastrar Pessoa Física");
+                    pessoaFisica.setSize(painel.getSize());
+                    pessoaFisica.setVisible(true);
+                } if (lista.getSelectedIndex() == 1){     //Alterar Cliente
+                    //painel.add();
+                    //pessoaFisica.alterarTitulo("Alterar Cadastro de Pessoa Física");
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 2){     //Buscar Cliente
+                    painel.add(buscarCliente);
+                    buscarCliente.setSize(painel.getSize());
+                    buscarCliente.setVisible(true);
+                } break;
+            case "produto":
+                if (lista.getSelectedIndex() == 0){     //Cadastrar Poduto
+                    painel.add(produto);
+                    produto.setSize(painel.getSize());
+                    produto.setVisible(true);
+                } if (lista.getSelectedIndex() == 1){     //Alterar Produto
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 2){     //Buscar Produto
+                    painel.add(buscarProduto);
+                    buscarProduto.setSize(painel.getSize());
+                    buscarProduto.setVisible(true);
+                } break;
+            case "funcionario":
+                if (lista.getSelectedIndex() == 0){     //Cadastrar Funcionário
+                    //painel.add();
                 //.setSize(painel.getSize());
-                //.setVisible(true);
-            }    
-            if (lista.getSelectedIndex() == 2){     //Buscar Cliente
-                painel.add(buscarCliente);
-                buscarCliente.setSize(painel.getSize());
-                buscarCliente.setVisible(true);
-            }
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 1){     //Alterar Funcionário
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 2){     //Cadastrar Usuário
+                    painel.add(usuario);
+                    usuario.setSize(painel.getSize());
+                    usuario.setVisible(true);
+                } if (lista.getSelectedIndex() == 3){     //Excluir Funcionário
+                //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                }   break;
+            case "fornecedor":
+                if (lista.getSelectedIndex() == 0){      //Cadastrar Fornecedor
+                    painel.add(pessoaJuridica);
+                    pessoaJuridica.setSize(painel.getSize());
+                    pessoaJuridica.setVisible(true);
+                } if (lista.getSelectedIndex() == 1){      //Alterar Fornecedor
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 2){      //Buscar Fornecedor
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } if (lista.getSelectedIndex() == 3){      //Excluir Fornecedor
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } break;
+            case "caixa":
+                if (lista.getSelectedIndex() == 0){      //Abrir Caixa
+                    painel.add(caixa);
+                    caixa.setSize(painel.getSize());
+                    caixa.setVisible(true);
+                } if (lista.getSelectedIndex() == 1){      //Fechar Caixa
+                    //painel.add();
+                    //.setSize(painel.getSize());
+                    //.setVisible(true);
+                } break;
         }
-        else if (lista.getName().equals("produto")){
-            if (lista.getSelectedIndex() == 0){     //Cadastrar Poduto
-                painel.add(produto);
-                produto.setSize(painel.getSize());
-                produto.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 1){     //Alterar Produto
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 2){     //Buscar Produto
-                painel.add(buscarProduto);
-                buscarProduto.setSize(painel.getSize());
-                buscarProduto.setVisible(true);
-            }
-        }
-        else if (lista.getName().equals("funcionario")){
-            if (lista.getSelectedIndex() == 0){     //Cadastrar Funcionário
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 1){     //Alterar Funcionário
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 2){     //Cadastrar Usuário
-                painel.add(usuario);
-                usuario.setSize(painel.getSize());
-                usuario.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 3){     //Excluir Funcionário
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-        }
-        else if (lista.getName().equals("fornecedor")){
-            if (lista.getSelectedIndex() == 0){      //Cadastrar Fornecedor
-                painel.add(pessoaJuridica);
-                pessoaJuridica.setSize(painel.getSize());
-                pessoaJuridica.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 1){      //Alterar Fornecedor
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 2){      //Buscar Fornecedor
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 3){      //Excluir Fornecedor
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-        }
-        else if (lista.getName().equals("caixa")){
-            if (lista.getSelectedIndex() == 0){      //Abrir Caixa
-                painel.add(caixa);
-                caixa.setSize(painel.getSize());
-                caixa.setVisible(true);
-            }
-            if (lista.getSelectedIndex() == 1){      //Fechar Caixa
-                //painel.add();
-                //.setSize(painel.getSize());
-                //.setVisible(true);
-            }
-        }
-        painel.revalidate();
-        painel.repaint();
+        pintarPainel();
     }//GEN-LAST:event_listaValueChanged
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
-/*
+
     private void btCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCaixaActionPerformed
-        // TODO add your handling code here:
+        lista.setModel(listaCaixa);
+        lista.setName("caixa");
+        painel.add(caixa);
+        caixa.setSize(painel.getSize());
+        caixa.setVisible(true);
     }//GEN-LAST:event_btCaixaActionPerformed
-*/
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCaixa;
     private javax.swing.JButton btCliente;

@@ -7,6 +7,8 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Usuarios;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Usuario;
+import java.util.Arrays;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -139,15 +141,16 @@ public class CadastroUsuario extends javax.swing.JPanel {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Usuario usuario = new Usuario();
         usuario.setUser(txtUsuario.getText());
-        if (txtSenha.getPassword().equals(txtConfirmarSenha.getPassword())) {
-            usuario.setPassword(txtConfirmarSenha.getPassword().toString());
+        if (Arrays.equals(txtSenha.getPassword(), txtConfirmarSenha.getPassword())) {
+            usuario.setPassword(Arrays.toString(txtConfirmarSenha.getPassword()));
             new Usuarios().save(usuario);
         }
         else this.lbErro.setVisible(true);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-
+        JanelaPrincipal janelaPrincipal = (JanelaPrincipal) SwingUtilities.getWindowAncestor(this);
+        janelaPrincipal.limparPainel();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void txtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarSenhaActionPerformed

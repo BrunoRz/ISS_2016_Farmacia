@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <Properties>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[595, 325]"/>
-    </Property>
-  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -28,17 +23,19 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lbRazaoSocial" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbTelefone" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbEnd" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbComp" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbNomeFantasia" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbCNPJ" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbCep" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="btLimpar" min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lbRazaoSocial" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbTelefone" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbEnd" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbComp" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbNomeFantasia" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbCNPJ" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbCEP" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btLimpar" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -48,15 +45,15 @@
                       <Component id="txtTelefone" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="txtEmail" min="-2" pref="273" max="-2" attributes="0"/>
                       <Component id="txtCNPJ" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="txtCep" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="txtCEP" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="txtEnd" min="-2" pref="273" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lbNumero" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbNum" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNum" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtNumero" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="txtComp" max="32767" attributes="0"/>
+                      <Component id="txtComp" alignment="0" min="-2" pref="408" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btCancelar" min="-2" pref="104" max="-2" attributes="0"/>
@@ -64,7 +61,7 @@
                       <Component id="btSalvar" min="-2" pref="105" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,28 +99,28 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbCep" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbCEP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCEP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbEnd" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="txtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbNum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbComp" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtComp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,9 +132,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbEmail">
       <Properties>
@@ -152,21 +146,13 @@
         <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtNum">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="####" subtype="-1" type="5"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lbComp">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Complemento:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbNum">
+    <Component class="javax.swing.JLabel" name="lbNumero">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
@@ -183,9 +169,6 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRazaoSocialActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtCNPJ">
       <Properties>
@@ -194,9 +177,6 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCNPJActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCNPJ">
       <Properties>
@@ -213,9 +193,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEnd">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEndActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btSalvar">
       <Properties>
@@ -251,9 +228,6 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeFantasiaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCadastroPessoaJuridica">
       <Properties>
@@ -262,17 +236,19 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JLabel" name="lbCep">
+    <Component class="javax.swing.JLabel" name="lbCEP">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cep:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtCep">
+    <Component class="javax.swing.JFormattedTextField" name="txtCEP">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="#####-###" subtype="-1" type="5"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNumero">
     </Component>
   </SubComponents>
 </Form>
