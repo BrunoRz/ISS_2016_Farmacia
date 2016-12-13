@@ -28,10 +28,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     AbrirCaixa              caixa;
     Venda                   venda;
 
-    
-    /**
-     * Creates new form telaInicial
-     */
     public JanelaPrincipal() {
         initComponents();
         
@@ -298,6 +294,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     //.setSize(painel.getSize());
                     //.setVisible(true);
                 } if (lista.getSelectedIndex() == 2){     //Buscar Cliente
+                    buscarCliente = new BuscarCliente();
                     painel.add(buscarCliente);
                     buscarCliente.setSize(painel.getSize());
                     buscarCliente.setVisible(true);
@@ -312,6 +309,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     //.setSize(painel.getSize());
                     //.setVisible(true);
                 } if (lista.getSelectedIndex() == 2){     //Buscar Produto
+                    buscarProduto = new BuscarProduto();
                     painel.add(buscarProduto);
                     buscarProduto.setSize(painel.getSize());
                     buscarProduto.setVisible(true);

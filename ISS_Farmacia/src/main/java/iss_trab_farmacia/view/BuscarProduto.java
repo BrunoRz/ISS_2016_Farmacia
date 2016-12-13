@@ -9,6 +9,7 @@ import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.util.List;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -162,7 +163,7 @@ public class BuscarProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btAdicionarActionPerformed
 
 

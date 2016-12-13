@@ -7,6 +7,7 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
+import javax.swing.JFrame;
 
 /*
  *
@@ -25,9 +26,7 @@ public class BuscarCliente extends javax.swing.JPanel {
         
         pessoas = new Pessoas();
         tableModel = new PessoasTableModel(pessoas.buscarTodos());
-        System.out.println(tableModel.getRowCount());
         tabela.setModel(tableModel);
-                
     }
     
     public void habilitarAdicionarCliente(boolean b) {
@@ -70,11 +69,6 @@ public class BuscarCliente extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         txtRG.setText("");
-        txtRG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRGActionPerformed(evt);
-            }
-        });
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -83,11 +77,6 @@ public class BuscarCliente extends javax.swing.JPanel {
         }
         txtCPF.setText("");
         txtCPF.setToolTipText("");
-        txtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCPFActionPerformed(evt);
-            }
-        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,12 +121,6 @@ public class BuscarCliente extends javax.swing.JPanel {
         btAlterarCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAlterarCadastroActionPerformed(evt);
-            }
-        });
-
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
             }
         });
 
@@ -226,33 +209,33 @@ public class BuscarCliente extends javax.swing.JPanel {
                     .addComponent(btAdicionar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btAlterarCadastro)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCPFActionPerformed
-
     private void btAlterarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarCadastroActionPerformed
-        // TODO add your handling code here:
+        JFrame alterarCadastro = new JFrame();
+        alterarCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        alterarCadastro.setSize(600, 400);
+        alterarCadastro.setVisible(true);
+        
+        int linha = tabela.getSelectedRow();
+        CadastroPessoaFisica pessoaFisica = new CadastroPessoaFisica(
+            (String) tabela.getValueAt(linha, 0));
+        
+        pessoaFisica.setSize(alterarCadastro.getSize());
+        pessoaFisica.setVisible(true);
+        
+        alterarCadastro.add(pessoaFisica);
     }//GEN-LAST:event_btAlterarCadastroActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        tabela.setModel(tableModel);
     }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void txtRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRGActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

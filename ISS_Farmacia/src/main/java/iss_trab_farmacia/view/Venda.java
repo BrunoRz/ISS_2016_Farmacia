@@ -9,6 +9,7 @@ import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.util.Calendar;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -35,9 +36,7 @@ public class Venda extends javax.swing.JPanel {
         Calendar c = Calendar.getInstance();
 	String ano = String.valueOf(c.get(Calendar.YEAR));
 	String mes = String.valueOf(c.get(Calendar.MONTH)+1);
-	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
-
-          
+	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));          
         this.txtData.setText(dia + mes + ano);
          
         //compras = new Compras(ds);
@@ -236,7 +235,8 @@ public class Venda extends javax.swing.JPanel {
     }//GEN-LAST:event_btAddProdutoActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-
+        JanelaPrincipal janelaPrincipal = (JanelaPrincipal) SwingUtilities.getWindowAncestor(this);
+        janelaPrincipal.limparPainel();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddClienteActionPerformed

@@ -11,6 +11,8 @@ import iss_trab_farmacia.util.Endereco;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -19,13 +21,33 @@ import javax.swing.SwingUtilities;
  */
 public class CadastroPessoaFisica extends javax.swing.JPanel {
 
-    Pessoas pessoa;
+    Pessoas      pessoa = new Pessoas();
+    PessoaFisica pessoaFisica;
+    Endereco     endereco;
+    Date         date = null;
     
     /**
      * Creates new form FarmaciaInterface
      */
     public CadastroPessoaFisica() {
         initComponents();
+    }
+    
+    public CadastroPessoaFisica(String nome) {
+        initComponents();
+        txtNome.setText(nome);
+        //txtDataNasc.setText("");
+        //txtRG.setText("");
+        //txtCPF.setText("");
+        //txtTelefone.setText("");
+        //txtEmail.setText("");
+        //txtCEP.setText("");
+        //txtRua.setText("");
+        //txtNumero.setText("");
+        //txtComp.setText("");
+        
+        this.lbTitulo.setText("Alterar Cadastro");
+        this.btLimpar.setEnabled(false);
     }
 
     public void alterarTitulo(String titulo){
@@ -265,10 +287,9 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        PessoaFisica pessoaFisica = new PessoaFisica();
-        Endereco endereco = new Endereco();
-        Date date = null;
-
+        pessoaFisica = new PessoaFisica();
+        endereco = new Endereco();
+        
         pessoaFisica.setNome(txtNome.getText());
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -286,7 +307,13 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
         endereco.setNumero(txtNumero.getText());
         endereco.setComplemento(txtComp.getText());
         pessoaFisica.setEndereco(endereco);
-        pessoa.save(pessoaFisica);
+        
+        if (verificarCamposObrigatorios(pessoaFisica)){
+            pessoa.save(pessoaFisica);
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso");
+            btLimparActionPerformed(evt);
+            this.txtNome.requestFocus();
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -303,11 +330,24 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        JanelaPrincipal janelaPrincipal = (JanelaPrincipal) SwingUtilities.getWindowAncestor(this);
-        janelaPrincipal.limparPainel();
+        if (!this.lbTitulo.getText().equals("Alterar Cadastro")){
+            JanelaPrincipal janelaPrincipal = (JanelaPrincipal) SwingUtilities.getWindowAncestor(this);
+            janelaPrincipal.limparPainel();
+        }            
+        else {
+            JFrame janela = (JFrame) SwingUtilities.getWindowAncestor(this);
+            janela.dispose();
+        }            
     }//GEN-LAST:event_btCancelarActionPerformed
 
-
+    private boolean verificarCamposObrigatorios(PessoaFisica pessoaFisica){
+        if (pessoaFisica.getNome().equals(""))
+            JOptionPane.showMessageDialog(null, "O campo \bNome não pode estar vazio");
+        else
+            return true;
+        return false;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLimpar;
