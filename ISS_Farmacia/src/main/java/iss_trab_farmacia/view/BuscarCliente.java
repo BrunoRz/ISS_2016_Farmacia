@@ -6,7 +6,12 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.control.Produtos;
+import iss_trab_farmacia.entity.Pessoa;
+import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
+import iss_trab_farmacia.util.table_models.ProdutosTableModel;
+import java.util.List;
 import javax.swing.JFrame;
 
 /*
@@ -17,6 +22,8 @@ public class BuscarCliente extends javax.swing.JPanel {
     
     Pessoas pessoas;
     PessoasTableModel tableModel;
+    private Object txtDescricao;
+    private Object txtMarca;
     
     /*
      * Creates new form SeiLa
@@ -50,9 +57,7 @@ public class BuscarCliente extends javax.swing.JPanel {
         txtCPF = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        txtDataNasc = new javax.swing.JFormattedTextField();
         separador = new javax.swing.JSeparator();
-        lbDataNasc = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
         btAlterarCadastro = new javax.swing.JButton();
         txtNome = new javax.swing.JTextField();
@@ -80,20 +85,20 @@ public class BuscarCliente extends javax.swing.JPanel {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "RG", "CPF", "Data Nasc"
+                "Nome", "RG", "CPF"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -105,15 +110,6 @@ public class BuscarCliente extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabela);
-
-        try {
-            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDataNasc.setText("");
-
-        lbDataNasc.setText("DataNasc:");
 
         lbNome.setText("Nome:");
 
@@ -164,20 +160,14 @@ public class BuscarCliente extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtRG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(txtCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtRG))
                                         .addGap(18, 18, 18)
                                         .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtNome))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lbDataNasc)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btAdicionar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNome)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btAlterarCadastro))
@@ -197,9 +187,7 @@ public class BuscarCliente extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbDataNasc))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -239,7 +227,15 @@ public class BuscarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btAlterarCadastroActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        tabela.setModel(tableModel);
+        String nome = this.txtNome.getText();
+        String rg = this.txtRG.getText();
+        String cpf = this.txtCPF.getText();
+        
+        Pessoas pessoas = new Pessoas();
+        
+        List<Pessoa> lPessoa = pessoas.buscarNome(nome);
+        
+        this.tabela.setModel(new PessoasTableModel(lPessoa));
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
@@ -254,14 +250,12 @@ public class BuscarCliente extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCPF;
-    private javax.swing.JLabel lbDataNasc;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbRG;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tabela;
     private javax.swing.JFormattedTextField txtCPF;
-    private javax.swing.JFormattedTextField txtDataNasc;
     private javax.swing.JTextField txtNome;
     private javax.swing.JFormattedTextField txtRG;
     // End of variables declaration//GEN-END:variables
