@@ -6,10 +6,12 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Produtos;
+import iss_trab_farmacia.entity.PessoaFisica;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,24 +20,22 @@ import javax.swing.SwingUtilities;
 public class Venda extends javax.swing.JPanel {
     //Compras compras;
     Produtos produtos;
-    ProdutosTableModel tableModel;
+    ProdutosTableModel produtosTableModel;
     BuscarCliente buscarCliente;
     BuscarProduto buscarProduto;
-
-
-    /**
-     * Creates new form PainelCadastroPessoa
-     */
+    DefaultTableModel tabelaProdutos;
+    
     public Venda() {
         initComponents();
         
         buscarCliente = new BuscarCliente();
         //buscarProduto = new BuscarCliente();
-        this.produtos = new Produtos();
+        produtos = new Produtos();
+        tabelaProdutos = (DefaultTableModel) this.tabela.getModel();
         
         Calendar c = Calendar.getInstance();
 	String ano = String.valueOf(c.get(Calendar.YEAR));
-	String mes = String.valueOf(c.get(Calendar.MONTH)+1);
+	String mes = String.valueOf(c.get(Calendar.MONTH));
 	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));          
         this.txtData.setText(dia + mes + ano);
          
@@ -92,7 +92,7 @@ public class Venda extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -113,11 +113,6 @@ public class Venda extends javax.swing.JPanel {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
-            }
-        });
 
         lbAtendente.setText("Atendente:");
 
@@ -209,8 +204,8 @@ public class Venda extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btFinalizarVenda)
                     .addComponent(btCancelar))
@@ -220,18 +215,17 @@ public class Venda extends javax.swing.JPanel {
 
     private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
         JFrame busca = new JFrame();
-        busca.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        busca.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         busca.setSize(600, 400);
         busca.setVisible(true);
         
-        buscarProduto = new BuscarProduto();
+        buscarProduto = new BuscarProduto(this);
         buscarProduto.setSize(busca.getSize());
         buscarProduto.alterarTitulo("Adicionar Produto");
         buscarProduto.habilitarAdicionarProduto(true);
         buscarProduto.setVisible(true);
         
         busca.add(buscarProduto);
-        
     }//GEN-LAST:event_btAddProdutoActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -241,7 +235,7 @@ public class Venda extends javax.swing.JPanel {
 
     private void btAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddClienteActionPerformed
         JFrame busca = new JFrame();
-        busca.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        busca.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         busca.setSize(600, 400);
         busca.setVisible(true);
         
@@ -254,10 +248,13 @@ public class Venda extends javax.swing.JPanel {
         busca.add(buscarCliente);
     }//GEN-LAST:event_btAddClienteActionPerformed
 
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
-
+    public void adicionarProduto(Object[] produto){
+        tabelaProdutos.addRow(produto);
+    }
+    
+    public void adicionarCliente(PessoaFisica cliente){
+        //this.lbCliente.setText(cliente.getNome());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddCliente;

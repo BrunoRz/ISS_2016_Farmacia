@@ -5,6 +5,9 @@
  */
 package iss_trab_farmacia.view;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Gabriel
@@ -16,6 +19,15 @@ public class AbrirCaixa extends javax.swing.JPanel {
      */
     public AbrirCaixa() {
         initComponents();
+        
+        Calendar c = Calendar.getInstance();
+	String ano = String.valueOf(c.get(Calendar.YEAR));
+	String mes = String.valueOf(c.get(Calendar.MONTH));
+	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));          
+        this.txtData.setText(dia + "/" + mes + "/" + ano);
+        
+        Date data = new Date();
+        System.out.println(data);
     }
 
     /**
@@ -47,11 +59,7 @@ public class AbrirCaixa extends javax.swing.JPanel {
 
         lbData.setText("Data:");
 
-        try {
-            txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

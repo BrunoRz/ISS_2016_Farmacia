@@ -8,20 +8,27 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
+import java.awt.Color;
 import java.util.List;
-import javax.swing.table.TableModel;
 
 /**
  *
  * @author guest-zmFw62
  */
 public class BuscarProduto extends javax.swing.JPanel {
+    
+    Produtos produtos;
+    List<Produto> listaProdutos;
+    Venda venda;
+    
 
-    /**
-     * Creates new form BuscarProduto
-     */
-    public BuscarProduto() {
+    public BuscarProduto(Venda venda) {
         initComponents();
+        
+        this.venda = venda;
+        produtos = new Produtos();        
+        listaProdutos = produtos.buscarTodos();
+        this.tabela.setModel(new ProdutosTableModel(listaProdutos));
     }
        
     public void alterarTitulo(String titulo) {
@@ -59,6 +66,12 @@ public class BuscarProduto extends javax.swing.JPanel {
         lbTitulo.setText("Buscar Produto");
 
         lbDescricao.setText("Descrição:");
+
+        txtDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescricaoActionPerformed(evt);
+            }
+        });
 
         lbMarca.setText("Marca:");
 
@@ -152,19 +165,30 @@ public class BuscarProduto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        String nome = this.txtDescricao.getText();
-        String marca = this.txtMarca.getText();
-        
-        Produtos produtos = new Produtos();
-        
-        List<Produto> lProduto = produtos.buscarDescricao(nome);
-        
-        this.tabela.setModel(new ProdutosTableModel(lProduto));
+        listaProdutos = produtos.buscarDescricao(this.txtDescricao.getText());
+        if (listaProdutos.isEmpty()){
+            txtDescricao.setBackground(Color.red);
+            listaProdutos = produtos.buscarTodos();
+        }
+        else
+            txtDescricao.setBackground(Color.white);
+        this.tabela.setModel(new ProdutosTableModel(listaProdutos));
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        Object[] produto = new Object[]{
+            this.tabela.getValueAt(this.tabela.getSelectedRow(), 0),
+            this.tabela.getValueAt(this.tabela.getSelectedRow(), 1),
+            this.tabela.getValueAt(this.tabela.getSelectedRow(), 2),
+            this.tabela.getValueAt(this.tabela.getSelectedRow(), 3)
+        };
         
+        venda.adicionarProduto(produto);
     }//GEN-LAST:event_btAdicionarActionPerformed
+
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
+        btBuscarActionPerformed(evt);
+    }//GEN-LAST:event_txtDescricaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

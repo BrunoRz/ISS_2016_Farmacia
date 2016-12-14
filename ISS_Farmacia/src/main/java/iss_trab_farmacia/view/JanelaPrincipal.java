@@ -7,14 +7,11 @@ package iss_trab_farmacia.view;
 
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author guest-bKdJPh
- */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
     DefaultListModel    listaCliente,
                         listaProduto,
+                        listaVenda,
                         listaFuncionario,
                         listaFornecedor,
                         listaCaixa;
@@ -35,7 +32,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pessoaFisica    = new CadastroPessoaFisica();
         pessoaJuridica  = new CadastroPessoaJuridica();
         produto         = new CadastroProduto();
-        buscarProduto   = new BuscarProduto();
+        buscarProduto   = new BuscarProduto(null);
         caixa           = new AbrirCaixa();
         venda           = new Venda();
                         
@@ -52,6 +49,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         listaProduto.add(0, "Cadastrar Produto");
         listaProduto.add(1, "Alterar Produto");
         listaProduto.add(2, "Buscar Produto");
+        
+        listaVenda = new DefaultListModel();
+        listaVenda.add(0, "Nova Venda");
         
         listaFuncionario = new DefaultListModel();
         listaFuncionario.add(0, "Cadastrar Funcionário");
@@ -231,7 +231,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
     
     private void btVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVendaActionPerformed
-        limparPainel();        
+        limparPainel();   
+        lista.setModel(listaVenda);
+        lista.setName("cliente");
+        
         painel.add(venda);
         venda.setVisible(true);
         
@@ -305,15 +308,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     produto.setSize(painel.getSize());
                     produto.setVisible(true);
                 } if (lista.getSelectedIndex() == 1){     //Alterar Produto
-                    //painel.add();
-                    //.setSize(painel.getSize());
-                    //.setVisible(true);
+                    buscarProduto = new BuscarProduto(null);
+                    buscarProduto.alterarTitulo("Alterar Produto");
+                    painel.add(buscarProduto);
+                    buscarProduto.setSize(painel.getSize());
+                    buscarProduto.setVisible(true);
                 } if (lista.getSelectedIndex() == 2){     //Buscar Produto
-                    buscarProduto = new BuscarProduto();
+                    buscarProduto = new BuscarProduto(null);
                     painel.add(buscarProduto);
                     buscarProduto.setSize(painel.getSize());
                     buscarProduto.setVisible(true);
                 } break;
+            case "venda":
+                break;
             case "funcionario":
                 if (lista.getSelectedIndex() == 0){     //Cadastrar Funcionário
                     //painel.add();

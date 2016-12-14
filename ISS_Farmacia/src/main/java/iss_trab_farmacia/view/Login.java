@@ -5,6 +5,12 @@
  */
 package iss_trab_farmacia.view;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author guest-93D0Df
@@ -15,6 +21,21 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        Calendar c = Calendar.getInstance();
+	String ano = String.valueOf(c.get(Calendar.YEAR));
+	String mes = String.valueOf(c.get(Calendar.MONTH));
+	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));          
+        this.lbData.setText(dia + "/" + mes + "/" + ano);
+        
+        DateFormat br = new SimpleDateFormat("dd mm yyyy");
+        Date data = null;
+        try {            
+            data = br.parse("21 07 1994");
+        } catch (ParseException ex) {
+            System.out.println("deu nãooo");
+        }
+        System.out.println(data);
     }
 
     /**
@@ -33,7 +54,8 @@ public class Login extends javax.swing.JFrame {
         txtLogin = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        autenticar = new javax.swing.JLabel();
+        lbAutenticar = new javax.swing.JLabel();
+        lbData = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
@@ -74,9 +96,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        autenticar.setFont(new java.awt.Font("URW Gothic L", 1, 18)); // NOI18N
-        autenticar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        autenticar.setText("Insira seu login e senha");
+        lbAutenticar.setFont(new java.awt.Font("URW Gothic L", 1, 18)); // NOI18N
+        lbAutenticar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbAutenticar.setText("Insira seu login e senha");
+
+        lbData.setFont(new java.awt.Font("URW Gothic L", 1, 18)); // NOI18N
+        lbData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbData.setText("dd-mm-yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,9 +122,12 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbSenha)))
+                        .addComponent(lbSenha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbAutenticar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbData)))
                 .addContainerGap())
-            .addComponent(autenticar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,9 +138,11 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(lbLogin)
                         .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btCancelar))
-                .addGap(82, 82, 82)
-                .addComponent(autenticar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbAutenticar)
+                    .addComponent(lbData))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbSenha)
@@ -124,9 +155,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        autenticar.setForeground(java.awt.Color.red);
+        lbAutenticar.setForeground(java.awt.Color.red);
         if ("gerente".equals(txtLogin.getText())){
-            autenticar.setText("Interface gerente para a segunda sprint");
+            lbAutenticar.setText("Interface gerente para a segunda sprint");
             // = new ();
             // .setVisible(true);
             //this.dispose();
@@ -137,7 +168,7 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         }
         else
-            autenticar.setText("Login inválido");
+            lbAutenticar.setText("Login inválido");
     }//GEN-LAST:event_btEntrarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -156,10 +187,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel autenticar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btEntrar;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lbAutenticar;
+    private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbLogin;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JTextField txtLogin;

@@ -138,6 +138,11 @@ public class BuscarCliente extends javax.swing.JPanel {
         lbTitulo.setText("Buscar Cliente");
 
         btAdicionar.setText("Adicionar");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -236,6 +241,10 @@ public class BuscarCliente extends javax.swing.JPanel {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         tabela.setModel(tableModel);
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+
+    }//GEN-LAST:event_btAdicionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
