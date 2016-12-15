@@ -6,6 +6,7 @@
 package iss_trab_farmacia.util.table_models;
 
 import iss_trab_farmacia.entity.Pessoa;
+import iss_trab_farmacia.entity.PessoaFisica;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,8 @@ public class PessoasTableModel extends DefaultTableModel {
 
     public PessoasTableModel(List<Pessoa> listPessoas) {
         this.listPessoas = listPessoas;
+        this.addColumn("ID");
+        this.addColumn("CPF/CNPJ");
         this.addColumn("Nome");
         this.addColumn("Cidade");
         Iterator<Pessoa> iterPessoas = this.listPessoas.iterator();

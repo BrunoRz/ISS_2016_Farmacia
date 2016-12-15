@@ -53,4 +53,11 @@ public class PessoaFisica extends Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
+    @Override
+    public Object[] toVetor() {
+        Object[] pessoaFisica = {this.getId(), this.getCpf(), this.getNome(), this.getEndereco().getCidade()};
+        return pessoaFisica;
+    }
 }

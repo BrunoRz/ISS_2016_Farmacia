@@ -62,10 +62,7 @@ public class Pessoa {
     }
 
     
-    
     public Object[] toVetor() {
-        Object[] ret = {this.nome, this.endereco.getCidade()};
-        return ret;
-    }
-    
+        return null;
+    }    
 }

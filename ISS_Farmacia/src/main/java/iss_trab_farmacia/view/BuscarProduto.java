@@ -23,9 +23,9 @@ public class BuscarProduto extends javax.swing.JPanel {
     public BuscarProduto() {
         initComponents();
 
-        //produtos = new Produtos();        
-        //listaProdutos = produtos.buscarTodos();
-        //this.tabela.setModel(new ProdutosTableModel(listaProdutos));;
+        produtos = new Produtos();        
+        listaProdutos = produtos.buscarTodos();
+        this.tabela.setModel(new ProdutosTableModel(listaProdutos));
     }
     
     public Produto selecionarProduto(){

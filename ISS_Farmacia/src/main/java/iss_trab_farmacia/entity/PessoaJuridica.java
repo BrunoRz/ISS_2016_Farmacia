@@ -33,4 +33,9 @@ public class PessoaJuridica extends Pessoa{
         this.razao = razao;
     }
     
+    @Override
+    public Object[] toVetor() {
+        Object[] pessoaJuridica = {this.getId(), this.getCnpj(), this.getNome(), this.getEndereco().getCidade()};
+        return pessoaJuridica;
+    }
 }

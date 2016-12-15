@@ -8,10 +8,10 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
-import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JFrame;
+import org.bson.types.ObjectId;
 
 /*
  *
@@ -34,8 +34,7 @@ public class BuscarCliente extends javax.swing.JPanel {
         tabela.setModel(tableModel);
     }
     
-    public Pessoa selecionarCliente(){
-        return null;
+    public void selecionarCliente(){
     }
     
     public void habilitarAdicionarCliente(boolean b) {

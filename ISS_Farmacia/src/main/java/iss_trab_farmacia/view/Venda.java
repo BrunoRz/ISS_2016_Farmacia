@@ -20,8 +20,7 @@ public class Venda extends javax.swing.JPanel {
 
     Vendas             vendas;        
     ProdutosTableModel produtosTableModel;
-    DefaultTableModel  tabelaProdutos;
-    
+    DefaultTableModel  tabelaProdutos;    
 
     public Venda() {
         initComponents();
@@ -32,18 +31,18 @@ public class Venda extends javax.swing.JPanel {
         String ano = String.valueOf(c.get(Calendar.YEAR));
         String mes = String.valueOf(c.get(Calendar.MONTH));
         String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
-        this.txtData.setText(dia + mes + ano);
+        this.txtData.setText(dia + "/" + mes + "/" + ano);
         
         tabelaProdutos = (DefaultTableModel) this.tabela.getModel();
     }
     
     
     public void adicionarProduto(Object[] produto) {
-        tabelaProdutos.addRow(produto);
+        this.tabelaProdutos.addRow(produto);
     }
 
     public void adicionarCliente(PessoaFisica cliente) {
-        //this.lbCliente.setText(cliente.getNome());
+        this.lbCliente.setText(cliente.getNome());
     }
 
     /**
@@ -61,7 +60,6 @@ public class Venda extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
-        txtData = new javax.swing.JFormattedTextField();
         lbAtendente = new javax.swing.JLabel();
         btFinalizarVenda = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
@@ -70,6 +68,7 @@ public class Venda extends javax.swing.JPanel {
         btAddCliente = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         lbData = new javax.swing.JLabel();
+        txtData = new javax.swing.JLabel();
 
         lbNomeAtendente.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lbNomeAtendente.setText("<nome>");
@@ -109,12 +108,6 @@ public class Venda extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabela);
 
-        try {
-            txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         lbAtendente.setText("Atendente:");
 
         btFinalizarVenda.setText("Finalizar Venda");
@@ -139,6 +132,9 @@ public class Venda extends javax.swing.JPanel {
         });
 
         lbData.setText("Data:");
+
+        txtData.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        txtData.setText("--/--/----");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,7 +166,7 @@ public class Venda extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lbData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtData))
                             .addComponent(btAddProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -186,14 +182,14 @@ public class Venda extends javax.swing.JPanel {
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbAtendente)
                         .addComponent(lbNomeAtendente))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbData)
-                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtData)))
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliente)
@@ -242,6 +238,6 @@ public class Venda extends javax.swing.JPanel {
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tabela;
-    private javax.swing.JFormattedTextField txtData;
+    private javax.swing.JLabel txtData;
     // End of variables declaration//GEN-END:variables
 }

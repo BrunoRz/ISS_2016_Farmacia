@@ -15,10 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author guest-Rp1thi
- */
+
 public class CadastroPessoaFisica extends javax.swing.JPanel {
 
     Pessoas      pessoa = new Pessoas();
@@ -26,9 +23,7 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
     Endereco     endereco;
     Date         date = null;
     
-    /**
-     * Creates new form FarmaciaInterface
-     */
+
     public CadastroPessoaFisica() {
         initComponents();
     }
@@ -332,7 +327,7 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
         if (verificarCamposObrigatorios(pessoaFisica)){
             pessoa.save(pessoaFisica);
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso");
-            btLimparActionPerformed(evt);
+            limparCampos();
             this.txtNome.requestFocus();
         }
     }//GEN-LAST:event_btSalvarActionPerformed
