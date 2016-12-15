@@ -5,11 +5,10 @@
  */
 package iss_trab_farmacia.view;
 
-import iss_trab_farmacia.control.Produtos;
+import iss_trab_farmacia.control.Vendas;
 import iss_trab_farmacia.entity.PessoaFisica;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.util.Calendar;
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,31 +17,33 @@ import javax.swing.table.DefaultTableModel;
  * @author guest-bKdJPh
  */
 public class Venda extends javax.swing.JPanel {
-    //Compras compras;
-    Produtos produtos;
+
+    Vendas             vendas;        
     ProdutosTableModel produtosTableModel;
-    BuscarCliente buscarCliente;
-    BuscarProduto buscarProduto;
-    DefaultTableModel tabelaProdutos;
+    DefaultTableModel  tabelaProdutos;
     
+
     public Venda() {
         initComponents();
         
-        buscarCliente = new BuscarCliente();
-        //buscarProduto = new BuscarCliente();
-        produtos = new Produtos();
-        tabelaProdutos = (DefaultTableModel) this.tabela.getModel();
-        
+        vendas = new Vendas();
+
         Calendar c = Calendar.getInstance();
-	String ano = String.valueOf(c.get(Calendar.YEAR));
-	String mes = String.valueOf(c.get(Calendar.MONTH));
-	String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));          
+        String ano = String.valueOf(c.get(Calendar.YEAR));
+        String mes = String.valueOf(c.get(Calendar.MONTH));
+        String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
         this.txtData.setText(dia + mes + ano);
-         
-        //compras = new Compras(ds);
-        //tableModel = new PessoasTableModel(pessoas.buscarTodos());
-        //System.out.println(tableModel.getRowCount());
-        //tabela.setModel(tableModel);
+        
+        tabelaProdutos = (DefaultTableModel) this.tabela.getModel();
+    }
+    
+    
+    public void adicionarProduto(Object[] produto) {
+        tabelaProdutos.addRow(produto);
+    }
+
+    public void adicionarCliente(PessoaFisica cliente) {
+        //this.lbCliente.setText(cliente.getNome());
     }
 
     /**
@@ -214,18 +215,7 @@ public class Venda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
-        JFrame busca = new JFrame();
-        busca.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        busca.setSize(600, 400);
-        busca.setVisible(true);
-        
-        buscarProduto = new BuscarProduto(this);
-        buscarProduto.setSize(busca.getSize());
-        buscarProduto.alterarTitulo("Adicionar Produto");
-        buscarProduto.habilitarAdicionarProduto(true);
-        buscarProduto.setVisible(true);
-        
-        busca.add(buscarProduto);
+        vendas.buscarProduto();
     }//GEN-LAST:event_btAddProdutoActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -234,27 +224,8 @@ public class Venda extends javax.swing.JPanel {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddClienteActionPerformed
-        JFrame busca = new JFrame();
-        busca.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        busca.setSize(600, 400);
-        busca.setVisible(true);
-        
-        buscarCliente = new BuscarCliente();
-        buscarCliente.setSize(busca.getSize());
-        buscarCliente.alterarTitulo("Adicionar Cliente");
-        buscarCliente.habilitarAdicionarCliente(true);
-        buscarCliente.setVisible(true);
-        
-        busca.add(buscarCliente);
+        vendas.buscarCliente();
     }//GEN-LAST:event_btAddClienteActionPerformed
-
-    public void adicionarProduto(Object[] produto){
-        tabelaProdutos.addRow(produto);
-    }
-    
-    public void adicionarCliente(PessoaFisica cliente){
-        //this.lbCliente.setText(cliente.getNome());
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddCliente;

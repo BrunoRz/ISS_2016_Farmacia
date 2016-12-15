@@ -54,6 +54,27 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
         this.lbTitulo.setText(titulo);
     }
     
+    public void limparCampos(){
+        this.txtNome.setText("");
+        this.txtDataNasc.setText("");
+        this.txtRG.setText("");
+        this.txtCPF.setText("");
+        this.txtTelefone.setText("");
+        this.txtEmail.setText("");
+        this.txtCEP.setText("");
+        this.txtRua.setText("");
+        this.txtNumero.setText("");
+        this.txtComp.setText("");
+    }
+    
+    private boolean verificarCamposObrigatorios(PessoaFisica pessoaFisica){
+        if (pessoaFisica.getNome().equals(""))
+            JOptionPane.showMessageDialog(null, "O campo \bNome não pode estar vazio");
+        else
+            return true;
+        return false;
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -317,16 +338,7 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        txtNome.setText("");
-        txtDataNasc.setText("");
-        txtRG.setText("");
-        txtCPF.setText("");
-        txtTelefone.setText("");
-        txtEmail.setText("");
-        txtCEP.setText("");
-        txtRua.setText("");
-        txtNumero.setText("");
-        txtComp.setText("");
+        limparCampos();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -339,15 +351,7 @@ public class CadastroPessoaFisica extends javax.swing.JPanel {
             janela.dispose();
         }            
     }//GEN-LAST:event_btCancelarActionPerformed
-
-    private boolean verificarCamposObrigatorios(PessoaFisica pessoaFisica){
-        if (pessoaFisica.getNome().equals(""))
-            JOptionPane.showMessageDialog(null, "O campo \bNome não pode estar vazio");
-        else
-            return true;
-        return false;
-    }
-    
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btLimpar;

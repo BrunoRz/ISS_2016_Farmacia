@@ -19,16 +19,17 @@ public class BuscarProduto extends javax.swing.JPanel {
     
     Produtos produtos;
     List<Produto> listaProdutos;
-    Venda venda;
-    
 
-    public BuscarProduto(Venda venda) {
+    public BuscarProduto() {
         initComponents();
-        
-        this.venda = venda;
-        produtos = new Produtos();        
-        listaProdutos = produtos.buscarTodos();
-        this.tabela.setModel(new ProdutosTableModel(listaProdutos));
+
+        //produtos = new Produtos();        
+        //listaProdutos = produtos.buscarTodos();
+        //this.tabela.setModel(new ProdutosTableModel(listaProdutos));;
+    }
+    
+    public Produto selecionarProduto(){
+        return null;
     }
        
     public void alterarTitulo(String titulo) {
@@ -182,8 +183,6 @@ public class BuscarProduto extends javax.swing.JPanel {
             this.tabela.getValueAt(this.tabela.getSelectedRow(), 2),
             this.tabela.getValueAt(this.tabela.getSelectedRow(), 3)
         };
-        
-        venda.adicionarProduto(produto);
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed

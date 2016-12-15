@@ -6,11 +6,10 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
-import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Pessoa;
-import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JFrame;
 
@@ -21,9 +20,8 @@ import javax.swing.JFrame;
 public class BuscarCliente extends javax.swing.JPanel {
     
     Pessoas pessoas;
+    List<Pessoa> listaPessoas;
     PessoasTableModel tableModel;
-    private Object txtDescricao;
-    private Object txtMarca;
     
     /*
      * Creates new form SeiLa
@@ -34,6 +32,10 @@ public class BuscarCliente extends javax.swing.JPanel {
         pessoas = new Pessoas();
         tableModel = new PessoasTableModel(pessoas.buscarTodos());
         tabela.setModel(tableModel);
+    }
+    
+    public Pessoa selecionarCliente(){
+        return null;
     }
     
     public void habilitarAdicionarCliente(boolean b) {
@@ -202,9 +204,9 @@ public class BuscarCliente extends javax.swing.JPanel {
                     .addComponent(btAdicionar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btAlterarCadastro)
                 .addContainerGap())
         );
@@ -227,15 +229,14 @@ public class BuscarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btAlterarCadastroActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        String nome = this.txtNome.getText();
-        String rg = this.txtRG.getText();
-        String cpf = this.txtCPF.getText();
-        
-        Pessoas pessoas = new Pessoas();
-        
-        List<Pessoa> lPessoa = pessoas.buscarNome(nome);
-        
-        this.tabela.setModel(new PessoasTableModel(lPessoa));
+        listaPessoas = pessoas.buscarNome(this.txtNome.getText());
+        if (listaPessoas.isEmpty()){
+            this.txtNome.setBackground(Color.red);
+            listaPessoas = pessoas.buscarTodos();
+        }
+        else
+            this.txtNome.setBackground(Color.white);
+        this.tabela.setModel(new PessoasTableModel(listaPessoas));
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed

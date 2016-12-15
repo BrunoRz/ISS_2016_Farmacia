@@ -32,13 +32,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pessoaFisica    = new CadastroPessoaFisica();
         pessoaJuridica  = new CadastroPessoaJuridica();
         produto         = new CadastroProduto();
-        buscarProduto   = new BuscarProduto(null);
+        buscarProduto   = new BuscarProduto();
         caixa           = new AbrirCaixa();
         venda           = new Venda();
-                        
-        painel.add(venda);
-        venda.setSize(painel.getSize());
-        venda.setVisible(true);
         
         listaCliente = new DefaultListModel();
         listaCliente.add(0, "Cadastrar Cliente");
@@ -68,6 +64,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         listaCaixa = new DefaultListModel();
         listaCaixa.add(0, "Abertura de Caixa");
         listaCaixa.add(1, "Fechamento de Caixa");
+        
+        painel.add(venda);
+        venda.setSize(painel.getSize());
+        venda.setVisible(true);
     }
 
     /**
@@ -233,7 +233,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void btVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVendaActionPerformed
         limparPainel();   
         lista.setModel(listaVenda);
-        lista.setName("cliente");
+        lista.setName("venda");
         
         painel.add(venda);
         venda.setVisible(true);
@@ -308,18 +308,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     produto.setSize(painel.getSize());
                     produto.setVisible(true);
                 } if (lista.getSelectedIndex() == 1){     //Alterar Produto
-                    buscarProduto = new BuscarProduto(null);
+                    buscarProduto = new BuscarProduto();
                     buscarProduto.alterarTitulo("Alterar Produto");
                     painel.add(buscarProduto);
                     buscarProduto.setSize(painel.getSize());
                     buscarProduto.setVisible(true);
                 } if (lista.getSelectedIndex() == 2){     //Buscar Produto
-                    buscarProduto = new BuscarProduto(null);
+                    buscarProduto = new BuscarProduto();
                     painel.add(buscarProduto);
                     buscarProduto.setSize(painel.getSize());
                     buscarProduto.setVisible(true);
                 } break;
             case "venda":
+                painel.add(venda);
+                venda.setSize(painel.getSize());
+                venda.setVisible(true);
                 break;
             case "funcionario":
                 if (lista.getSelectedIndex() == 0){     //Cadastrar Funcionário

@@ -52,7 +52,6 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
     
     public List<Produto> buscarDescricao(String descricao) {
         Query<Produto> q = this.getDs().createQuery(Produto.class).field("descricao").containsIgnoreCase(descricao);
-        
         return q.asList();
     }
 }
