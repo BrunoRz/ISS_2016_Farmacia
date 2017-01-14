@@ -15,7 +15,7 @@ import org.mongodb.morphia.annotations.Embedded;
 public class Endereco {
     private String rua;
     private String numero;
-    private int CEP;
+    private String CEP;
     private String complemento;
     
     private String cidade;
@@ -23,14 +23,14 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String rua, String numero, int CEP, String cidade) {
+    public Endereco(String rua, String numero, String CEP, String cidade) {
         this.rua = rua;
         this.numero = numero;
         this.CEP = CEP;
         this.cidade = cidade;
     }
 
-    public Endereco(int CEP) {
+    public Endereco(String CEP) {
         this.CEP = CEP;
     }
 
@@ -50,11 +50,11 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public int getCEP() {
+    public String getCEP() {
         return CEP;
     }
 
-    public void setCEP(int CEP) {
+    public void setCEP(String CEP) {
         this.CEP = CEP;
     }
 
