@@ -27,4 +27,9 @@ public class ItemCompraTableModel extends DefaultTableModel{
     public void addItemCompra(ItemCompra item) {
         this.addRow(item.toVector());
     }
+    
+    @Override
+    public boolean isCellEditable(int row, int column){
+        return false;
+    }
 }

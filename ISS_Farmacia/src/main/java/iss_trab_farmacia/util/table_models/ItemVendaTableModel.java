@@ -29,4 +29,9 @@ public class ItemVendaTableModel extends DefaultTableModel{
         this.addRow(item.toVector());
     }
     
+    @Override
+    public boolean isCellEditable(int row, int column){
+        return false;
+    }
+    
 }

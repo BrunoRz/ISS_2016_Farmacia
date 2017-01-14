@@ -19,15 +19,19 @@ public class ProdutosTableModel extends DefaultTableModel{
     
     public ProdutosTableModel(List<Produto> listProdutos) {
         this.listProdutos = listProdutos;
+        this.addColumn("Id");
         this.addColumn("Descrição");
-        this.addColumn("Valor Unit");
-        this.addColumn("Qtd.");
-        this.addColumn("Valor Total");
+        this.addColumn("Marca");
         Iterator<Produto> iterProdutos = listProdutos.iterator();
         while(iterProdutos.hasNext())insertProduto(iterProdutos.next());
     }
     
     private void insertProduto(Produto produto){
         this.addRow(produto.toVetor());
+    }
+    
+    @Override
+    public boolean isCellEditable(int row, int column){
+        return false;
     }
 }
