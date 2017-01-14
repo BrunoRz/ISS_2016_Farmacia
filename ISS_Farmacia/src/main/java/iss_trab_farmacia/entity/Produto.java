@@ -15,17 +15,27 @@ import org.mongodb.morphia.annotations.Id;
  */
 @Entity("produtos")
 public class Produto {
-    
+
     @Id
     private ObjectId id;
-    
+
     private String descricao;
 
     private String categoria;
-    
+
     private float valorPadrao;
 
     private int codigoBarras;
+
+    private boolean requerReceita;
+
+    public boolean isRequerReceita() {
+        return requerReceita;
+    }
+
+    public void setRequerReceita(boolean requerReceita) {
+        this.requerReceita = requerReceita;
+    }
 
     public int getCodigoBarras() {
         return codigoBarras;
@@ -34,7 +44,7 @@ public class Produto {
     public void setCodigoBarras(int codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
-    
+
     public float getValorPadrao() {
         return valorPadrao;
     }
@@ -50,7 +60,7 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     public String getMarca() {
         return marca;
     }
@@ -66,7 +76,7 @@ public class Produto {
 
     public Produto() {
     }
-    
+
     private String marca;
 
     public ObjectId getId() {
@@ -80,9 +90,10 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
+
     public Object[] toVetor() {
-        Object[] ret= {this.descricao, this.id, this.marca};
+        Object[] ret = {this.descricao, this.id, this.marca};
         return ret;
     }
+
 }
