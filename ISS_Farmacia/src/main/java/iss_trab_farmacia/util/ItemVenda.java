@@ -6,6 +6,7 @@
 package iss_trab_farmacia.util;
 
 import iss_trab_farmacia.entity.Produto;
+import java.util.Vector;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Reference;
 
@@ -19,7 +20,6 @@ public class ItemVenda {
     private int qnt;
     
     private float valorVenda;
-    private float valorCusto;
     
     @Reference
     private Produto produto;
@@ -34,10 +34,9 @@ public class ItemVenda {
         return produto;
     }
 
-    public ItemVenda(int qnt, float valorVenda, float valorCusto, Produto produto) {
+    public ItemVenda(int qnt, float valorVenda, Produto produto) {
         this.qnt = qnt;
         this.valorVenda = valorVenda;
-        this.valorCusto = valorCusto;
         this.produto = produto;
     }
 
@@ -51,10 +50,6 @@ public class ItemVenda {
     public int addQnt(int qnt) {
         this.setQnt(this.getQnt() + qnt);
         return this.getQnt();
-    }
-
-    public float getValorCusto() {
-        return valorCusto;
     }
 
     public float getValorVenda() {

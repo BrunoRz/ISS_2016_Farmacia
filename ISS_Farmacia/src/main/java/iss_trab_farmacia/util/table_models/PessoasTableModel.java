@@ -21,7 +21,6 @@ public class PessoasTableModel extends DefaultTableModel {
     public PessoasTableModel(List<Pessoa> listPessoas) {
         this.listPessoas = listPessoas;
         this.addColumn("ID");
-        this.addColumn("CPF/CNPJ");
         this.addColumn("Nome");
         this.addColumn("Cidade");
         Iterator<Pessoa> iterPessoas = this.listPessoas.iterator();
@@ -36,4 +35,10 @@ public class PessoasTableModel extends DefaultTableModel {
     public boolean isCellEditable(int row, int column){
         return false;
     }
+
+    public List<Pessoa> getListPessoas() {
+        return listPessoas;
+    }
+    
+    
 }

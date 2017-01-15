@@ -34,4 +34,10 @@ public class ProdutosTableModel extends DefaultTableModel{
     public boolean isCellEditable(int row, int column){
         return false;
     }
+
+    public List<Produto> getListProdutos() {
+        return listProdutos;
+    }
+    
+    
 }

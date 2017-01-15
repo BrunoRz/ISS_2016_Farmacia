@@ -28,7 +28,7 @@ public class Venda {
     @Reference
     private Pessoa cliente;
     
-    private Date dataVenda;
+    private final Date dataVenda;
     
     @Embedded
     private final List<ItemVenda> listaProdutos = new ArrayList<>();
@@ -39,6 +39,7 @@ public class Venda {
     }
 
     public Venda() {
+        this.dataVenda = new Date();
     }
 
     public Pessoa getCliente() {
@@ -77,6 +78,10 @@ public class Venda {
         }
         
         return total;
+    }
+
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
     }
     
 }

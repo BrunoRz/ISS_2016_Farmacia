@@ -57,7 +57,7 @@ public class PessoaFisica extends Pessoa {
     
     @Override
     public Object[] toVetor() {
-        Object[] pessoaFisica = {this.getId(), this.getCpf(), this.getNome(), this.getEndereco().getCidade()};
+        Object[] pessoaFisica = {this.getId(), this.getNome(), this.getEndereco().getCidade()};
         return pessoaFisica;
     }
 }

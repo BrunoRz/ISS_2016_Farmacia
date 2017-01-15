@@ -5,7 +5,7 @@
  */
 package iss_trab_farmacia.view;
 
-import iss_trab_farmacia.entity.Venda;
+import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemVenda;
 import javax.swing.JDialog;
 
@@ -14,7 +14,9 @@ import javax.swing.JDialog;
  * @author guest-a2ok8M
  */
 public class AdicionarItemVenda extends javax.swing.JDialog {
-
+    
+    Produto produto;
+    
     /**
      * Creates new form adicionarItemVenda
      */
@@ -40,9 +42,9 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
         txtQtd = new javax.swing.JTextField();
         btAdicionar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        prodLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        receitaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,11 +83,11 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("<      >");
+        prodLabel.setText("<      >");
 
         jLabel2.setText("Receita:");
 
-        jLabel3.setText("<      >");
+        receitaLabel.setText("<      >");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,8 +102,8 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
                             .addComponent(lbProduto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(receitaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(prodLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btCancelar)
                         .addGap(18, 18, 18)
@@ -129,11 +131,11 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(prodLabel))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(receitaLabel))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco)
@@ -152,13 +154,14 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ItemVenda novoItem(Venda venda){
-        return null;
-    }
     
-    public void setProduto(String preco, String qtd){
-        this.txtPreco.setText(preco);
-        this.txtQtd.setText(qtd);
+    public void setProduto(Produto produto){
+        this.produto = produto;
+        this.prodLabel.setText(produto.getDescricao());
+        if (produto.isRequerReceita()) {
+            this.receitaLabel.setText("SIM");
+        }
+        else this.receitaLabel.setText("Não");
     }
     
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
@@ -171,7 +174,11 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        
+        VendaView venda = (VendaView) this.getParent();
+        ItemVenda item = new ItemVenda(Integer.parseInt(this.txtQtd.getText()),
+                Float.parseFloat(this.txtPreco.getText()),
+                this.produto);
+        venda.adcionarProduto(item, WIDTH, TOP_ALIGNMENT);
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
@@ -225,12 +232,12 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btProduto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbPreco;
     private javax.swing.JLabel lbProduto;
     private javax.swing.JLabel lbQtd;
+    private javax.swing.JLabel prodLabel;
+    private javax.swing.JLabel receitaLabel;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
