@@ -34,9 +34,9 @@ public class VendaView extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         salvarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btAddProduto = new javax.swing.JButton();
+        lbValorTotal = new javax.swing.JLabel();
+        txtValorTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,11 +61,16 @@ public class VendaView extends javax.swing.JDialog {
 
         cancelarBtn.setText("Cancelar");
 
-        jButton1.setText("Ad. Produto");
+        btAddProduto.setText("Ad. Produto");
+        btAddProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddProdutoActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Valor Total:");
+        lbValorTotal.setText("Valor Total:");
 
-        jLabel2.setText("<Null>");
+        txtValorTotal.setText("<Null>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,16 +87,16 @@ public class VendaView extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(clienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btAddProduto))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                            .addComponent(lbValorTotal)
                             .addComponent(cancelarBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(salvarBtn)
-                            .addComponent(jLabel2))))
+                            .addComponent(txtValorTotal))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,13 +106,13 @@ public class VendaView extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clienteLabel)
                     .addComponent(clienteBtn)
-                    .addComponent(jButton1))
+                    .addComponent(btAddProduto))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(lbValorTotal)
+                    .addComponent(txtValorTotal))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvarBtn)
@@ -117,6 +122,11 @@ public class VendaView extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAddProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddProdutoActionPerformed
+        AdicionarItemVenda addProduto = new AdicionarItemVenda(this, true);
+        addProduto.setVisible(true);
+    }//GEN-LAST:event_btAddProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,14 +171,14 @@ public class VendaView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddProduto;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JButton clienteBtn;
     private javax.swing.JLabel clienteLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbValorTotal;
     private javax.swing.JButton salvarBtn;
+    private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,7 @@ public class PessoaFisica extends Pessoa {
     
     private Date dataNasc;    
     private String rg;    
-    private int cpf;    
+    private String cpf;    
     private String email;
     
     
@@ -38,11 +38,11 @@ public class PessoaFisica extends Pessoa {
         this.rg = rg;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

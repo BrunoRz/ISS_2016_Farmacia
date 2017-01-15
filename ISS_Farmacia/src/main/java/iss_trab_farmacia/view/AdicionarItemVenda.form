@@ -28,25 +28,39 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lbQtd" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbPreco" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="lbProduto" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btProduto" max="32767" attributes="0"/>
-                          <Component id="txtPreco" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtQtd" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel3" pref="100" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btAdicionar" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lbPreco" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbQtd" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtQtd" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="txtPreco" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btProduto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,24 +68,28 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btProduto" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="lbProduto" min="-2" pref="17" max="-2" attributes="0"/>
-                  </Group>
+              <Component id="btProduto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbProduto" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtQtd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbQtd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,6 +119,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPreco">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbQtd">
       <Properties>
@@ -116,10 +137,31 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAdicionarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btCancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;      &gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Receita:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;      &gt;"/>
       </Properties>
     </Component>
   </SubComponents>
