@@ -31,6 +31,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
         nomeCampo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -145,6 +146,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeCampo;
     private javax.swing.JTable tabelaPessoa;
