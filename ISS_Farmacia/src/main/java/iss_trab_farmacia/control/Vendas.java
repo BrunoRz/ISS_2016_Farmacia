@@ -34,8 +34,7 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
         ItemVenda item = venda.inVenda(produto);
         if (venda.inVenda(produto) == null) {
             float valorVenda = produtos.sugestaoValor(produto);
-            float custo = produtos.custo(produto);
-            item = new ItemVenda(qnt, valorVenda, custo, produto);
+            item = new ItemVenda(qnt, valorVenda, produto);
         }
         else {
             item.addQnt(qnt);

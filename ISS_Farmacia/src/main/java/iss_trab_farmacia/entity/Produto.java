@@ -92,7 +92,7 @@ public class Produto {
     }
 
     public Object[] toVetor() {
-        Object[] ret = {this.descricao, this.id, this.marca};
+        Object[] ret = {this.descricao, this.id, this.marca, this.valorPadrao};
         return ret;
     }
 

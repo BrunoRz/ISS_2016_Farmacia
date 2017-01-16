@@ -67,7 +67,12 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
 
         lbQtd.setText("Qtd:");
 
-        txtQtd.setText(" ");
+        txtQtd.setText("1");
+        txtQtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQtdActionPerformed(evt);
+            }
+        });
 
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,10 +167,12 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
             this.receitaLabel.setText("SIM");
         }
         else this.receitaLabel.setText("Não");
+        this.txtPreco.setText(Float.toString(this.produto.getValorPadrao()));
     }
     
     private void btProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProdutoActionPerformed
-        JDialog buscarProduto = new BuscarProduto(this, rootPaneCheckingEnabled);
+        BuscarProduto buscarProduto = new BuscarProduto(this, rootPaneCheckingEnabled);
+        buscarProduto.preparaParaRetornar();
         buscarProduto.setVisible(true);
     }//GEN-LAST:event_btProdutoActionPerformed
 
@@ -175,15 +182,21 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         VendaView venda = (VendaView) this.getParent();
-        ItemVenda item = new ItemVenda(Integer.parseInt(this.txtQtd.getText()),
+        ItemVenda item = new ItemVenda(
+                Integer.parseInt(this.txtQtd.getText()),
                 Float.parseFloat(this.txtPreco.getText()),
                 this.produto);
         venda.adcionarProduto(item, WIDTH, TOP_ALIGNMENT);
+        dispose();
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoActionPerformed
+
+    private void txtQtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQtdActionPerformed
 
     /**
      * @param args the command line arguments

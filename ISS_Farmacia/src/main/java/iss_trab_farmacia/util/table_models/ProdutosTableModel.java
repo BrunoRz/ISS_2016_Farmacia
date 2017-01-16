@@ -22,6 +22,7 @@ public class ProdutosTableModel extends DefaultTableModel{
         this.addColumn("Id");
         this.addColumn("Descrição");
         this.addColumn("Marca");
+        this.addColumn("Preço Unit");
         Iterator<Produto> iterProdutos = listProdutos.iterator();
         while(iterProdutos.hasNext())insertProduto(iterProdutos.next());
     }
@@ -29,7 +30,7 @@ public class ProdutosTableModel extends DefaultTableModel{
     private void insertProduto(Produto produto){
         this.addRow(produto.toVetor());
     }
-    
+        
     @Override
     public boolean isCellEditable(int row, int column){
         return false;

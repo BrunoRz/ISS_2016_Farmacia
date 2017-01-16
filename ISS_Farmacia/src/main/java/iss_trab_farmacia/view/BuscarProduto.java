@@ -75,6 +75,7 @@ public class BuscarProduto extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tabela);
 
         btOK.setText("OK");
+        btOK.setEnabled(false);
         btOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btOKActionPerformed(evt);
@@ -135,11 +136,9 @@ public class BuscarProduto extends javax.swing.JDialog {
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
         AdicionarItemVenda addItemVenda = (AdicionarItemVenda) this.getParent();
-        int coluna = this.tabela.getSelectedRow();
-        this.tabela.getValueAt(WIDTH, 0);
-        addItemVenda.setProduto(
-                String.valueOf(this.tabela.getValueAt(coluna, 0)),
-                String.valueOf(this.tabela.getValueAt(coluna, 1)));
+        int linha = this.tabela.getSelectedRow();
+        ProdutosTableModel pM = (ProdutosTableModel) this.tabela.getModel();
+        addItemVenda.setProduto(pM.getListProdutos().get(linha));
         this.dispose();
     }//GEN-LAST:event_btOKActionPerformed
 
@@ -186,6 +185,10 @@ public class BuscarProduto extends javax.swing.JDialog {
         });
     }
     
+    
+    public void preparaParaRetornar() {
+        this.btOK.setEnabled(true);
+    }
     
     public int showDialog() {
         this.setVisible(true);

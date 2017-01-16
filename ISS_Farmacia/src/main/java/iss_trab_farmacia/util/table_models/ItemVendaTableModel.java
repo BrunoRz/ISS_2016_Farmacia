@@ -16,17 +16,32 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ItemVendaTableModel extends DefaultTableModel{
 
+    List<ItemVenda> listItens;
+    
     public ItemVendaTableModel(List<ItemVenda> itensVenda) {
+        listItens = itensVenda;
         Iterator<ItemVenda> it = itensVenda.iterator();
         while (it.hasNext()) {
             this.addItemVenda(it.next());
         }
         
-        this.addColumn(new Object[] {"Descrição", "Descrição", "Valor", "Sub-Total"});
+        this.addColumn("Descrição");
+        this.addColumn("Quantidade");
+        this.addColumn("Valor");
+        this.addColumn("Sub-Total");
     }
     
     public void addItemVenda(ItemVenda item) {
         this.addRow(item.toVector());
+    }
+    
+    public float getTotal() {
+        float total = 0;
+        Iterator<ItemVenda> iI = this.listItens.iterator();
+        while(iI.hasNext()) {
+            total += iI.next().subTotal();
+        }
+        return total;
     }
     
     @Override

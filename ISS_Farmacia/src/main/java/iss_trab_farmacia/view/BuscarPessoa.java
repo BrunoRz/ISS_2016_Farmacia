@@ -6,20 +6,26 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.PessoaFisica;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  *
  * @author guest-a2ok8M
  */
 public class BuscarPessoa extends javax.swing.JDialog {
 
+    VendaView venda;
+    
     /**
      * Creates new form BuscarPessoa
      */
-    public BuscarPessoa(java.awt.Frame parent, boolean modal) {
+    public BuscarPessoa(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        venda = (VendaView) parent;
     }
 
     /**
@@ -67,16 +73,17 @@ public class BuscarPessoa extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeCampo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(13, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -131,7 +138,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BuscarPessoa dialog = new BuscarPessoa(new javax.swing.JFrame(), true);
+                BuscarPessoa dialog = new BuscarPessoa(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -139,6 +146,19 @@ public class BuscarPessoa extends javax.swing.JDialog {
                     }
                 });
                 dialog.setVisible(true);
+            }
+        });
+    }
+    
+    public void registraRetornoVenca(){
+        this.tabelaPessoa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() > 1) {
+                    PessoasTableModel pM = (PessoasTableModel)  tabelaPessoa.getModel();
+                    venda.setCliente((PessoaFisica) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
+                    dispose();
+                }
             }
         });
     }

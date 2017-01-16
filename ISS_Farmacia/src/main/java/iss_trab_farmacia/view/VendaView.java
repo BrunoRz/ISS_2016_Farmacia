@@ -5,20 +5,48 @@
  */
 package iss_trab_farmacia.view;
 
+import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.entity.Venda;
+import iss_trab_farmacia.util.ItemVenda;
+import iss_trab_farmacia.util.table_models.ItemVendaTableModel;
+import java.awt.Dialog;
+
 /**
  *
  * @author guest-a2ok8M
  */
 public class VendaView extends javax.swing.JDialog {
 
+    Venda venda;
+    
     /**
      * Creates new form VendaView
      */
-    public VendaView(java.awt.Frame parent, boolean modal) {
+    public VendaView(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setVenda(new Venda());
     }
 
+    public VendaView(Venda venda, Dialog owner, boolean modal) {
+        super(owner, modal);
+        initComponents();
+        this.setVenda(venda);
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+        this.tabelaProduto.setModel(new ItemVendaTableModel(venda.getListaProdutos()));
+        ItemVendaTableModel iM = (ItemVendaTableModel) this.tabelaProduto.getModel();
+        this.txtValorTotal.setText(Float.toString(iM.getTotal()));
+    }
+
+    public void setCliente(PessoaFisica cliente){
+        venda.setCliente(cliente);
+        this.clienteLabel.setText(cliente.getNome());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +59,7 @@ public class VendaView extends javax.swing.JDialog {
         clienteLabel = new javax.swing.JLabel();
         clienteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaProduto = new javax.swing.JTable();
         salvarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
         btAddProduto = new javax.swing.JButton();
@@ -43,8 +71,13 @@ public class VendaView extends javax.swing.JDialog {
         clienteLabel.setText("<Null>");
 
         clienteBtn.setText("Cliente");
+        clienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteBtnActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,9 +88,9 @@ public class VendaView extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaProduto);
 
-        salvarBtn.setText("Salvar");
+        salvarBtn.setText("Finalizar");
 
         cancelarBtn.setText("Cancelar");
 
@@ -128,6 +161,20 @@ public class VendaView extends javax.swing.JDialog {
         addProduto.setVisible(true);
     }//GEN-LAST:event_btAddProdutoActionPerformed
 
+    private void clienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteBtnActionPerformed
+        BuscarPessoa bP = new BuscarPessoa(this, rootPaneCheckingEnabled);
+        bP.registraRetornoVenca();
+        bP.setVisible(true);
+    }//GEN-LAST:event_clienteBtnActionPerformed
+
+    public void adcionarProduto(ItemVenda item, int qnt, float preco) {
+        ItemVendaTableModel pM = (ItemVendaTableModel) this.tabelaProduto.getModel();
+        pM.addRow(item.toVector());
+        this.tabelaProduto.setModel(pM);
+        this.venda.addItemVenda(item);
+        this.txtValorTotal.setText(Float.toString(pM.getTotal()));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -158,7 +205,7 @@ public class VendaView extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VendaView dialog = new VendaView(new javax.swing.JFrame(), true);
+                VendaView dialog = new VendaView(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -176,9 +223,9 @@ public class VendaView extends javax.swing.JDialog {
     private javax.swing.JButton clienteBtn;
     private javax.swing.JLabel clienteLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbValorTotal;
     private javax.swing.JButton salvarBtn;
+    private javax.swing.JTable tabelaProduto;
     private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
 }
