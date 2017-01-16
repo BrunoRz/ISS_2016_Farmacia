@@ -7,13 +7,13 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemVenda;
-import javax.swing.JDialog;
+import iss_trab_farmacia.util.interfaces.AceitaProduto;
 
 /**
  *
  * @author guest-a2ok8M
  */
-public class AdicionarItemVenda extends javax.swing.JDialog {
+public class AdicionarItemVenda extends javax.swing.JDialog implements AceitaProduto{
     
     Produto produto;
     
@@ -160,6 +160,7 @@ public class AdicionarItemVenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    @Override
     public void setProduto(Produto produto){
         this.produto = produto;
         this.prodLabel.setText(produto.getDescricao());

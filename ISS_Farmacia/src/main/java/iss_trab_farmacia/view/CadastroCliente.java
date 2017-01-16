@@ -15,12 +15,29 @@ import iss_trab_farmacia.util.Endereco;
  */
 public class CadastroCliente extends javax.swing.JDialog {
 
+    PessoaFisica pF;
+    
     /**
      * Creates new form CadastroCliente
      */
-    public CadastroCliente(java.awt.Frame parent, boolean modal) {
+    public CadastroCliente(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        pF = new PessoaFisica();
+    }
+    
+    public CadastroCliente(java.awt.Frame parent, boolean modal, PessoaFisica pF) {
+        super(parent, modal);
+        initComponents();
+        
+        pF = pF;
+        
+        this.txtNome.setText(pF.getNome());
+        this.txtCpf.setText(pF.getCpf());
+        this.emailCampo.setText(pF.getEmail());
+        this.cidadeCampo.setText(pF.getEndereco().getCidade());
+        this.cepCampo.setText(pF.getEndereco().getCEP());
     }
 
     /**
@@ -193,7 +210,6 @@ public class CadastroCliente extends javax.swing.JDialog {
         String cpf = txtCpf.getText();
         String endereco = ruaEnderecoCampo.getText();
         String telefone = telefoneCampo.getText();
-        PessoaFisica pF = new PessoaFisica();
         
         pF.setNome(nome);
         pF.setCpf(cpf);
@@ -251,7 +267,7 @@ public class CadastroCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroCliente dialog = new CadastroCliente(new javax.swing.JFrame(), true);
+                CadastroCliente dialog = new CadastroCliente(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

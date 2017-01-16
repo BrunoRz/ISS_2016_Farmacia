@@ -7,6 +7,7 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
+import iss_trab_farmacia.util.interfaces.AceitaProduto;
 import javax.swing.JDialog;
 
 /**
@@ -15,7 +16,7 @@ import javax.swing.JDialog;
  */
 
 
-public class AdicionarItemCompra extends javax.swing.JDialog {
+public class AdicionarItemCompra extends javax.swing.JDialog implements AceitaProduto{
     
     Produto produto;
     
@@ -148,6 +149,7 @@ public class AdicionarItemCompra extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    @Override
     public void setProduto(Produto produto){
         this.produto = produto;
         this.prodLabel.setText(produto.getDescricao());
@@ -167,10 +169,10 @@ public class AdicionarItemCompra extends javax.swing.JDialog {
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         CompraView compra = (CompraView) this.getParent();
         ItemCompra item = new ItemCompra(
-                Integer.parseInt(this.txtQtd.getText()),
                 Float.parseFloat(this.txtPreco.getText()),
-                this.produto);
-        compra.adcionarProduto(item, WIDTH, TOP_ALIGNMENT);
+                this.produto,
+                Integer.parseInt(this.txtQtd.getText()));
+        compra.adcionarProduto(item);
         dispose();
     }//GEN-LAST:event_btAdicionarActionPerformed
 

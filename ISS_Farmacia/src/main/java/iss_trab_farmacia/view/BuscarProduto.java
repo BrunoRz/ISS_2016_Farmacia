@@ -7,6 +7,7 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
+import iss_trab_farmacia.util.interfaces.AceitaProduto;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
 import java.util.List;
 import javax.swing.SwingUtilities;
@@ -135,7 +136,7 @@ public class BuscarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
-        AdicionarItemVenda addItemVenda = (AdicionarItemVenda) this.getParent();
+        AceitaProduto addItemVenda = (AceitaProduto) this.getParent();
         int linha = this.tabela.getSelectedRow();
         ProdutosTableModel pM = (ProdutosTableModel) this.tabela.getModel();
         addItemVenda.setProduto(pM.getListProdutos().get(linha));

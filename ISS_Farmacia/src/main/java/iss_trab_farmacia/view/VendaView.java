@@ -168,10 +168,10 @@ public class VendaView extends javax.swing.JDialog {
     }//GEN-LAST:event_clienteBtnActionPerformed
 
     public void adcionarProduto(ItemVenda item, int qnt, float preco) {
-        ItemVendaTableModel pM = (ItemVendaTableModel) this.tabelaProduto.getModel();
-        pM.addRow(item.toVector());
-        this.tabelaProduto.setModel(pM);
         this.venda.addItemVenda(item);
+        ItemVendaTableModel pM = (ItemVendaTableModel) this.tabelaProduto.getModel();
+        pM.addItemVenda(item);
+        this.tabelaProduto.setModel(pM);
         this.txtValorTotal.setText(Float.toString(pM.getTotal()));
     }
     

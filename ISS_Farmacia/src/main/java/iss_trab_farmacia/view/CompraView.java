@@ -19,9 +19,6 @@ public class CompraView extends javax.swing.JDialog {
 
     Compra compra;
     
-    /**
-     * Creates new form VendaView
-     */
     public CompraView(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -43,7 +40,7 @@ public class CompraView extends javax.swing.JDialog {
     }
 
     public void setFornecedor(PessoaJuridica fornecedor){
-        Compra.setFornecedor(fornecedor);
+        compra.setFornecedor(fornecedor);
         this.fornecedorLabel.setText(fornecedor.getNome());
     }
     
@@ -116,7 +113,7 @@ public class CompraView extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 1, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(clienteBtn)
+                        .addComponent(clienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(clienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,7 +164,7 @@ public class CompraView extends javax.swing.JDialog {
         bP.setVisible(true);
     }//GEN-LAST:event_clienteBtnActionPerformed
 
-    public void adcionarProduto(ItemCompra item, int qnt, float preco) {
+    public void adcionarProduto(ItemCompra item) {
         ItemCompraTableModel pM = (ItemCompraTableModel) this.tabelaProduto.getModel();
         pM.addRow(item.toVector());
         this.tabelaProduto.setModel(pM);
