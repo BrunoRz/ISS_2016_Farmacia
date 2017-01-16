@@ -32,6 +32,11 @@ public class Compra {
     
     @Embedded
     private final List<ItemCompra> itensCompra = new ArrayList();
+    
+    
+    public List<ItemCompra> getItensCompra() {
+        return itensCompra;
+    }
 
     public Compra(PessoaJuridica Fornecedor) {
         this.fornecedor = Fornecedor;
@@ -45,5 +50,22 @@ public class Compra {
             if (item.getProduto().getId().equals(produto.getId())) return item;
         }
         return null;
+    }
+    
+    public float getTotal() {
+        float total = 0;
+        for (ItemCompra item : this.getItensCompra()) {
+            total += item.subTotal();
+        }
+        
+        return total;
+    }
+    
+    public void setFornecedor(PessoaJuridica fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+    
+    public void addItemCompra(ItemCompra item) {
+        this.getItensCompra().add(item);
     }
 }

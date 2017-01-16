@@ -15,12 +15,18 @@ import javax.swing.table.DefaultTableModel;
  * @author guilherme
  */
 public class ItemCompraTableModel extends DefaultTableModel{
+    
+    List<ItemCompra> listItens;
 
     public ItemCompraTableModel(List<ItemCompra> itensCompra) {
+        listItens = itensCompra;
         Iterator<ItemCompra> it = itensCompra.iterator();
         while (it.hasNext()) this.addItemCompra(it.next());
         
-        this.addRow(new Object[] {"Descrição", "Quantidade", "Valor", "Sub-Total"});
+        this.addColumn("Descrição");
+        this.addColumn("Quantidade");
+        this.addColumn("Valor");
+        this.addColumn("Sub-Total");
     }
     
     
@@ -31,5 +37,15 @@ public class ItemCompraTableModel extends DefaultTableModel{
     @Override
     public boolean isCellEditable(int row, int column){
         return false;
+    }
+    
+    
+    public float getTotal() {
+        float total = 0;
+        Iterator<ItemCompra> iI = this.listItens.iterator();
+        while(iI.hasNext()) {
+            total += iI.next().subTotal();
+        }
+        return total;
     }
 }

@@ -53,7 +53,7 @@ public class ItemCompra {
         return produto;
     }
     
-    private float subTotal() {
+    public float subTotal() {
         return this.getPreco() * this.getQnt();
     }
 
