@@ -19,8 +19,6 @@ import javax.swing.JPopupMenu;
  * @author guest-a2ok8M
  */
 public class BuscarPessoa extends javax.swing.JDialog {
-
-    VendaView venda;
     
     /**
      * Creates new form BuscarPessoa
@@ -159,17 +157,15 @@ public class BuscarPessoa extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                BuscarPessoa dialog = new BuscarPessoa(new javax.swing.JDialog(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            BuscarPessoa dialog = new BuscarPessoa(new javax.swing.JDialog(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
     
@@ -179,6 +175,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
                     PessoasTableModel pM = (PessoasTableModel)  tabelaPessoa.getModel();
+                    VendaView venda = (VendaView) getParent();
                     venda.setCliente((PessoaFisica) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
                     dispose();
                 }
