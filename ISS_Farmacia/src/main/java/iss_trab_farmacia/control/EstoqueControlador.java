@@ -8,7 +8,6 @@ package iss_trab_farmacia.control;
 import iss_trab_farmacia.entity.Estoque;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.SingletonBd;
-import java.util.Iterator;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;

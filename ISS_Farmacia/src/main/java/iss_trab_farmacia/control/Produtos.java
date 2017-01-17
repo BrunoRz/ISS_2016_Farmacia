@@ -46,12 +46,12 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
     }
     
     public List<Produto> buscarMarca(String marca) {
-        Query<Produto> q = this.getDs().createQuery(Produto.class).field("marca").containsIgnoreCase(marca);
+        Query<Produto> q = this.createQuery().field("marca").containsIgnoreCase(marca);
         return q.asList();
     }
     
     public List<Produto> buscarDescricao(String descricao) {
-        Query<Produto> q = this.getDs().createQuery(Produto.class).field("descricao").containsIgnoreCase(descricao);
+        Query<Produto> q = this.createQuery().field("descricao").containsIgnoreCase(descricao);
         return q.asList();
     }
 }

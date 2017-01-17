@@ -5,6 +5,8 @@
  */
 package iss_trab_farmacia.entity;
 
+import iss_trab_farmacia.util.ItemCompra;
+import iss_trab_farmacia.util.ItemVenda;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -27,12 +29,24 @@ public class Estoque {
     //Saida = 0
     int tipoMovimento;
     
-    int Qnt;
+    int qnt;
 
     public Estoque(Produto produto, int tipoMovimento, int Qnt) {
         this.produto = produto;
         this.tipoMovimento = tipoMovimento;
-        this.Qnt = Qnt;
+        this.qnt = Qnt;
+    }
+    
+    public Estoque(ItemVenda item) {
+        this.produto = item.getProduto();
+        this.tipoMovimento = 2;
+        this.qnt = item.getQnt();
+    }
+    
+    public Estoque(ItemCompra item) {
+        this.produto = item.getProduto();
+        this.tipoMovimento = 1;
+        this.qnt = item.getQnt();
     }
 
     public ObjectId getId() {
@@ -60,11 +74,11 @@ public class Estoque {
     }
 
     public int getQnt() {
-        return Qnt;
+        return qnt;
     }
 
-    public void setQnt(int Qnt) {
-        this.Qnt = Qnt;
+    public void setQnt(int qnt) {
+        this.qnt = qnt;
     }
     
     
