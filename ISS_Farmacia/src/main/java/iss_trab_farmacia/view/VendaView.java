@@ -8,6 +8,7 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Venda;
 import iss_trab_farmacia.util.ItemVenda;
+import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.ItemVendaTableModel;
 import java.awt.Dialog;
 
@@ -15,7 +16,7 @@ import java.awt.Dialog;
  *
  * @author guest-a2ok8M
  */
-public class VendaView extends javax.swing.JDialog {
+public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
 
     Venda venda;
     
@@ -228,4 +229,10 @@ public class VendaView extends javax.swing.JDialog {
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setPessoa(Pessoa pessoa) {
+        this.venda.setCliente(pessoa);
+        this.clienteLabel.setText(pessoa.getNome());
+    }
 }

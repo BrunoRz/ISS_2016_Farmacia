@@ -7,7 +7,6 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
 import iss_trab_farmacia.entity.Pessoa;
-import iss_trab_farmacia.entity.PessoaFisica;
 import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import java.awt.event.ActionEvent;
@@ -41,6 +40,8 @@ public class BuscarPessoa extends javax.swing.JDialog {
                             PessoasTableModel pM1 = (PessoasTableModel) tabelaPessoa.getModel();
                             Pessoa pF = (Pessoa) pM1.getListPessoas().get(tabelaPessoa.rowAtPoint(mE.getPoint()));
                             CadastroCliente cC = new CadastroCliente(null, rootPaneCheckingEnabled, pF);
+                            cC.setVisible(true);
+                            pM.setVisible(false);
                         }
                     });
                     pM.setLocation(mE.getLocationOnScreen());

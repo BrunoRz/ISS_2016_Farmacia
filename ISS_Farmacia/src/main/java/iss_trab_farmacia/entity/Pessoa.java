@@ -24,7 +24,7 @@ public class Pessoa {
     private String razao;
     private String cpf;    
     private String cnpj;    
-    private int telefone;
+    private String telefone;
     private String email;
     
     @Embedded
@@ -57,11 +57,11 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

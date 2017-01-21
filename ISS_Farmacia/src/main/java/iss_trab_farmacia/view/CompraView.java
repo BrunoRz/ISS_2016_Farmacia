@@ -8,7 +8,6 @@ package iss_trab_farmacia.view;
 import iss_trab_farmacia.control.Compras;
 import iss_trab_farmacia.entity.Compra;
 import iss_trab_farmacia.entity.Pessoa;
-import iss_trab_farmacia.entity.PessoaJuridica;
 import iss_trab_farmacia.util.ItemCompra;
 import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.ItemCompraTableModel;
@@ -248,6 +247,6 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
 
     @Override
     public void setPessoa(Pessoa pessoa) {
-        this.compra.setFornecedor((PessoaJuridica) pessoa);
+        this.compra.setFornecedor((Pessoa) pessoa);
     }
 }

@@ -36,7 +36,7 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
     }
 
     public List<Pessoa> buscarTodos() {
-        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class);
+        Query<Pessoa> query = this.createQuery();
  
         return query.asList();
     }

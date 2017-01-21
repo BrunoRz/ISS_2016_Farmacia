@@ -31,7 +31,6 @@ public class Compra {
     @Reference
 
     @NotNull(message = "Não foi definido o fornecedor")
-    private PessoaJuridica fornecedor;
     private Pessoa fornecedor;
     
     private Date dataCompra;

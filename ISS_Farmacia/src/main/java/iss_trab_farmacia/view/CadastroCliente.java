@@ -19,6 +19,8 @@ public class CadastroCliente extends javax.swing.JDialog {
     
     /**
      * Creates new form CadastroCliente
+     * @param parent
+     * @param modal
      */
     public CadastroCliente(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -31,13 +33,14 @@ public class CadastroCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        pF = pF;
+        this.pF = pF;
         
         this.txtNome.setText(pF.getNome());
         this.txtCpf.setText(pF.getCpf());
         this.emailCampo.setText(pF.getEmail());
         this.cidadeCampo.setText(pF.getEndereco().getCidade());
         this.cepCampo.setText(pF.getEndereco().getCEP());
+        this.telefoneCampo.setText(pF.getTelefone());
     }
 
     /**
@@ -210,7 +213,6 @@ public class CadastroCliente extends javax.swing.JDialog {
         String cpf = txtCpf.getText();
         String endereco = ruaEnderecoCampo.getText();
         String telefone = telefoneCampo.getText();
-        
         pF.setNome(nome);
         pF.setCpf(cpf);
         pF.setEndereco(new Endereco(ruaEnderecoCampo.getText(), 
@@ -265,17 +267,15 @@ public class CadastroCliente extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CadastroCliente dialog = new CadastroCliente(new javax.swing.JDialog(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            CadastroCliente dialog = new CadastroCliente(new javax.swing.JDialog(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
