@@ -8,7 +8,10 @@ package iss_trab_farmacia.control;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
 import iss_trab_farmacia.util.SingletonBd;
+import iss_trab_farmacia.util.Validador;
 import java.util.List;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.query.Query;
@@ -18,6 +21,8 @@ import org.mongodb.morphia.query.Query;
  * @author guilherme
  */
 public class Produtos extends BasicDAO<Produto, ObjectId>{
+    
+    Validador<Produto> validador = new Validador<>();
     
     public Produtos() {
         super(Produto.class, SingletonBd.getInstance().getDs());
@@ -53,5 +58,13 @@ public class Produtos extends BasicDAO<Produto, ObjectId>{
     public List<Produto> buscarDescricao(String descricao) {
         Query<Produto> q = this.createQuery().field("descricao").containsIgnoreCase(descricao);
         return q.asList();
+    }
+    
+    public Set<ConstraintViolation<Produto>> constraintViolations(Produto produto) {
+        return validador.constraintViolations(produto);
+    }
+
+    public Validador<Produto> getValidador() {
+        return validador;
     }
 }

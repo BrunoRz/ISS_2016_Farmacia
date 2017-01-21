@@ -21,6 +21,7 @@ public class ProdutosTableModel extends DefaultTableModel{
         this.listProdutos = listProdutos;
         this.addColumn("Id");
         this.addColumn("Descrição");
+        this.addColumn("Categoria");
         this.addColumn("Marca");
         this.addColumn("Preço Unit");
         Iterator<Produto> iterProdutos = listProdutos.iterator();

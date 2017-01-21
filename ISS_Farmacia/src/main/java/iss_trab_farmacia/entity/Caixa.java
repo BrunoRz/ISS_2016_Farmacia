@@ -6,6 +6,8 @@
 package iss_trab_farmacia.entity;
 
 import java.util.Date;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -22,8 +24,10 @@ public class Caixa {
     
     private Date data = new Date();
     
+    @NotNull
     private boolean entrada;
-   
+    
+    @Min(value = (long) 0.01, message = "Menor valor possivel é 0.01")
     private double valor;
 
     

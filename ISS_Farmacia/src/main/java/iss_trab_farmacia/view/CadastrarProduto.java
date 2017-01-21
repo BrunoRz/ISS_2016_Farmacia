@@ -7,6 +7,7 @@ package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +15,8 @@ import iss_trab_farmacia.entity.Produto;
  */
 public class CadastrarProduto extends javax.swing.JDialog {
 
+    Produtos produtos = new Produtos();
+    
     /**
      * Creates new form CadastrarProduto
      */
@@ -32,6 +35,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        button1 = new java.awt.Button();
         lbDescricao = new javax.swing.JLabel();
         lbCategoria = new javax.swing.JLabel();
         lbValor = new javax.swing.JLabel();
@@ -47,6 +51,9 @@ public class CadastrarProduto extends javax.swing.JDialog {
         salvarBtn = new javax.swing.JButton();
         lbMarca = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
+        erroDescricao = new java.awt.Label();
+
+        button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,6 +73,12 @@ public class CadastrarProduto extends javax.swing.JDialog {
         });
 
         lbTitulo.setText("Cadastro de Produto");
+
+        txtDescricao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescricaoFocusLost(evt);
+            }
+        });
 
         txtCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,25 +108,15 @@ public class CadastrarProduto extends javax.swing.JDialog {
             }
         });
 
+        erroDescricao.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        erroDescricao.setForeground(new java.awt.Color(255, 0, 0));
+        erroDescricao.setText("!!!!!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(cbReterReceita)
-                .addGap(182, 182, 182))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelarBtn)
-                .addGap(18, 18, 18)
-                .addComponent(salvarBtn)
-                .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -129,7 +132,25 @@ public class CadastrarProduto extends javax.swing.JDialog {
                     .addComponent(txtValor)
                     .addComponent(txtCodigoBarras)
                     .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbReterReceita)
+                        .addGap(182, 182, 182))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbTitulo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelarBtn)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(erroDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salvarBtn))
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +158,14 @@ public class CadastrarProduto extends javax.swing.JDialog {
                 .addGap(6, 6, 6)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbDescricao)
-                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbDescricao)
+                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(erroDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMarca)
@@ -182,8 +206,11 @@ public class CadastrarProduto extends javax.swing.JDialog {
         String descricao = txtDescricao.getText();
         String marca = txtMarca.getText();
         String categoria = txtCategoria.getText();
-        float valorPadrao = Float.parseFloat(txtValor.getText());
-        int codigoBarras = Integer.parseInt(txtCodigoBarras.getText());
+        float valorPadrao = 0;
+        if (!this.txtValor.getText().isEmpty()) {
+             valorPadrao = Float.parseFloat(txtValor.getText());
+        }
+        String codigoBarras = txtCodigoBarras.getText();
         boolean receita = cbReterReceita.isSelected();
         
         Produto produto = new Produto();
@@ -195,7 +222,16 @@ public class CadastrarProduto extends javax.swing.JDialog {
         produto.setCodigoBarras(codigoBarras);
         produto.setRequerReceita(receita);
 
-        new Produtos().save(produto);
+        if (JOptionPane.showConfirmDialog(this, "Confirmar?") == 0) {
+            if (produtos.constraintViolations(produto).isEmpty()) {
+                produtos.save(produto);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, 
+                        produtos.constraintViolations(produto).toString(), 
+                        "Erro no produto", JOptionPane.WARNING_MESSAGE);
+            }
+        }
 
         this.dispose();
     }//GEN-LAST:event_salvarBtnActionPerformed
@@ -207,6 +243,17 @@ public class CadastrarProduto extends javax.swing.JDialog {
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMarcaActionPerformed
+
+    private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
+        if (!produtos.getValidador().getValidator().validateValue(Produto.class, "descricao",
+                txtDescricao.getText()).isEmpty()){
+            erroDescricao.setVisible(true);
+        }
+        else {
+            erroDescricao.setVisible(false);
+        }
+            
+    }//GEN-LAST:event_txtDescricaoFocusLost
 
     /**
      * @param args the command line arguments
@@ -238,7 +285,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastrarProduto dialog = new CadastrarProduto(new javax.swing.JFrame(), true);
+                CadastrarProduto dialog = new CadastrarProduto(null, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -251,9 +298,11 @@ public class CadastrarProduto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button button1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JCheckBox cbReterReceita;
+    private java.awt.Label erroDescricao;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbCodigoDeBarras;
