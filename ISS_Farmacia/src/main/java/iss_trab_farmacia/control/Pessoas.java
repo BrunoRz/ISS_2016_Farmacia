@@ -7,16 +7,25 @@ package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.SingletonBd;
+import iss_trab_farmacia.util.Validador;
+import org.mongodb.morphia.query.Query;
 import java.util.List;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
-import org.mongodb.morphia.query.Query;
 
 /**
  *
  * @author guilherme
  */
 public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
+    
+    Validador<Pessoa> validador = new Validador<>();
+
+    public Validador<Pessoa> getValidador() {
+        return validador;
+    }
     
     public Pessoas() {
         super(Pessoa.class, SingletonBd.getInstance().getDs());
@@ -39,5 +48,9 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
         Query<Pessoa> query = this.createQuery();
  
         return query.asList();
+    }
+    
+    public Set<ConstraintViolation<Pessoa>> constraintViolation(Pessoa pessoa){
+        return validador.constraintViolations(pessoa);
     }
 }
