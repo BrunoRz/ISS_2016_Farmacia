@@ -5,12 +5,14 @@
  */
 package iss_trab_farmacia.view;
 
+import iss_trab_farmacia.control.Vendas;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Venda;
 import iss_trab_farmacia.util.ItemVenda;
 import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.ItemVendaTableModel;
 import java.awt.Dialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +21,7 @@ import java.awt.Dialog;
 public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
 
     Venda venda;
+    Vendas vendas = new Vendas();
     
     /**
      * Creates new form VendaView
@@ -61,11 +64,11 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         clienteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
-        salvarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
         btAddProduto = new javax.swing.JButton();
         lbValorTotal = new javax.swing.JLabel();
         txtValorTotal = new javax.swing.JLabel();
+        btFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,8 +94,6 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         ));
         jScrollPane1.setViewportView(tabelaProduto);
 
-        salvarBtn.setText("Finalizar");
-
         cancelarBtn.setText("Cancelar");
 
         btAddProduto.setText("Ad. Produto");
@@ -105,6 +106,13 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         lbValorTotal.setText("Valor Total:");
 
         txtValorTotal.setText("<Null>");
+
+        btFinalizar.setText("Finalizar");
+        btFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,8 +137,9 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
                             .addComponent(cancelarBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(salvarBtn)
-                            .addComponent(txtValorTotal))))
+                            .addComponent(txtValorTotal)
+                            .addComponent(btFinalizar))
+                        .addGap(2, 2, 2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -149,8 +158,8 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
                     .addComponent(txtValorTotal))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salvarBtn)
-                    .addComponent(cancelarBtn))
+                    .addComponent(cancelarBtn)
+                    .addComponent(btFinalizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,6 +177,17 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         bP.setVisible(true);
     }//GEN-LAST:event_clienteBtnActionPerformed
 
+    private void btFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Confirmar a Venda", "Finalizar", JOptionPane.OK_CANCEL_OPTION) == 0) {
+            if (vendas.constraintViolations(venda).isEmpty()) {
+                vendas.salvarVenda(venda);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, vendas.constraintViolations(venda).toString(), "Erro", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btFinalizarActionPerformed
+    
     public void adcionarProduto(ItemVenda item, int qnt, float preco) {
         this.venda.addItemVenda(item);
         ItemVendaTableModel pM = (ItemVendaTableModel) this.tabelaProduto.getModel();
@@ -220,12 +240,12 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddProduto;
+    private javax.swing.JButton btFinalizar;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JButton clienteBtn;
     private javax.swing.JLabel clienteLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbValorTotal;
-    private javax.swing.JButton salvarBtn;
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables

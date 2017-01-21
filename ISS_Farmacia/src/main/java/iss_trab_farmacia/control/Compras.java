@@ -9,13 +9,11 @@ import iss_trab_farmacia.entity.Compra;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
 import iss_trab_farmacia.util.SingletonBd;
+import iss_trab_farmacia.util.Validador;
 import java.util.Iterator;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
 import org.bson.types.ObjectId;
-import org.hibernate.validator.HibernateValidator;
 import org.mongodb.morphia.dao.BasicDAO;
 import org.mongodb.morphia.query.Query;
 
@@ -23,9 +21,10 @@ import org.mongodb.morphia.query.Query;
  *
  * @author guilherme
  */
-public class Compras extends BasicDAO<Compra, ObjectId> {
+public class Compras extends BasicDAO<Compra, ObjectId>{
     
     EstoqueControlador estoque = new EstoqueControlador();
+    Validador<Compra> validador = new Validador<>();
     
     public Compras() {
         super(Compra.class, SingletonBd.getInstance().getDs());
@@ -50,10 +49,6 @@ public class Compras extends BasicDAO<Compra, ObjectId> {
     }
     
     public Set<ConstraintViolation<Compra>> constraintViolations(Compra compra) {
-        Validator validator = Validation.byProvider(HibernateValidator.class)
-                .configure()
-                .buildValidatorFactory()
-                .getValidator();
-        return validator.validate(compra);
+        return validador.constraintViolations(compra);
     }
 }

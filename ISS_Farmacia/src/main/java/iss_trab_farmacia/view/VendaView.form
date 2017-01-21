@@ -45,9 +45,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="salvarBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="txtValorTotal" min="-2" max="-2" attributes="0"/>
+                          <Component id="btFinalizar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -72,8 +73,8 @@
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="salvarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancelarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btFinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -115,11 +116,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="salvarBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Finalizar"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="cancelarBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
@@ -142,6 +138,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;Null&gt;"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btFinalizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Finalizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFinalizarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

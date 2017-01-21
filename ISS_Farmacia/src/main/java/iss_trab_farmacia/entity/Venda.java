@@ -9,6 +9,8 @@ import iss_trab_farmacia.util.ItemVenda;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
@@ -26,11 +28,13 @@ public class Venda {
     private ObjectId id;
     
     @Reference
+    @NotNull(message = "Cliente não selecionado")
     private Pessoa cliente;
     
     private final Date dataVenda;
     
     @Embedded
+    @Size(min = 1,message = "Venda sem itens")
     private final List<ItemVenda> listaProdutos = new ArrayList<>();
 
     public Venda(Pessoa cliente) {
