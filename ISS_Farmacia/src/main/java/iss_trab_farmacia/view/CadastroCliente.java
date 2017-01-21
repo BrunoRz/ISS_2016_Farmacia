@@ -6,7 +6,7 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
-import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.Endereco;
 
 /**
@@ -15,7 +15,7 @@ import iss_trab_farmacia.util.Endereco;
  */
 public class CadastroCliente extends javax.swing.JDialog {
 
-    PessoaFisica pF;
+    Pessoa pF;
     
     /**
      * Creates new form CadastroCliente
@@ -24,10 +24,10 @@ public class CadastroCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        pF = new PessoaFisica();
+        pF = new Pessoa();
     }
     
-    public CadastroCliente(java.awt.Frame parent, boolean modal, PessoaFisica pF) {
+    public CadastroCliente(java.awt.Frame parent, boolean modal, Pessoa pF) {
         super(parent, modal);
         initComponents();
         
