@@ -29,7 +29,7 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
      */
     public List<Pessoa> buscarNome(String nome) {
         
-        Query<Pessoa> query = this.getDs().createQuery(Pessoa.class).field("nome").containsIgnoreCase(nome);
+        Query<Pessoa> query = this.createQuery().field("nome").containsIgnoreCase(nome);
  
         return query.asList();
         

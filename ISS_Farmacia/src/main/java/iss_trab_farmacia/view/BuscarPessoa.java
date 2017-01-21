@@ -6,7 +6,7 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
-import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +37,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             PessoasTableModel pM1 = (PessoasTableModel) tabelaPessoa.getModel();
-                            PessoaFisica pF = (PessoaFisica) pM1.getListPessoas().get(tabelaPessoa.rowAtPoint(mE.getPoint()));
+                            Pessoa pF = (Pessoa) pM1.getListPessoas().get(tabelaPessoa.rowAtPoint(mE.getPoint()));
                             CadastroCliente cC = new CadastroCliente(null, rootPaneCheckingEnabled, pF);
                         }
                     });
@@ -176,7 +176,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
                 if (e.getClickCount() > 1) {
                     PessoasTableModel pM = (PessoasTableModel)  tabelaPessoa.getModel();
                     VendaView venda = (VendaView) getParent();
-                    venda.setCliente((PessoaFisica) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
+                    venda.setCliente((Pessoa) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
                     dispose();
                 }
             }

@@ -6,7 +6,7 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.entity.Compra;
-import iss_trab_farmacia.entity.PessoaJuridica;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.util.ItemCompra;
 import iss_trab_farmacia.util.table_models.ItemCompraTableModel;
 import java.awt.Dialog;
@@ -39,7 +39,7 @@ public class CompraView extends javax.swing.JDialog {
         this.txtValorTotal.setText(Float.toString(iM.getTotal()));
     }
 
-    public void setFornecedor(PessoaJuridica fornecedor){
+    public void setFornecedor(Pessoa fornecedor){
         compra.setFornecedor(fornecedor);
         this.fornecedorLabel.setText(fornecedor.getNome());
     }
