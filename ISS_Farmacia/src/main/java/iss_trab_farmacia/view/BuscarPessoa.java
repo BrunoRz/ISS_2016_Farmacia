@@ -6,7 +6,9 @@
 package iss_trab_farmacia.view;
 
 import iss_trab_farmacia.control.Pessoas;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.PessoaFisica;
+import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.PessoasTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -175,8 +177,8 @@ public class BuscarPessoa extends javax.swing.JDialog {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
                     PessoasTableModel pM = (PessoasTableModel)  tabelaPessoa.getModel();
-                    VendaView venda = (VendaView) getParent();
-                    venda.setCliente((PessoaFisica) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
+                    AceitaPessoa venda = (AceitaPessoa) getParent();
+                    venda.setPessoa((Pessoa) pM.getListPessoas().get(tabelaPessoa.rowAtPoint(e.getPoint())));
                     dispose();
                 }
             }

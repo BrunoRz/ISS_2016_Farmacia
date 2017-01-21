@@ -5,19 +5,24 @@
  */
 package iss_trab_farmacia.view;
 
+import iss_trab_farmacia.control.Compras;
 import iss_trab_farmacia.entity.Compra;
+import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.PessoaJuridica;
 import iss_trab_farmacia.util.ItemCompra;
+import iss_trab_farmacia.util.interfaces.AceitaPessoa;
 import iss_trab_farmacia.util.table_models.ItemCompraTableModel;
 import java.awt.Dialog;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author guest-a2ok8M
  */
-public class CompraView extends javax.swing.JDialog {
+public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
 
     Compra compra;
+    Compras compras = new Compras();
     
     public CompraView(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -88,6 +93,11 @@ public class CompraView extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tabelaProduto);
 
         salvarBtn.setText("Finalizar");
+        salvarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarBtnActionPerformed(evt);
+            }
+        });
 
         cancelarBtn.setText("Cancelar");
 
@@ -164,6 +174,14 @@ public class CompraView extends javax.swing.JDialog {
         bP.setVisible(true);
     }//GEN-LAST:event_clienteBtnActionPerformed
 
+    private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Confirmar a compra", "Finalizar", JOptionPane.OK_CANCEL_OPTION) == 0) {
+            System.out.println(compras.constraintViolations(compra));
+            compras.salvarCompra(compra);
+            
+        }
+    }//GEN-LAST:event_salvarBtnActionPerformed
+
     public void adcionarProduto(ItemCompra item) {
         ItemCompraTableModel pM = (ItemCompraTableModel) this.tabelaProduto.getModel();
         pM.addRow(item.toVector());
@@ -227,4 +245,9 @@ public class CompraView extends javax.swing.JDialog {
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JLabel txtValorTotal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setPessoa(Pessoa pessoa) {
+        this.compra.setFornecedor((PessoaJuridica) pessoa);
+    }
 }

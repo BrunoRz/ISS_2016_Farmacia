@@ -7,9 +7,10 @@ package iss_trab_farmacia.control;
 
 import iss_trab_farmacia.entity.Caixa;
 import iss_trab_farmacia.util.SingletonBd;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 

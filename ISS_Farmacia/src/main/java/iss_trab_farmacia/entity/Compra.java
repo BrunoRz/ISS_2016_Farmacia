@@ -9,6 +9,9 @@ import iss_trab_farmacia.util.ItemCompra;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
@@ -26,11 +29,13 @@ public class Compra {
     private ObjectId id;
     
     @Reference
+    @NotNull(message = "Não foi definido o fornecedor")
     private PessoaJuridica fornecedor;
     
     private Date dataCompra;
     
     @Embedded
+    @Size(min = 1, message = "Compra está vazia")
     private final List<ItemCompra> itensCompra = new ArrayList();
     
     
