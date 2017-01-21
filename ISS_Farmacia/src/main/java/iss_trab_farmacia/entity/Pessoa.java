@@ -21,7 +21,11 @@ public class Pessoa {
     @Id
     private ObjectId id;
     private String nome;
+    private String razao;
+    private String cpf;    
+    private String cnpj;    
     private int telefone;
+    private String email;
     
     @Embedded
     private Endereco endereco;
@@ -61,8 +65,42 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    public String getRazao() {
+        return razao;
+    }
+
+    public void setRazao(String razao) {
+        this.razao = razao;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+
     
     public Object[] toVetor() {
-        return null;
+        return new Object[] {this.getNome(), this.getEndereco().getCidade(), this.getTelefone()};
     }    
 }

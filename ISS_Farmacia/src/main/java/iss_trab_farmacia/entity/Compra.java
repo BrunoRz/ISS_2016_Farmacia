@@ -29,8 +29,10 @@ public class Compra {
     private ObjectId id;
     
     @Reference
+
     @NotNull(message = "Não foi definido o fornecedor")
     private PessoaJuridica fornecedor;
+    private Pessoa fornecedor;
     
     private Date dataCompra;
     
@@ -43,7 +45,7 @@ public class Compra {
         return itensCompra;
     }
 
-    public Compra(PessoaJuridica Fornecedor) {
+    public Compra(Pessoa Fornecedor) {
         this.fornecedor = Fornecedor;
     }
 
@@ -66,7 +68,7 @@ public class Compra {
         return total;
     }
     
-    public void setFornecedor(PessoaJuridica fornecedor) {
+    public void setFornecedor(Pessoa fornecedor) {
         this.fornecedor = fornecedor;
     }
     

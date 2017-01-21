@@ -44,7 +44,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
         this.txtValorTotal.setText(Float.toString(iM.getTotal()));
     }
 
-    public void setFornecedor(PessoaJuridica fornecedor){
+    public void setFornecedor(Pessoa fornecedor){
         compra.setFornecedor(fornecedor);
         this.fornecedorLabel.setText(fornecedor.getNome());
     }

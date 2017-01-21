@@ -39,7 +39,7 @@ public class BuscarPessoa extends javax.swing.JDialog {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             PessoasTableModel pM1 = (PessoasTableModel) tabelaPessoa.getModel();
-                            PessoaFisica pF = (PessoaFisica) pM1.getListPessoas().get(tabelaPessoa.rowAtPoint(mE.getPoint()));
+                            Pessoa pF = (Pessoa) pM1.getListPessoas().get(tabelaPessoa.rowAtPoint(mE.getPoint()));
                             CadastroCliente cC = new CadastroCliente(null, rootPaneCheckingEnabled, pF);
                         }
                     });
