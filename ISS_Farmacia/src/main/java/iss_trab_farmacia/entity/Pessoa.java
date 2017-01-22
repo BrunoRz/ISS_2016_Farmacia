@@ -7,7 +7,13 @@ package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
 import iss_trab_farmacia.util.hibernateConstraints.CpfOCnpj;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -22,13 +28,17 @@ public class Pessoa {
     
     @Id
     private ObjectId id;
+    @NotBlank(message = "Nome vazio")
+    @Size(min = 3, message = "Minimo 3 caracter")
     private String nome;
-    private String razao;
-    private String cpf;    
-    private String cnpj;    
+  
+    private String cpf;
+    private String cnpj;
+  
+    @Size(min =  10,max = 10, message = "Telefone Invalido")
     private String telefone;
+    @Email(message = "Email invalido")
     private String email;
-    
     @Embedded
     private Endereco endereco;
 
@@ -46,7 +56,7 @@ public class Pessoa {
     public String getNome() {
         return nome;
     }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -65,14 +75,6 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getRazao() {
-        return razao;
-    }
-
-    public void setRazao(String razao) {
-        this.razao = razao;
     }
 
     public String getCpf() {
@@ -98,9 +100,6 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-
     
     public Object[] toVetor() {
         return new Object[] {this.getNome(), this.getEndereco().getCidade(), this.getTelefone()};
