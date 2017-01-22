@@ -5,9 +5,9 @@
  */
 package iss_trab_farmacia.entity;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
-import org.hibernate.validator.constraints.EAN;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -23,12 +23,12 @@ public class Produto {
 
     @Size(min = 3, message = "Descrição deve ter no minimo 3 caracteres")
     private String descricao;
-    
+
     private String categoria;
 
+    @Min(value = (long) 0.01)
     private float valorPadrao;
 
-    @EAN
     private String codigoBarras;
 
     private boolean requerReceita;

@@ -5,6 +5,7 @@
  */
 package iss_trab_farmacia.control;
 
+import iss_trab_farmacia.entity.Caixa;
 import iss_trab_farmacia.entity.Pessoa;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.entity.Venda;
@@ -48,6 +49,7 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
         }
         venda.addItemVenda(item);
     }
+    
     public void salvarVenda(Venda venda) {
         Iterator<ItemVenda> itItens = venda.getListaProdutos().iterator();
         
@@ -55,6 +57,9 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
             ItemVenda iVenda = itItens.next();
             estoque.removerEstoque(iVenda.getProduto(), iVenda.getQnt());
         }
+        
+        Caixa2 caixa = new Caixa2();
+        caixa.save(new Caixa(venda));
         
         this.save(venda);
     }

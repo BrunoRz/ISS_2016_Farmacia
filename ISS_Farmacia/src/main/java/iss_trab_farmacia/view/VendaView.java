@@ -181,6 +181,7 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         if (JOptionPane.showConfirmDialog(this, "Confirmar a Venda", "Finalizar", JOptionPane.OK_CANCEL_OPTION) == 0) {
             if (vendas.constraintViolations(venda).isEmpty()) {
                 vendas.salvarVenda(venda);
+                this.dispose();
             }
             else{
                 JOptionPane.showMessageDialog(this, vendas.constraintViolations(venda).toString(), "Erro", JOptionPane.WARNING_MESSAGE);
@@ -226,7 +227,7 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VendaView dialog = new VendaView(new javax.swing.JDialog(), true);
+                VendaView dialog = new VendaView(null, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -5,6 +5,7 @@
  */
 package iss_trab_farmacia.control;
 
+import iss_trab_farmacia.entity.Caixa;
 import iss_trab_farmacia.entity.Compra;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.ItemCompra;
@@ -31,7 +32,7 @@ public class Compras extends BasicDAO<Compra, ObjectId>{
     }
   
     public ItemCompra ultimaCompra(Produto produto) {
-        Query<Compra> query = this.getDs().createQuery(Compra.class);
+        Query<Compra> query = this.createQuery();
         Compra compra = query.field("itensCompra.$.produto._id").equal(produto.getId()).order("dataCompra").get();
         return compra.inCompra(produto);
     }
@@ -43,6 +44,9 @@ public class Compras extends BasicDAO<Compra, ObjectId>{
             ItemCompra iCompra = itItens.next();
             estoque.inserirEstoque(iCompra.getProduto(), iCompra.getQnt());
         }
+        
+        Caixa2 caixa = new Caixa2();
+        caixa.save(new Caixa(compra));
         
         this.save(compra);
         
