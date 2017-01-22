@@ -32,7 +32,7 @@ public class Vendas extends BasicDAO<Venda, ObjectId> {
     }  
         
     public List<Venda> buscarCliente(Pessoa cliente) {
-       return this.getDs().createQuery(Venda.class).field("Pessoa.nome").equal(cliente.getNome()).asList();
+       return this.createQuery().field("Pessoa.nome").equal(cliente.getNome()).asList();
     }
     
     public void addProdutoVenda(Venda venda, Produto produto, int qnt){

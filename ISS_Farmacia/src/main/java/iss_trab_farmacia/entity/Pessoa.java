@@ -6,6 +6,7 @@
 package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
+import iss_trab_farmacia.util.hibernateConstraints.CpfOCnpj;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
@@ -16,6 +17,7 @@ import org.mongodb.morphia.annotations.Id;
  * @author guilherme
  */
 @Entity("pessoas")
+@CpfOCnpj
 public class Pessoa {
     
     @Id

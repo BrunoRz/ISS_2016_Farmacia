@@ -51,7 +51,6 @@ public class CadastrarProduto extends javax.swing.JDialog {
         salvarBtn = new javax.swing.JButton();
         lbMarca = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
-        erroDescricao = new java.awt.Label();
 
         button1.setLabel("button1");
 
@@ -74,6 +73,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
 
         lbTitulo.setText("Cadastro de Produto");
 
+        txtDescricao.setToolTipText("");
         txtDescricao.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDescricaoFocusLost(evt);
@@ -107,10 +107,6 @@ public class CadastrarProduto extends javax.swing.JDialog {
                 txtMarcaActionPerformed(evt);
             }
         });
-
-        erroDescricao.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        erroDescricao.setForeground(new java.awt.Color(255, 0, 0));
-        erroDescricao.setText("!!!!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,10 +143,8 @@ public class CadastrarProduto extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cancelarBtn)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(erroDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salvarBtn))
-                        .addGap(37, 37, 37))))
+                        .addComponent(salvarBtn)
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,14 +152,11 @@ public class CadastrarProduto extends javax.swing.JDialog {
                 .addGap(6, 6, 6)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbDescricao)
-                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(erroDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbDescricao)
+                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMarca)
@@ -245,14 +236,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMarcaActionPerformed
 
     private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
-        if (!produtos.getValidador().getValidator().validateValue(Produto.class, "descricao",
-                txtDescricao.getText()).isEmpty()){
-            erroDescricao.setVisible(true);
-        }
-        else {
-            erroDescricao.setVisible(false);
-        }
-            
+
     }//GEN-LAST:event_txtDescricaoFocusLost
 
     /**
@@ -302,7 +286,6 @@ public class CadastrarProduto extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JCheckBox cbReterReceita;
-    private java.awt.Label erroDescricao;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbCodigoDeBarras;
