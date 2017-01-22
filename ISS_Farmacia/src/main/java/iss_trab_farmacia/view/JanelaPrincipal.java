@@ -29,43 +29,62 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        mnCliente = new javax.swing.JMenu();
+        btnCadastrarPessoa = new javax.swing.JMenuItem();
+        btnBuscarPessoa = new javax.swing.JMenuItem();
+        mnProduto = new javax.swing.JMenu();
+        btnCadastrarProduto = new javax.swing.JMenuItem();
+        btnBuscarProduto = new javax.swing.JMenuItem();
+        mnVenda = new javax.swing.JMenu();
+        mnCompra = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu3.setText("Cliente");
+        mnCliente.setText("Cliente");
 
-        jMenuItem1.setText("Cadastrar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarPessoa.setText("Cadastrar");
+        btnCadastrarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnCadastrarPessoaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        mnCliente.add(btnCadastrarPessoa);
 
-        jMenuItem2.setText("Buscar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPessoa.setText("Buscar");
+        btnBuscarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                btnBuscarPessoaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        mnCliente.add(btnBuscarPessoa);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(mnCliente);
 
-        jMenu1.setText("Produto");
-        jMenuBar1.add(jMenu1);
+        mnProduto.setText("Produto");
 
-        jMenu2.setText("Venda");
-        jMenuBar1.add(jMenu2);
+        btnCadastrarProduto.setText("Cadastrar");
+        btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarProdutoActionPerformed(evt);
+            }
+        });
+        mnProduto.add(btnCadastrarProduto);
 
-        jMenu4.setText("Compra");
-        jMenuBar1.add(jMenu4);
+        btnBuscarProduto.setText("Buscar");
+        btnBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProdutoActionPerformed(evt);
+            }
+        });
+        mnProduto.add(btnBuscarProduto);
+
+        jMenuBar1.add(mnProduto);
+
+        mnVenda.setText("Venda");
+        jMenuBar1.add(mnVenda);
+
+        mnCompra.setText("Compra");
+        jMenuBar1.add(mnCompra);
 
         setJMenuBar(jMenuBar1);
 
@@ -78,22 +97,30 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 257, Short.MAX_VALUE)
+                .addGap(0, 253, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnCadastrarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPessoaActionPerformed
         CadastroCliente cadCli = new CadastroCliente(null, true);
         cadCli.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnCadastrarPessoaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void btnBuscarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPessoaActionPerformed
         BuscarPessoa bPe = new BuscarPessoa(null, false);
         bPe.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_btnBuscarPessoaActionPerformed
+
+    private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
+        new CadastrarProduto(null, true).setVisible(true);
+    }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
+
+    private void btnBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdutoActionPerformed
+        new BuscarProduto(null, true).setVisible(true);
+    }//GEN-LAST:event_btnBuscarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,13 +158,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem btnBuscarPessoa;
+    private javax.swing.JMenuItem btnBuscarProduto;
+    private javax.swing.JMenuItem btnCadastrarPessoa;
+    private javax.swing.JMenuItem btnCadastrarProduto;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenu mnCliente;
+    private javax.swing.JMenu mnCompra;
+    private javax.swing.JMenu mnProduto;
+    private javax.swing.JMenu mnVenda;
     // End of variables declaration//GEN-END:variables
 }

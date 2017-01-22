@@ -5,6 +5,8 @@
  */
 package iss_trab_farmacia.entity;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -19,13 +21,15 @@ public class Produto {
     @Id
     private ObjectId id;
 
+    @Size(min = 3, message = "Descrição deve ter no minimo 3 caracteres")
     private String descricao;
 
     private String categoria;
 
+    @Min(value = (long) 0.01)
     private float valorPadrao;
 
-    private int codigoBarras;
+    private String codigoBarras;
 
     private boolean requerReceita;
 
@@ -37,11 +41,11 @@ public class Produto {
         this.requerReceita = requerReceita;
     }
 
-    public int getCodigoBarras() {
+    public String getCodigoBarras() {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(int codigoBarras) {
+    public void setCodigoBarras(String codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
 
@@ -92,7 +96,7 @@ public class Produto {
     }
 
     public Object[] toVetor() {
-        Object[] ret = {this.descricao, this.id, this.marca, this.valorPadrao};
+        Object[] ret = {this.descricao, this.categoria, this.id, this.marca, this.valorPadrao};
         return ret;
     }
 

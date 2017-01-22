@@ -6,7 +6,6 @@
 package iss_trab_farmacia.util;
 
 import iss_trab_farmacia.entity.Produto;
-import java.util.Vector;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Reference;
 
@@ -51,6 +50,10 @@ public class ItemCompra {
 
     public Produto getProduto() {
         return produto;
+    }
+    
+    public void addQnt(int qnt) {
+        this.setQnt(this.getQnt() + qnt);
     }
     
     public float subTotal() {

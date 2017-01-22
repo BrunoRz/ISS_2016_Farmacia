@@ -9,7 +9,6 @@ import iss_trab_farmacia.util.ItemCompra;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
@@ -72,6 +71,9 @@ public class Compra {
     }
     
     public void addItemCompra(ItemCompra item) {
-        this.getItensCompra().add(item);
+        if (this.inCompra(item.getProduto()) != null) {
+            this.inCompra(item.getProduto()).addQnt(item.getQnt());
+        }
+        else this.getItensCompra().add(item);
     }
 }

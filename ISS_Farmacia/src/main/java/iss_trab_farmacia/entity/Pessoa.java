@@ -6,9 +6,9 @@
 package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
+import iss_trab_farmacia.util.hibernateConstraints.CpfOCnpj;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.ws.soap.Addressing;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -23,6 +23,7 @@ import org.mongodb.morphia.annotations.Id;
  * @author guilherme
  */
 @Entity("pessoas")
+@CpfOCnpj
 public class Pessoa {
     
     @Id
@@ -30,16 +31,15 @@ public class Pessoa {
     @NotBlank(message = "Nome vazio")
     @Size(min = 3, message = "Minimo 3 caracter")
     private String nome;
-    @CPF(message = "CPF invalido")
+  
     private String cpf;
-    @CNPJ(message = "CNPJ invalido")
     private String cnpj;
+  
     @Size(min =  10,max = 10, message = "Telefone Invalido")
     private String telefone;
     @Email(message = "Email invalido")
     private String email;
     @Embedded
-    @Addressing
     private Endereco endereco;
 
     public Pessoa() {
@@ -100,9 +100,6 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-
     
     public Object[] toVetor() {
         return new Object[] {this.getNome(), this.getEndereco().getCidade(), this.getTelefone()};

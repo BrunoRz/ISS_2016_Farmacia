@@ -37,7 +37,7 @@ public class SingletonBd {
         return INSTANCE;
     }
     
-    private void setDs(Datastore ds) {
+    public void setDs(Datastore ds) {
         this.ds = ds;
     }
     

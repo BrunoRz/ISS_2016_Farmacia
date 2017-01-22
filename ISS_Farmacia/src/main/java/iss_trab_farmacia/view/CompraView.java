@@ -42,11 +42,6 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
         ItemCompraTableModel iM = (ItemCompraTableModel) this.tabelaProduto.getModel();
         this.txtValorTotal.setText(Float.toString(iM.getTotal()));
     }
-
-    public void setFornecedor(Pessoa fornecedor){
-        compra.setFornecedor(fornecedor);
-        this.fornecedorLabel.setText(fornecedor.getNome());
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +52,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        clienteLabel = new javax.swing.JLabel();
+        lblFornecedor = new javax.swing.JLabel();
         clienteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
@@ -69,7 +64,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        clienteLabel.setText("<Null>");
+        lblFornecedor.setText("<Null>");
 
         clienteBtn.setText("Fornecedor");
         clienteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +119,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(clienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clienteLabel)
+                        .addComponent(lblFornecedor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btAddProduto))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -143,7 +138,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clienteLabel)
+                    .addComponent(lblFornecedor)
                     .addComponent(clienteBtn)
                     .addComponent(btAddProduto))
                 .addGap(18, 18, 18)
@@ -175,9 +170,15 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
 
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Confirmar a compra", "Finalizar", JOptionPane.OK_CANCEL_OPTION) == 0) {
-            System.out.println(compras.constraintViolations(compra));
-            compras.salvarCompra(compra);
-            
+            if (compras.constraintViolations(compra).isEmpty()) {
+                compras.salvarCompra(compra);
+                this.dispose();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, 
+                        compras.constraintViolations(compra).iterator().next().getMessage(), 
+                        "Erro de validação", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_salvarBtnActionPerformed
 
@@ -185,7 +186,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
         ItemCompraTableModel pM = (ItemCompraTableModel) this.tabelaProduto.getModel();
         pM.addRow(item.toVector());
         this.tabelaProduto.setModel(pM);
-        this.compra.addItemCompra(item);
+        compra.addItemCompra(item);
         this.txtValorTotal.setText(Float.toString(pM.getTotal()));
     }
     
@@ -220,7 +221,7 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CompraView dialog = new CompraView(new javax.swing.JDialog(), true);
+                CompraView dialog = new CompraView(null, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -237,9 +238,9 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
     private javax.swing.JButton btAddProduto;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JButton clienteBtn;
-    private javax.swing.JLabel clienteLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbValorTotal;
+    private javax.swing.JLabel lblFornecedor;
     private javax.swing.JButton salvarBtn;
     private javax.swing.JTable tabelaProduto;
     private javax.swing.JLabel txtValorTotal;
@@ -248,5 +249,6 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
     @Override
     public void setPessoa(Pessoa pessoa) {
         this.compra.setFornecedor((Pessoa) pessoa);
+        this.lblFornecedor.setText(pessoa.getNome());
     }
 }
