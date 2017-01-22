@@ -31,8 +31,9 @@ public class Pessoa {
     @NotBlank(message = "Nome vazio")
     @Size(min = 3, message = "Minimo 3 caracter")
     private String nome;
-  
+    @CPF
     private String cpf;
+    @CNPJ
     private String cnpj;
   
     @Size(min =  10,max = 10, message = "Telefone Invalido")

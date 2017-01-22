@@ -35,8 +35,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         mnProduto = new javax.swing.JMenu();
         btnCadastrarProduto = new javax.swing.JMenuItem();
         btnBuscarProduto = new javax.swing.JMenuItem();
-        mnVenda = new javax.swing.JMenu();
-        mnCompra = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        btnNovaVenda = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        btnNovaCompra = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,11 +82,29 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnProduto);
 
-        mnVenda.setText("Venda");
-        jMenuBar1.add(mnVenda);
+        jMenu1.setText("Venda");
 
-        mnCompra.setText("Compra");
-        jMenuBar1.add(mnCompra);
+        btnNovaVenda.setText("Novo");
+        btnNovaVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaVendaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnNovaVenda);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Compra");
+
+        btnNovaCompra.setText("Novo");
+        btnNovaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaCompraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnNovaCompra);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -121,6 +141,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void btnBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdutoActionPerformed
         new BuscarProduto(null, true).setVisible(true);
     }//GEN-LAST:event_btnBuscarProdutoActionPerformed
+
+    private void btnNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaVendaActionPerformed
+        new VendaView(null, true).setVisible(true);
+    }//GEN-LAST:event_btnNovaVendaActionPerformed
+
+    private void btnNovaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompraActionPerformed
+        new CompraView(null, true).setVisible(true);
+    }//GEN-LAST:event_btnNovaCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +190,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnBuscarProduto;
     private javax.swing.JMenuItem btnCadastrarPessoa;
     private javax.swing.JMenuItem btnCadastrarProduto;
+    private javax.swing.JMenuItem btnNovaCompra;
+    private javax.swing.JMenuItem btnNovaVenda;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu mnCliente;
-    private javax.swing.JMenu mnCompra;
     private javax.swing.JMenu mnProduto;
-    private javax.swing.JMenu mnVenda;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,6 +31,10 @@ public class Estoque {
     
     int qnt;
 
+    public Estoque() {
+    }
+    
+
     public Estoque(Produto produto, int tipoMovimento, int Qnt) {
         this.produto = produto;
         this.tipoMovimento = tipoMovimento;
@@ -39,7 +43,7 @@ public class Estoque {
     
     public Estoque(ItemVenda item) {
         this.produto = item.getProduto();
-        this.tipoMovimento = 2;
+        this.tipoMovimento = 0;
         this.qnt = item.getQnt();
     }
     

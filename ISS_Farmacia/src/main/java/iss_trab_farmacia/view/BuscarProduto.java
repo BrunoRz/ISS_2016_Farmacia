@@ -9,7 +9,13 @@ import iss_trab_farmacia.control.Produtos;
 import iss_trab_farmacia.entity.Produto;
 import iss_trab_farmacia.util.interfaces.AceitaProduto;
 import iss_trab_farmacia.util.table_models.ProdutosTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 
 /**
@@ -26,6 +32,29 @@ public class BuscarProduto extends javax.swing.JDialog {
     public BuscarProduto(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.tabela.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mE) {
+                if (mE.getButton() == 3) {
+                    JPopupMenu pM = new JPopupMenu();
+                    JMenuItem alterarMenu = new JMenuItem("Alterar");
+                    alterarMenu.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            ProdutosTableModel pM1 = (ProdutosTableModel) tabela.getModel();
+                            Produto pF = (Produto) pM1.getListProdutos().get(tabela.rowAtPoint(mE.getPoint()));
+                            CadastrarProduto cC = new CadastrarProduto(null, rootPaneCheckingEnabled, pF);
+                            cC.setVisible(true);
+                            pM.setVisible(false);
+                        }
+                    });
+                    pM.setLocation(mE.getLocationOnScreen());
+                    pM.add(alterarMenu);
+                    pM.setVisible(true);
+                }
+            }
+        });
         
         btBuscarActionPerformed(null);
     }

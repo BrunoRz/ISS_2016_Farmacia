@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class CadastrarProduto extends javax.swing.JDialog {
 
     Produtos produtos = new Produtos();
+    Produto produto = new Produto();
     
     /**
      * Creates new form CadastrarProduto
@@ -23,6 +24,19 @@ public class CadastrarProduto extends javax.swing.JDialog {
     public CadastrarProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public CadastrarProduto(java.awt.Frame parent, boolean modal, Produto produto) {
+        super(parent, modal);
+        initComponents();
+        
+        this.produto = produto;
+        
+        txtCategoria.setText(produto.getCategoria());
+        txtCodigoBarras.setText(produto.getCodigoBarras());
+        txtMarca.setText(produto.getMarca());
+        txtValor.setText(Float.toString(produto.getValorPadrao()));
+        txtDescricao.setText(produto.getDescricao());
     }
 
     /**
@@ -203,8 +217,6 @@ public class CadastrarProduto extends javax.swing.JDialog {
         }
         String codigoBarras = txtCodigoBarras.getText();
         boolean receita = cbReterReceita.isSelected();
-        
-        Produto produto = new Produto();
 
         produto.setDescricao(descricao);
         produto.setMarca(marca);

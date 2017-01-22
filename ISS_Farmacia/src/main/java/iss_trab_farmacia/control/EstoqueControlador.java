@@ -20,8 +20,7 @@ public class EstoqueControlador extends BasicDAO<Estoque, ObjectId>{
     
     public EstoqueControlador() {
         super(Estoque.class, SingletonBd.getInstance().getDs());
-    }
-    
+    }   
     
     public void removerEstoque(Produto produto, int qnt) {
         this.save(new Estoque(produto, 2, qnt));
@@ -33,12 +32,14 @@ public class EstoqueControlador extends BasicDAO<Estoque, ObjectId>{
     
     public int getEstoque(Produto produto){
         int total = 0;
-        List<Estoque> lE = this.createQuery().field("produto.id").equal(produto.getId()).asList();
+        List<Estoque> lE = this.createQuery().asList();
         for(Estoque e: lE) {
-            if (e.getTipoMovimento() == 1) {
-                total += e.getQnt();
+            if (e.getProduto().getId().equals(produto.getId())) {
+                if (e.getTipoMovimento() == 1) {
+                    total += e.getQnt();
+                }
+                else total -= e.getQnt();
             }
-            else total -= e.getQnt();
         }
         return total;
     }
