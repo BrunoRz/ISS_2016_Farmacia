@@ -43,6 +43,8 @@ public class Pessoas extends BasicDAO<Pessoa, ObjectId> {
         return query.asList();
         
     }
+    
+    
 
     public List<Pessoa> buscarTodos() {
         Query<Pessoa> query = this.createQuery();
