@@ -5,6 +5,8 @@
  */
 package iss_trab_farmacia.view;
 
+import java.awt.Color;
+
 /**
  *
  * @author guest-a2ok8M
@@ -39,8 +41,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         btnNovaVenda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnNovaCompra = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        btnRelCaixa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
 
         mnCliente.setText("Cliente");
 
@@ -106,6 +111,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Caixa");
+
+        btnRelCaixa.setText("Relatório");
+        btnRelCaixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelCaixaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btnRelCaixa);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,8 +133,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 253, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(288, 288, 288)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -149,6 +166,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void btnNovaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompraActionPerformed
         new CompraView(null, true).setVisible(true);
     }//GEN-LAST:event_btnNovaCompraActionPerformed
+
+    private void btnRelCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelCaixaActionPerformed
+        new caixaView().setVisible(true);
+    }//GEN-LAST:event_btnRelCaixaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,8 +213,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCadastrarProduto;
     private javax.swing.JMenuItem btnNovaCompra;
     private javax.swing.JMenuItem btnNovaVenda;
+    private javax.swing.JMenuItem btnRelCaixa;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu mnCliente;

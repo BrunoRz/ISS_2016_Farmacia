@@ -31,6 +31,9 @@ public class Caixa {
     @Min(value = (long) 0.01, message = "Menor valor possivel é 0.01")
     private double valor;
 
+    public Caixa() {
+    }
+
     
     public Caixa(boolean entrada, double valor) {
         this.entrada = entrada;
@@ -79,6 +82,10 @@ public class Caixa {
         this.valor = valor;
     }
 
-    public Object[] toVector() {
-        return null;}
+    public String[] toVector() {
+        if (entrada) {
+            return new String[] {"Entrada", Double.toString(this.getValor())};
+        }
+        else return new String[] {"Saida", Double.toString(this.getValor())};
+    }
 }

@@ -22,9 +22,9 @@ public class CaixaTableModel extends DefaultTableModel{
     public CaixaTableModel(List<Caixa> caixa) {
         listCaixa = caixa;
         Iterator<Caixa> caix = caixa.iterator();
-        while (caix.hasNext()) this.addMovimentacao(caix.next());
         this.addColumn("Tipo");
         this.addColumn("Valor");
+        while (caix.hasNext()) this.addMovimentacao(caix.next());
     }
     
     
@@ -37,7 +37,4 @@ public class CaixaTableModel extends DefaultTableModel{
     public boolean isCellEditable(int row, int column){
         return false;
     }
-    
-    
-
 }
