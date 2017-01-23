@@ -5,6 +5,7 @@
  */
 package iss_trab_farmacia.util;
 
+import javax.validation.constraints.Size;
 import org.mongodb.morphia.annotations.Embedded;
 
 /**
@@ -17,7 +18,6 @@ public class Endereco {
     private String numero;
     private String CEP;
     private String complemento;
-    
     private String cidade;
 
     public Endereco() {

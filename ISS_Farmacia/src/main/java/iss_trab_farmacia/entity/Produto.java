@@ -6,8 +6,10 @@
 package iss_trab_farmacia.entity;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
+import org.hibernate.validator.constraints.NotBlank;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -27,6 +29,7 @@ public class Produto {
     private String categoria;
 
     @Min(value = (long) 0.01)
+    @NotNull
     private float valorPadrao;
 
     private String codigoBarras;
@@ -81,6 +84,7 @@ public class Produto {
     public Produto() {
     }
 
+    @NotBlank
     private String marca;
 
     public ObjectId getId() {

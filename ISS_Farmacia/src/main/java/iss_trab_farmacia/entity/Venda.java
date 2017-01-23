@@ -88,4 +88,8 @@ public class Venda {
         this.cliente = cliente;
     }
     
+    public Object[] toVector() {
+        Object[] o = {this.getClass().getSimpleName(), this.getTotal()};
+        return o;
+    }
 }

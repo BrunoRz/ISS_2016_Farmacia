@@ -9,6 +9,7 @@ import iss_trab_farmacia.util.ItemCompra;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
@@ -75,5 +76,10 @@ public class Compra {
             this.inCompra(item.getProduto()).addQnt(item.getQnt());
         }
         else this.getItensCompra().add(item);
+    }
+
+    public Object[] toVector() {
+        Object[] o = {this.getClass().getSimpleName(), this.getTotal()};
+        return o;
     }
 }

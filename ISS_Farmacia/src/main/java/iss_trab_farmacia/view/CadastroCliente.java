@@ -31,6 +31,10 @@ public class CadastroCliente extends javax.swing.JDialog {
         initComponents();
         
         pF = new Pessoa();
+        
+        this.erroImagem.setVisible(false);
+        this.erroImagem2.setVisible(false);
+        this.erroImagem3.setVisible(false);
     }
     
     public CadastroCliente(java.awt.Frame parent, boolean modal, Pessoa pF) {
@@ -41,10 +45,16 @@ public class CadastroCliente extends javax.swing.JDialog {
         
         this.txtNome.setText(pF.getNome());
         this.txtCpf.setText(pF.getCpf());
-        this.emailCampo.setText(pF.getEmail());
-        this.cidadeCampo.setText(pF.getEndereco().getCidade());
-        this.cepCampo.setText(pF.getEndereco().getCEP());
-        this.telefoneCampo.setText(pF.getTelefone());
+        this.txtEmail.setText(pF.getEmail());
+        this.txtCidade.setText(pF.getEndereco().getCidade());
+        this.txtRua.setText(pF.getEndereco().getRua());
+        this.txtEndNumero.setText(pF.getEndereco().getNumero());
+        this.txtCep.setText(pF.getEndereco().getCEP());
+        this.txtTelefone.setText(pF.getTelefone());
+        
+        this.erroImagem.setVisible(false);
+        this.erroImagem2.setVisible(false);
+        this.erroImagem3.setVisible(false);
     }
 
     /**
@@ -59,27 +69,26 @@ public class CadastroCliente extends javax.swing.JDialog {
         lbNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         lbEndereco = new javax.swing.JLabel();
-        ruaEnderecoCampo = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
         lbTelefone = new javax.swing.JLabel();
         salvarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
         lbRua = new javax.swing.JLabel();
         lbNum = new javax.swing.JLabel();
-        numeroEnderecoCampo = new javax.swing.JTextField();
+        txtEndNumero = new javax.swing.JTextField();
         lbCep = new javax.swing.JLabel();
         lbCidade = new javax.swing.JLabel();
-        cidadeCampo = new javax.swing.JTextField();
+        txtCidade = new javax.swing.JTextField();
         lbEmail = new javax.swing.JLabel();
-        emailCampo = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         lbCpf = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
-        cepCampo = new javax.swing.JFormattedTextField();
-        telefoneCampo = new javax.swing.JFormattedTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        txtCep = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
+        cpfCnpjCheckBox = new javax.swing.JCheckBox();
         erroImagem = new javax.swing.JLabel();
         erroImagem2 = new javax.swing.JLabel();
         erroImagem3 = new javax.swing.JLabel();
-        erroImagem4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,13 +108,13 @@ public class CadastroCliente extends javax.swing.JDialog {
         lbEndereco.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lbEndereco.setText("Endereço");
 
-        ruaEnderecoCampo.addActionListener(new java.awt.event.ActionListener() {
+        txtRua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ruaEnderecoCampoActionPerformed(evt);
+                txtRuaActionPerformed(evt);
             }
         });
 
-        lbTelefone.setText("Telefone");
+        lbTelefone.setText("Telefone:");
 
         salvarBtn.setText("Salvar");
         salvarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +136,7 @@ public class CadastroCliente extends javax.swing.JDialog {
 
         lbCep.setText("CEP:");
 
-        lbCidade.setText("Cidade");
+        lbCidade.setText("Cidade:");
 
         lbEmail.setText("E-mail:");
 
@@ -150,31 +159,26 @@ public class CadastroCliente extends javax.swing.JDialog {
         });
 
         try {
-            cepCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            txtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cepCampo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cepCampoFocusLost(evt);
-            }
-        });
 
         try {
-            telefoneCampo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        telefoneCampo.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                telefoneCampoFocusLost(evt);
+                txtTelefoneFocusLost(evt);
             }
         });
 
-        jCheckBox1.setText("Juridico");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        cpfCnpjCheckBox.setText("Jurídico");
+        cpfCnpjCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                cpfCnpjCheckBoxActionPerformed(evt);
             }
         });
 
@@ -187,9 +191,6 @@ public class CadastroCliente extends javax.swing.JDialog {
         erroImagem3.setIcon(new javax.swing.ImageIcon("/usuario/ISS_2016_Farmacia/ISS_Farmacia/src/main/java/iss_trab_farmacia/view/erro2.png")); // NOI18N
         erroImagem3.setToolTipText("Telefone Inválido");
 
-        erroImagem4.setIcon(new javax.swing.ImageIcon("/usuario/ISS_2016_Farmacia/ISS_Farmacia/src/main/java/iss_trab_farmacia/view/erro2.png")); // NOI18N
-        erroImagem4.setToolTipText("CEP inválido");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,6 +198,10 @@ public class CadastroCliente extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelarBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(salvarBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -211,7 +216,7 @@ public class CadastroCliente extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox1)
+                                .addComponent(cpfCnpjCheckBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(erroImagem2))))
                     .addGroup(layout.createSequentialGroup()
@@ -223,27 +228,21 @@ public class CadastroCliente extends javax.swing.JDialog {
                             .addComponent(lbEmail))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailCampo)
+                            .addComponent(txtEmail)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(telefoneCampo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cidadeCampo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cepCampo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCep, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbEndereco)
-                                    .addComponent(ruaEnderecoCampo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                                    .addComponent(txtRua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbNum)
                                         .addGap(6, 6, 6)
-                                        .addComponent(numeroEnderecoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(erroImagem3)
-                                    .addComponent(erroImagem4)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cancelarBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(salvarBtn)
-                        .addGap(69, 69, 69)))
+                                        .addComponent(txtEndNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(erroImagem3))))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -260,36 +259,34 @@ public class CadastroCliente extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbCpf)
                         .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox1))
+                        .addComponent(cpfCnpjCheckBox))
                     .addComponent(erroImagem2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbEndereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ruaEnderecoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbRua)
-                    .addComponent(numeroEnderecoCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEndNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbNum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbCep)
-                        .addComponent(cepCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(erroImagem4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCep)
+                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCidade)
-                    .addComponent(cidadeCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbTelefone)
-                        .addComponent(telefoneCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(erroImagem3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbEmail)
-                    .addComponent(emailCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvarBtn)
@@ -302,26 +299,29 @@ public class CadastroCliente extends javax.swing.JDialog {
 
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         String nome = txtNome.getText();
-        if (jCheckBox1.isSelected()) {
+        if (cpfCnpjCheckBox.isSelected()) {
             pF.setCnpj(txtCpf.getText().replaceAll("[./-]", ""));   
         }
-        
         String cpf = txtCpf.getText();
-        String endereco = ruaEnderecoCampo.getText();
-        String telefone = telefoneCampo.getText();
+        pF.setTelefone(txtTelefone.getText().replaceAll("[()-]", ""));
         pF.setNome(nome);
         pF.setCpf(cpf);
-        pF.setEndereco(new Endereco(ruaEnderecoCampo.getText(), 
-                                numeroEnderecoCampo.getText(),
-                                cepCampo.getText(),
-                                cidadeCampo.getText()));
+        pF.setEndereco(new Endereco(txtRua.getText(), 
+                                txtEndNumero.getText(),
+                                txtCep.getText(),
+                                txtCidade.getText()));
         
-        pF.setEmail(emailCampo.getText());
+        pF.setEmail(txtEmail.getText());
         
-        System.out.println(pessoas.constraintViolation(pF));
-        //new Pessoas().save(pF);
-        
-        this.dispose();
+        if (pessoas.constraintViolation(pF).isEmpty()) {
+            pessoas.save(pF);
+            this.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this, 
+                    pessoas.constraintViolation(pF).iterator().next().getMessage()
+                    , "Erro de Validação", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_salvarBtnActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -332,16 +332,17 @@ public class CadastroCliente extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_cancelarBtnActionPerformed
 
-    private void ruaEnderecoCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaEnderecoCampoActionPerformed
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ruaEnderecoCampoActionPerformed
+    }//GEN-LAST:event_txtRuaActionPerformed
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if (jCheckBox1.isSelected()) {
+    private void cpfCnpjCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfCnpjCheckBoxActionPerformed
+        if (cpfCnpjCheckBox.isSelected()) {
+            this.lbCpf.setText("CNPJ:");
             try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
             } catch (ParseException ex) {
@@ -349,13 +350,14 @@ public class CadastroCliente extends javax.swing.JDialog {
             }
         }
         else {
+            this.lbCpf.setText("CPF:");
             try {
                 txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
             } catch (ParseException ex) {
                 Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_cpfCnpjCheckBoxActionPerformed
 
     private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
         if (!pessoas.getValidador().getValidator().validateValue(Pessoa.class, "nome",
@@ -368,7 +370,7 @@ public class CadastroCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        if (jCheckBox1.isSelected()) {
+        if (cpfCnpjCheckBox.isSelected()) {
             if (!pessoas.getValidador().getValidator().validateValue(Pessoa.class, "cnpj",
                 txtCpf.getText().replaceAll("[.-/]", "")).isEmpty()){
                 erroImagem2.setVisible(true);
@@ -389,25 +391,16 @@ public class CadastroCliente extends javax.swing.JDialog {
         
     }//GEN-LAST:event_txtCpfFocusLost
 
-    private void cepCampoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cepCampoFocusLost
-        if (!pessoas.getValidador().getValidator().validateValue(Pessoa.class, "cep",
-            cepCampo.getText()).isEmpty()){
-            erroImagem4.setVisible(true);
-        }
-        else {
-            erroImagem4.setVisible(false);
-        }
-    }//GEN-LAST:event_cepCampoFocusLost
-
-    private void telefoneCampoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneCampoFocusLost
+    private void txtTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusLost
+        System.out.println(txtTelefone.getText().length());
         if (!pessoas.getValidador().getValidator().validateValue(Pessoa.class, "telefone",
-            telefoneCampo.getText()).isEmpty()){
-            erroImagem3.setVisible(true);
+            txtTelefone.getText().replaceAll("[()-]", "")).isEmpty()){
+                        erroImagem3.setVisible(true);
         }
         else {
             erroImagem3.setVisible(false);
         }
-    }//GEN-LAST:event_telefoneCampoFocusLost
+    }//GEN-LAST:event_txtTelefoneFocusLost
 
     
     /**
@@ -452,14 +445,10 @@ public class CadastroCliente extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarBtn;
-    private javax.swing.JFormattedTextField cepCampo;
-    private javax.swing.JTextField cidadeCampo;
-    private javax.swing.JTextField emailCampo;
+    private javax.swing.JCheckBox cpfCnpjCheckBox;
     private javax.swing.JLabel erroImagem;
     private javax.swing.JLabel erroImagem2;
     private javax.swing.JLabel erroImagem3;
-    private javax.swing.JLabel erroImagem4;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel lbCep;
     private javax.swing.JLabel lbCidade;
     private javax.swing.JLabel lbCpf;
@@ -469,11 +458,14 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JLabel lbNum;
     private javax.swing.JLabel lbRua;
     private javax.swing.JLabel lbTelefone;
-    private javax.swing.JTextField numeroEnderecoCampo;
-    private javax.swing.JTextField ruaEnderecoCampo;
     private javax.swing.JButton salvarBtn;
-    private javax.swing.JFormattedTextField telefoneCampo;
+    private javax.swing.JFormattedTextField txtCep;
+    private javax.swing.JTextField txtCidade;
     private javax.swing.JFormattedTextField txtCpf;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEndNumero;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtRua;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

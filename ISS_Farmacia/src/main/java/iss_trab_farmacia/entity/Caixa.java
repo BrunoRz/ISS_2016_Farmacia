@@ -6,6 +6,7 @@
 package iss_trab_farmacia.entity;
 
 import java.util.Date;
+import java.util.Vector;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import org.bson.types.ObjectId;
@@ -77,4 +78,7 @@ public class Caixa {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public Object[] toVector() {
+        return null;}
 }

@@ -153,7 +153,7 @@ public class VendaTest {
         Venda instance = new Venda();
         instance.setCliente(cliente);
         if(instance.getCliente() != null){
-            fail("Cliente nao é null.");
+            fail();
         }
     }
 

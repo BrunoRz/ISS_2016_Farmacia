@@ -94,6 +94,11 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
         });
 
         cancelarBtn.setText("Cancelar");
+        cancelarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBtnActionPerformed(evt);
+            }
+        });
 
         btAddProduto.setText("Ad. Produto");
         btAddProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -176,11 +181,15 @@ public class CompraView extends javax.swing.JDialog implements AceitaPessoa{
             }
             else {
                 JOptionPane.showMessageDialog(this, 
-                        compras.constraintViolations(compra).iterator().next().getMessage(), 
-                        "Erro de validação", JOptionPane.WARNING_MESSAGE);
+                compras.constraintViolations(compra).iterator().next().getMessage(), 
+                "Erro de validação", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_salvarBtnActionPerformed
+
+    private void cancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelarBtnActionPerformed
 
     public void adcionarProduto(ItemCompra item) {
         ItemCompraTableModel pM = (ItemCompraTableModel) this.tabelaProduto.getModel();

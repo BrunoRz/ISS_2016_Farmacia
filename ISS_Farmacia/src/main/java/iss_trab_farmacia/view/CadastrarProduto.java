@@ -55,7 +55,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
         lbValor = new javax.swing.JLabel();
         lbCodigoDeBarras = new javax.swing.JLabel();
         cbReterReceita = new javax.swing.JCheckBox();
-        jSeparator1 = new javax.swing.JSeparator();
+        separador = new javax.swing.JSeparator();
         lbTitulo = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
         txtCategoria = new javax.swing.JTextField();
@@ -74,7 +74,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
 
         lbCategoria.setText("Categoria:");
 
-        lbValor.setText("valor:");
+        lbValor.setText("Valor:");
 
         lbCodigoDeBarras.setText("Codigo Barras:");
 
@@ -85,6 +85,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
             }
         });
 
+        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Cadastro de Produto");
 
         txtDescricao.setToolTipText("");
@@ -126,7 +127,17 @@ public class CadastrarProduto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(separador, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cancelarBtn)
+                .addGap(18, 18, 18)
+                .addComponent(salvarBtn)
+                .addGap(38, 38, 38))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbReterReceita)
+                .addGap(182, 182, 182))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -144,21 +155,9 @@ public class CadastrarProduto extends javax.swing.JDialog {
                     .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cbReterReceita)
-                        .addGap(182, 182, 182))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbTitulo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cancelarBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(salvarBtn)
-                        .addGap(38, 38, 38))))
+                .addContainerGap()
+                .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +165,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
                 .addGap(6, 6, 6)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDescricao)
@@ -228,15 +227,14 @@ public class CadastrarProduto extends javax.swing.JDialog {
         if (JOptionPane.showConfirmDialog(this, "Confirmar?") == 0) {
             if (produtos.constraintViolations(produto).isEmpty()) {
                 produtos.save(produto);
+                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(this, 
-                        produtos.constraintViolations(produto).toString(), 
+                        produtos.constraintViolations(produto).iterator().next().getMessage(), 
                         "Erro no produto", JOptionPane.WARNING_MESSAGE);
             }
         }
-
-        this.dispose();
     }//GEN-LAST:event_salvarBtnActionPerformed
 
     private void cbReterReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbReterReceitaActionPerformed
@@ -298,7 +296,6 @@ public class CadastrarProduto extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cancelarBtn;
     private javax.swing.JCheckBox cbReterReceita;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbCodigoDeBarras;
     private javax.swing.JLabel lbDescricao;
@@ -306,6 +303,7 @@ public class CadastrarProduto extends javax.swing.JDialog {
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JLabel lbValor;
     private javax.swing.JButton salvarBtn;
+    private javax.swing.JSeparator separador;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtCodigoBarras;
     private javax.swing.JTextField txtDescricao;

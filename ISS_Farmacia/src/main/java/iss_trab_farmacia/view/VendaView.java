@@ -95,6 +95,11 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
         jScrollPane1.setViewportView(tabelaProduto);
 
         cancelarBtn.setText("Cancelar");
+        cancelarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBtnActionPerformed(evt);
+            }
+        });
 
         btAddProduto.setText("Ad. Produto");
         btAddProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -178,16 +183,24 @@ public class VendaView extends javax.swing.JDialog implements AceitaPessoa{
     }//GEN-LAST:event_clienteBtnActionPerformed
 
     private void btFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Confirmar a Venda", "Finalizar", JOptionPane.OK_CANCEL_OPTION) == 0) {
+        if (JOptionPane.showConfirmDialog(this, 
+            "Confirmar a Venda", "Finalizar", 
+            JOptionPane.OK_CANCEL_OPTION) == 0) {
             if (vendas.constraintViolations(venda).isEmpty()) {
                 vendas.salvarVenda(venda);
                 this.dispose();
             }
             else{
-                JOptionPane.showMessageDialog(this, vendas.constraintViolations(venda).toString(), "Erro", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, 
+                vendas.constraintViolations(venda).iterator().next().getMessage(),
+                "Erro", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btFinalizarActionPerformed
+
+    private void cancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelarBtnActionPerformed
     
     public void adcionarProduto(ItemVenda item, int qnt, float preco) {
         this.venda.addItemVenda(item);

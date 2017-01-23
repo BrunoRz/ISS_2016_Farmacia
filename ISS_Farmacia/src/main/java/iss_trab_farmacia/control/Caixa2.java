@@ -9,8 +9,7 @@ import iss_trab_farmacia.entity.Caixa;
 import iss_trab_farmacia.util.SingletonBd;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import javax.validation.ConstraintViolation;
+import java.util.Vector;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.dao.BasicDAO;
 
@@ -52,4 +51,6 @@ public class Caixa2 extends BasicDAO<Caixa, ObjectId>{
         
         return soma;
     }
+
+
 }

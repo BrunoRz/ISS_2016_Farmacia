@@ -7,7 +7,6 @@ package iss_trab_farmacia.entity;
 
 import iss_trab_farmacia.util.Endereco;
 import iss_trab_farmacia.util.hibernateConstraints.CpfOCnpj;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Email;
@@ -35,9 +34,10 @@ public class Pessoa {
     private String cpf;
     @CNPJ
     private String cnpj;
-  
-    @Size(min =  10,max = 10, message = "Telefone Invalido")
+    @NotBlank(message = "telefone vazio")  
+    @Size(min =  10, message = "Telefone Invalido")
     private String telefone;
+    @NotBlank(message = "email vazio")
     @Email(message = "Email invalido")
     private String email;
     @Embedded
